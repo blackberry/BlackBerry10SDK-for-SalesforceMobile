@@ -18,6 +18,7 @@
 #define ApplicationUI_HPP_
 
 #include <QObject>
+#include <core/SFAbstractApplicationUI.h>
 
 namespace bb
 {
@@ -36,7 +37,7 @@ class QTranslator;
  *
  */
 
-class ApplicationUI : public QObject
+class ApplicationUI : public sf::SFAbstractApplicationUI
 {
     Q_OBJECT
 public:

@@ -23,8 +23,7 @@
 
 using namespace bb::cascades;
 
-ApplicationUI::ApplicationUI(bb::cascades::Application *app) :
-        QObject(app)
+ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFAbstractApplicationUI(app)
 {
     // prepare the localization
     m_pTranslator = new QTranslator(this);

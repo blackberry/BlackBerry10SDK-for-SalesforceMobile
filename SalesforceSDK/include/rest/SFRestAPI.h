@@ -27,7 +27,7 @@ class SFOAuthInfo;
 
 /*!
  * @class SFRestAPI
- * @headerfile SFRestAPI.h "SFRestAPI.h"
+ * @headerfile SFRestAPI.h "SFRestAPI.h" TODO update according to deployment
  * @brief The SFRestAPI is the main class to send REST requests to Force.com REST API
  *
  * @details
