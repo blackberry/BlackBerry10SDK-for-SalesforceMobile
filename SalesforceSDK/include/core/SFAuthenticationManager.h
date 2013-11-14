@@ -87,7 +87,7 @@ public:
 	/*! @returns the singleton instance */
 	static SFAuthenticationManager * instance();
 	/*!
-	 * @param a list of oAuth scope strings
+	 * @param newScopes a list of oAuth scope strings
 	 */
 	static void setScopes(QList<QString> newScopes);
 	/*!
@@ -128,18 +128,18 @@ public slots:
 
 signals:
 	/*!
-	 * @param a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
+	 * @param info a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
 	 * Emitted by @c login() if succeeded. Not recommended to use with queued connection. If you do you are responsible to make sure
 	 * the pointer is still valid when the signal is processed.
 	 */
 	void SFOAuthFlowSuccess(SFOAuthInfo* info);
 	/*!
-	 * @param a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
+	 * @param info a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
 	 * Emitted by @c login() if failed
 	 */
 	void SFOAuthFlowFailure(SFOAuthInfo* info);
 	/*!
-	 * @param a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
+	 * @param info a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
 	 * Emitted by @c cancelAuthentication()
 	 */
 	void SFOAuthFlowCanceled(SFOAuthInfo* info);

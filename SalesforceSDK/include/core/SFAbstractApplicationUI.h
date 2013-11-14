@@ -21,6 +21,16 @@ extern QString const SFRemoteAccessConsumerKey;
 extern QString const SFOAuthRedirectURI;
 extern QString const SFDefaultRestApiVersion;
 
+/*! \mainpage SalesforceBB10SDK
+ *
+ * \section intro_sec Introduction
+ * The main APIs in the SalesforceSDK are found in the SFAuthenticationManager class and SFRestAPI class.
+ * The SFAuthenticationManager class provides APIs for the application to manage the oAuth 2.0 authentication process.
+ * The SFRestAPI class provides a set of interfaces to work with force.com REST APIs. The SFRestAPI handles the necessary step required to send a request (such as refreshing an access token when its expired).
+ *
+ * \section install_sec Setup
+ */
+
 /*!
  * @class SFAbstractApplicationUI
  * @headerfile SFAbstractApplicationUI.h "SFAbstractApplicationUI.h"
