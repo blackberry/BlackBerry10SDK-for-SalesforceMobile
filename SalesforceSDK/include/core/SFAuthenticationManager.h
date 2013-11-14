@@ -28,6 +28,36 @@ class SFOAuthCoordinator;
 
 using namespace bb::cascades;
 
+/*!
+ * @class SFAuthenticationManager
+ * @headerfile SFAuthenticationManager.h "SFAuthenticationManager.h"
+ * @brief A singleton class that manages the oAuth 2.0 user agent/refresh flow
+ *
+ * @details
+ * This is a singleton class and its instance can be accessed by by @c SFAuthenticationManager::instance()
+ *
+ * Initialization
+ * ---------------------
+ * Before using this class to start the authentication process, the application code needs to specify the required
+ * information to connect to salesforce.com:
+ * - consumer key: set this value in your @c applicationui class by defining the SFRemoteAccessConsumerKey variable
+ * - redirect url: set this value in your @c applicationui class by defining the SFRemoteAccessConsumerKey variable
+ *
+ * Usage
+ * -----
+ * To use this class, connect to the desired signals and invoke the desired functions
+ * @code{.cpp}
+ * SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
+ * connect(authManager, SIGNAL(SFOAuthFlowSuccess(SFOAuthInfo*)), this, SLOT(onSFOAuthFlowSuccess(SFOAuthInfo*)), Qt::UniqueConnection);
+ * authManager->login();
+ * @endcode
+ *
+ * \sa SFAuthenticationManager, SFAbstractApplicationUI
+ * See [Authenticating Remote Access Application OAuth] (https://help.salesforce.com/apex/HTViewHelpDoc?id=remoteaccess_authenticate.htm&language=en_US) for more details.
+ * This SDK supports the oAuth 2.0 user agent flow and refresh token flow.
+ *
+ * \author Tim Tian Le Shi
+ */
 class SFAuthenticationManager : public QObject {
 	Q_OBJECT
 
@@ -38,53 +68,68 @@ private:
 	bool mFirstAuthAfterLaunch;
 
 public:
+	/*! @returns the singleton instance */
 	static SFAuthenticationManager * instance();
 
-	/*
-	 * will emit either the success or failure signal
-	 * the signals will only be emitted once, but the caller can have multiple slots associated to the signals
+	/*!
+	 * Starts the authentication process and emits either the success or failure signal
+	 * This function will trigger the user-agent flow if the refresh token is not available
+	 * otherwise the refresh token flow will be triggered.
 	 */
 	Q_INVOKABLE void login();
-	/*
-	 *cancel authentication process (via oauth coordinator), clear account manager's state
+	/*!
+	 *Cancels any authentication in progress and clears stored account data
 	 */
 	Q_INVOKABLE void logout();
 
-	/*
-	 * return boolean value indicate whether the authentication is in progress
+	/*!
+	 * @return boolean value indicating whether there is any authentication in progress
 	 */
 	Q_INVOKABLE bool isAuthenticating();
 
-	/*
-	 * cancel in progress authentication (stops webview from loading, or aborts refresh token connection)
-	 * the existing credential information is not changed.
+	/*!
+	 * Cancels in progress authentication (stops web view from loading, or aborts refresh token connection)
+	 * Does not clear existing account data.
 	 */
 	Q_INVOKABLE void cancelAuthentication();
 
-	/*
-	 * Usually you shouldn't need to get these values directly. They are provided here to help you debug
-	 */
+	/*! @return the current login host.*/
 	QString loginHost() const;
+	/*! @return the current logged in user's identity data*/
 	const SFIdentityData* getIdData() const;
+	/*! @return the current logged in user's credentials*/
 	const SFOAuthCredentials* getCredentials() const;
 
 public slots:
+	/*!
+	 * This slot is connected to the application's fullscreen signal
+	 * to automatically display either the login screen or lock screen.
+	 */
 	void onAppStart();
 
 signals:
-	/*
-	 * emitted by the login action. Not recommended to use with queued connection. If you do you are responsible to make sure
+	/*!
+	 * @param a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
+	 * Emitted by @c login() if succeeded. Not recommended to use with queued connection. If you do you are responsible to make sure
 	 * the pointer is still valid when the signal is processed.
 	 */
 	void SFOAuthFlowSuccess(SFOAuthInfo* info);
+	/*!
+	 * @param a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
+	 * Emitted by @c login() if failed
+	 */
 	void SFOAuthFlowFailure(SFOAuthInfo* info);
+	/*!
+	 * @param a pointer to @c SFOAuthInfo indicating the type of the oAuth flow (user agent or refresh token)
+	 * Emitted by @c cancelAuthentication()
+	 */
 	void SFOAuthFlowCanceled(SFOAuthInfo* info);
-	/*
-	 * emitted by the logout action
+	/*!
+	 * Emitted by @c logout()
 	 */
 	void SFUserLoggedOut();
-	/*
-	 * emitted after login host change is processed
+	/*!
+	 * Emitted if user went into settings and changed the login host
 	 */
 	void SFLoginHostChanged();
 protected:
