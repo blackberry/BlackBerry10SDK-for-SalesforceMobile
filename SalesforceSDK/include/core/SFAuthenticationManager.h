@@ -42,6 +42,13 @@ using namespace bb::cascades;
  * information to connect to salesforce.com:
  * - consumer key: set this value in your @c applicationui class by defining the SFRemoteAccessConsumerKey variable
  * - redirect url: set this value in your @c applicationui class by defining the SFRemoteAccessConsumerKey variable
+ * - scopes: optionally set the scopes you want the access token to be associated with. Set its value by calling @c SFAuthenticationManager::setScopes(QList<QString> newScopes);
+ *
+ * Note
+ * ---------------------
+ * The consumer key, redirect url and scopes information is persisted on the device.
+ * If you decide to reconfigured these information, the change will take effect only
+ * after the app performed a logout or the app is deleted and re-installed.
  *
  * Usage
  * -----
@@ -70,7 +77,10 @@ private:
 public:
 	/*! @returns the singleton instance */
 	static SFAuthenticationManager * instance();
-
+	/*!
+	 * @param a list of oAuth scope strings
+	 */
+	static void setScopes(QList<QString> newScopes);
 	/*!
 	 * Starts the authentication process and emits either the success or failure signal
 	 * This function will trigger the user-agent flow if the refresh token is not available

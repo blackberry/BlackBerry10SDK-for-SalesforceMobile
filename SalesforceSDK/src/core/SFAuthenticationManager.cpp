@@ -49,6 +49,10 @@ SFAuthenticationManager* SFAuthenticationManager::instance() {
 	return sharedInstance;
 }
 
+void SFAuthenticationManager::setScopes(QList<QString> newScopes){
+	SFAccountManager::setScopes(newScopes);
+}
+
 void SFAuthenticationManager::login(){
 	SFAccountManager* accountManager = SFAccountManager::instance();
     connect(accountManager, SIGNAL(willBeginAuthentication(SFOAuthInfo*)), this, SLOT(onWillBeginAuthentication(SFOAuthInfo*)), Qt::UniqueConnection);
