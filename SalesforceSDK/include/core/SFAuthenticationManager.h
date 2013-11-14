@@ -59,6 +59,15 @@ using namespace bb::cascades;
  * authManager->login();
  * @endcode
  *
+ * In order for the SDK to handle the authentication process. It uses a few QML assets to construct the UI needed during authentication
+ * They can be found in the assets/salesforce folder
+ * - SFSettings.qml: a screen for user to specify which environment to connect the application to. The application developer is responsible for presenting this screen if a setting screen is required in the application.
+ * 	 The SDK will do the necessary clean up tasks and emit a LoginHostChanged signal.
+ * 	 The application is responsible for handling this signal (e.g. trigger login again)
+ * - SFOAuthSheet.qml: a sheet that holds the web view for authentication. It is presented and dismissed by SFAuthenticationManager as part of the login process
+ * - SFPasscodeCreation.qml: a sheet that lets user set up device password after authentication. It is presented and dismissed by SFAuthenticationManager
+ * - SFLockScreen.qml: a sheet that locks the screen when the app is inactive for a period of time. It is presented and dismissed by SFAuthenticationManager
+ *
  * \sa SFAuthenticationManager, SFAbstractApplicationUI
  * See [Authenticating Remote Access Application OAuth] (https://help.salesforce.com/apex/HTViewHelpDoc?id=remoteaccess_authenticate.htm&language=en_US) for more details.
  * This SDK supports the oAuth 2.0 user agent flow and refresh token flow.
