@@ -11,6 +11,7 @@ BlackBerry Z10
 
 ** Author **
 [Livan Du Yi] (https://github.com/stonedu)
+
 [Tim Shi] (https://github.com/timkiimobiletech)
 
 ** Build and Run the Sample Application **
