@@ -1,1 +1,0 @@
-include (../MySFApplication.pro)
