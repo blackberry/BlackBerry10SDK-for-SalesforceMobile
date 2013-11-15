@@ -2,9 +2,69 @@
  *
  * It's very easy to use this SDK. The setup process requires basic knowledge of Git, EGit for Eclipse, Eclipse CDT/Momentics, Blackberry Cascades packaging process and Salesforce.com authentication procedures. The steps involve downloading/importing SDK project, creating new Blackberry 10 Cascades application, linking against Cascades shared libraries and some coding. Please read through this tutorial for step-by-step setup.
  *
- * @section section_import_sdk Download and Import SDK Project
+ * @section section_setup Setup Your Project
  *
- * @section section_import_template Download and Import Template Project
+ * @subsection section_import_sdk Download and Import SDK Project
+ * TODO some details
  *
- * @section section_import_template Basic Configuration
+ * @subsection section_import_template Download and Import Template Project
+ * TODO some details
+ *
+ * @subsection section_import_config Basic Configuration
+ * 1. Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit @c SFAbstractApplicationUI:
+ * @code {.hpp}
+ * #include <core/SFAbstractApplicationUI.h>
+ *
+ * namespace sf {
+ * 	class SFGenericTask;
+ * 	class SFResult;
+ * 	class SFOAuthInfo;
+ * }
+ *
+ * class ApplicationUI : public sf::SFAbstractApplicationUI
+ * {
+ * 	Q_OBJECT
+ *
+ * 	// The rest of your class members
+ * }
+ * @endcode
+ * 2. Define three const variables in your <em>applicationui.cpp</em>:
+ * @code {.cpp}
+ * QString const sf::SFRemoteAccessConsumerKey = "Your Force.com's oAuth client id";
+ * QString const sf::SFOAuthRedirectURI = "Your Force.com's oAuth redirect URI";
+ * QString const sf::SFDefaultRestApiVersion = "/v29.0"; //REST API version
+ * @endcode
+ * 3. Call baseclass's constructor:
+ * @code {.cpp}
+ * ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFAbstractApplicationUI(app) {
+ *
+ * //Your own code
+ *
+ * }
+ * @endcode
+ *
+ * Now you could build and run your application. If your @c SFRemoteAccessConsumerKey and @c SFOAuthRedirectURI is set correctly,
+ * you should see Salesforce's oAuth login page automatically loaded at application start up.
+ *
+ * @section section_usage How to Use
+ *
+ * @subsection section_auth Authentication
+ * The authentication happens automatically at start-up.
+ *
+ * TODO explain data persistence, signal-slots, flows and security, with code examples
+ *
+ * @subsection section_rest Sending REST Requests
+ * TODO Code example for C++ and QML
+ *
+ * @subsection section_settings Launch Setting Screen
+ * TODO Code example
+ *
+ * @subsection section_revoke Launch Setting Screen
+ * TODO Code example for logout from C++ & QML, revoking tokens
+ *
+ * @subsection section_demo Demo Application
+ * Please check out the project <b>SalesforceSDKDemo</b> under same repository for complete code sample.
+ *
+ * @subsection section_explorer Salesforce REST Explorer on Blackberry 10
+ * TODO should we talk about this here?
  */
