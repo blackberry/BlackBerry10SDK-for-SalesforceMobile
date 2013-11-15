@@ -2,3 +2,5 @@
 /config.pri
 /docs
 /arm
+/x86
+/arm-p

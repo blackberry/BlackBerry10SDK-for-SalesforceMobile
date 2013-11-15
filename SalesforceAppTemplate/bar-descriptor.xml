@@ -56,23 +56,23 @@
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/SalesforceAppTemplate" entry="true" type="Qnx/Elf">SalesforceAppTemplate</asset>
-       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so.1.0.0}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
     </configuration>
     <configuration name="Device-Release">
        <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7/SalesforceAppTemplate.so" entry="true" type="Qnx/Elf">SalesforceAppTemplate.so</asset>
-       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so.1.0.0}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
     </configuration>
     <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm-p/o.le-v7-g/SalesforceAppTemplate" entry="true" type="Qnx/Elf">SalesforceAppTemplate</asset>
-       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so.1.0.0}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
     </configuration>
     <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
        <asset path="x86/o-g/SalesforceAppTemplate" entry="true" type="Qnx/Elf">SalesforceAppTemplate</asset>
-       <asset path="libSalesforceSDK.so" type="Qnx/Elf">lib/libSalesforceSDK.so</asset>
+       <asset path="${workspace_loc:/SalesforceSDK/x86/so-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
     </configuration>
 
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
