@@ -1,4 +1,4 @@
-/*! \page page_install Project Configuration
+/*! \page page_install Use the SDK in Existing Project
  *
  * This document contains information on how to link SalesforceSDK project with your newly created Cascades project.
  * This document focus on Blackberry's Momentics IDE 2.1.
@@ -14,7 +14,7 @@
  * The build process would fail if you have such projects setup.
  * The following procedure take the advantage of "Add Library" plug-in and fix the mentioned issue.
  *
- *	- Import SalesforceSDK. Make sure you have imported our SalesforceSDK project into your workspace. The project name should be exactly "SalesforceSDK".
+ *	- Import SalesforceSDK. Make sure you have imported our SalesforceSDK project into the same Eclipse workspace as your project. The project name should be exactly "SalesforceSDK".
  *	Project can be imported using <b>"File->Import..."</b>
  *	- Set a Environment Variable. Go to Momentics's <b>Preference->C/C++->Build->Environment</b>, and click <em>"Add"</em>.
  *	In the dialog, input <b>SALESFORCE_SDK_LOC</b> as the variable name and set the value to be the absolute path to your SalesforceSDK project.
@@ -78,7 +78,7 @@
  * @endcode
  *
  *	- All configuration has been done, you now have the Salesforce SDK linked to your project. But to start using the SDK, you still need to change couple lines of code.
- * 		1. Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit @c SFAbstractApplicationUI:
+ * 		1. Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit @c sf::SFAbstractApplicationUI:
  * @code {.hpp}
  * #include <core/SFAbstractApplicationUI.h>
  *
@@ -110,7 +110,7 @@
  * }
  * @endcode
  *
- *	- Now you can build and run your application. If your @c SFRemoteAccessConsumerKey and @c SFOAuthRedirectURI is set correctly,
+ *	- Now you can build and run your application. If your @c sf::SFRemoteAccessConsumerKey and @c sf::SFOAuthRedirectURI is set correctly,
  *	you should see Salesforce's oAuth login page automatically loaded at application start up.
  *
  *
@@ -122,7 +122,7 @@
  * This project have everything configured for you. All you need to do is:
  * 	1. Check out and import the project
  * 	2. Change the project's name and build targets
- * 	3. Define @c SFRemoteAccessConsumerKey, @c SFOAuthRedirectURI and @c SFDefaultRestApiVersion in <em>applicationui.cpp</em>
+ * 	3. Define @c sf::SFRemoteAccessConsumerKey, @c sf::SFOAuthRedirectURI and @c sf::SFDefaultRestApiVersion in <em>applicationui.cpp</em>
  * 	according to your Force.com configuration.
  *
  * 	Please see @ref page_get_started for tutorial.

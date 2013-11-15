@@ -22,7 +22,11 @@
  * 1. Right click on the SalesforceAppTemplate project in the working directory and select <b>Import Projects...</b>
  * 2. Select "Import Existing Projects" option
  * 3. Finish
+ * .
+ * @note If you want to create a new project from scratch or use your existing project, and link the Salesforce Mobile SDK to it,
+ * we have a step-by-step introduction. Please see @ref page_install
  *
+ * \n
  * @subsection section_config_environment Configure Environment Variables
  * Go to Momentics's <b>Preference->C/C++->Build->Environment</b>, and click <em>"Add"</em>.
  * In the dialog, input <b>SALESFORCE_SDK_LOC</b> as the variable name and set the value to be the absolute path to your SalesforceSDK project.
@@ -31,7 +35,7 @@
  *
  * @subsection section_inspect_application Configure the Application
  * 1. Open your <em>applicationui.hpp</em>, you will see the following code.
- * This makes your ApplicationUI class inherit from @c SFAbstractApplicationUI:
+ * This makes your ApplicationUI class inherit from @c sf::SFAbstractApplicationUI:
  * @code {.hpp}
  * #include <core/SFAbstractApplicationUI.h>
  *
@@ -57,7 +61,7 @@
  *
  * @note The consumer key and redirect URI are persisted on the device.
  * If you want to change it after the application has already been installed on the device, you need to un-install the old application first before the new values takes effect.
- * For more discussion on this please refer to the documentation on @c SFAccountManager
+ * For more discussion on this please refer to the documentation on @c sf::SFAccountManager
  *
  * 3. ApplicationUI's constructor calls the baseclass's constructor:
  * @code {.cpp}
@@ -68,17 +72,17 @@
  * }
  * @endcode
  *
- * Now you could build and run your application. If your @c SFRemoteAccessConsumerKey and @c SFOAuthRedirectURI is set correctly,
+ * Now you could build and run your application. If your @c sf::SFRemoteAccessConsumerKey and @c sf::SFOAuthRedirectURI is set correctly,
  * you should see Salesforce's oAuth login page automatically loaded at application start up.
  *
  * @section section_usage How to Use
  *
  * @subsection section_auth Authentication
- * The @c SFAuthenticationManager is responsible for handling all the tasks required to authenticate your application using [oauth 2.0] (https://help.salesforce.com/apex/HTViewHelpDoc?id=remoteaccess_authenticate.htm&language=en_US).
- * During the login or logout process, the @c SFAuthenticationManager emits various signals so that your application can respond accordingly by connecting to these signals.
+ * The @c sf::SFAuthenticationManager is responsible for handling all the tasks required to authenticate your application using [oauth 2.0] (https://help.salesforce.com/apex/HTViewHelpDoc?id=remoteaccess_authenticate.htm&language=en_US).
+ * During the login or logout process, the @c sf::SFAuthenticationManager emits various signals so that your application can respond accordingly by connecting to these signals.
  *
  * The authentication process is triggered automatically on startup if the app has not been authenticated before (you can also trigger the login anywhere in your application by calling the login() function).
- * You can connect to the @c SFAuthenticationManager's signals this way:
+ * You can connect to the @c sf::SFAuthenticationManager's signals this way:
  * @code {.cpp}
  * 	SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
  * 	//connect slots
@@ -91,8 +95,8 @@
  * 	authManager->login();
  * @endcode
  *
- * In addition, as part of the authentication process the @c SFAuthenticationManager will retrieve the identity data of the authenticated user.
- * Based on the mobile policy of the user, the @c SFAuthenticationManager will trigger the process asking the user to create a password for
+ * In addition, as part of the authentication process the @c sf::SFAuthenticationManager will retrieve the identity data of the authenticated user.
+ * Based on the mobile policy of the user, the @c sf::SFAuthenticationManager will trigger the process asking the user to create a password for
  * locking the app during period of inactivity. This is handled internally by the SDK and is transparent to the application code.
  *
  * Once authenticated, the access token, refresh token is encrypted and stored on the device along with the identity data of the user.
@@ -106,7 +110,97 @@
  * @endcode
  *
  * @subsection section_rest Sending REST Requests
- * TODO Code example for C++ and QML
+ * You may have noticed by now, our template application uses @c sf::SFAbstractApplicationUI as the base class of your main business logic class.
+ * This base class is responsible for configuring the SDK's related classes. You don't need to do anything at startup (except for the global variable containing the REST API version ,
+ * see @ref section_inspect_application) if you are using standard Force.com's REST API.
+ *
+ * @c sf::SFRestAPI, @c sf::SFRestRequest and @c sf::SFResult are the classes you need to deal with when using Force.com's REST API or APEX REST API.
+ * The @c sf::SFRestAPI is the main class for all APIs. You can get the global instance by using @c sf::SFRestAPI::instance(). You don't need to explicitly initiate authentication
+ * flows in prior to use the REST APIs. The SDK automatically attempt to login or refresh access token if user logged out or session is expired.
+ * It also re-send all failed requests after the refreshing attempt succeeded.
+ *
+ * The SDK REST classes are designed to be accessible from both C++ and QML. Some APIs contains different function signatures for C++ and QML.
+ *
+ * @subsubsection cplusplus_usage Send REST Request from C++
+ * All REST requests are sent asynchronously and comply with Qt's signal-slot pattern. You need to declare a SLOT to handles REST results:
+ * @code{.hpp}
+ *	//In ApplicationUI.hpp
+ * 	class ApplicationUI : public sf::SFAbstractApplicationUI
+ * 	{
+ *     	Q_OBJECT
+ *	public slots:
+ *		void onRestResultReady(sf::SFResult *result);
+ *
+ *		//Your own code
+ *	};
+ *
+ * @endcode
+ *
+ * \n
+ * To send a REST request, you use @c sf::SFRestAPI to create a @c sf::SFRestRequest instance and use @c sf::SFRestAPI::sendRestRequest(SFRestRequest*,QObject*,const char*,const QVariant &) to send:
+ * @code{.cpp}
+ * //in ApplicationUI.cpp
+ * QStringList fields = QStringList() << "Id" << "Name";
+ * QString query = SFRestAPI::instance()->generateSOQLQuery(fields, "Account", "", QStringList(), "", QStringList(), 5);
+ * SFRestRequest * request = SFRestAPI::instance()->requestForQuery(query);
+ * SFRestAPI::instance()->sendRestRequest(request, this, SLOT(onRestResultReady(sf::SFResult*)));
+ * @endcode
+ *
+ * \n
+ * And you need to implement the SLOT we declared earlier:
+ * @code{.cpp}
+ * //in ApplicationUI.cpp
+ * void ApplicationUI::onRestResultReady(sf::SFResult *result) {
+ * 	QString msg("REST Result:\n");
+ * 	qDebug() << "REST Result:" << result;
+ * 	if (!result->hasError()) {
+ * 		QVariant payload = result->payload<QVariant>();
+ *
+ * 		//Add your own code to handle the payload
+ *
+ * 		qDebug() << "payload:" << payload;
+ * 		bb::data::JsonDataAccess jda;
+ * 		QByteArray buffer;
+ * 		jda.saveToBuffer(payload, &buffer);
+ * 		msg.append("payload: ").append(QString(buffer));
+ * 	} else {
+ *
+ * 		//Add your own code to handle errors
+ *
+ * 		qDebug() << "Error code:" << result->code() << "Message:" << result->message();
+ * 		msg.append("Error code: ").append(QString::number(result->code())).append(" Message: ").append(result->message());
+ *	}
+ * 	mConsoleLabel->setText(msg);
+ * }
+ * @endcode
+ * If there is no error, the code above outputs the payload, which is a @c QVariant containing @c QVariantMap or @c QVariantList.
+ * It outputs error code and message if the task failed. mConsoleLabel is a @c sf::Label pointer to a output console field on your screen.
+ *
+ * @subsubsection qml_usage Send REST Request from QML
+ * It's also very easy to send REST requests from QML and handle the result using JavaScript.
+ * @code{.qml}
+ * //in your qml
+ * Button {
+ * 	id: button
+ * 	text: "Send REST Request(QML)"
+ * 		onClicked: {
+ * 			var request = SFRestAPI.requestForDescribeObject("Account");
+ * 			SFRestAPI.sendRestRequest(request, button, button.onTaskResultReady)
+ * 		}
+ *
+ * 		function onTaskResultReady(result) {
+ * 			//Handle result as SFResult
+ * 		}
+ * }
+ * @endcode
+ * You could access result's @c sf::SFResult::code, @c sf::SFResult::message, @c sf::SFResult::payload, @c sf::SFResult::tags and @c sf::SFResult::hasError.
+ * The payload is automatically converted into javascript Object or Array.
+ *
+ * @subsubsection apex_support Force.com's APEX REST APIs
+ * If you have customized REST APIs written in APEX, the standard requests might not be suitable for you. You can use
+ * @c sf::SFRestAPI::customRequest() to create your own customized request.
+ *
+ * <b>For move advanced usage of REST classes, See</b> @c sf::SFRestAPI, @c sf::SFRestRequest, @c sf::SFResult
  *
  * @subsection section_settings Launch Setting Screen
  * The SDK provides a default setting screen. The setting screen allows the user to switch between production and sandbox environments.
@@ -128,6 +222,7 @@
  *			]
  *			settingsAction: SettingsActionItem {
  *				onTriggered: {
+ *					//We display SFSettings in a sheet. You can choose your own way to display it
  *					console.debug("setting action triggered");
  *					if (!settingsSheet){
  *						settingsSheet = settingsSheetDef.createObject(tabbedPane);
@@ -174,7 +269,11 @@
  *		}
  *	}
  * @endcode
+ * @note The code above demonstrates how to trigger the setting page from @c Menu and display it in a @c Sheet.
+ * You can have your own version for presenting the setting page. For example, push it to your main @c NavigationPane,
+ * or load a new @c Tab in your @c TabbedPane
  *
+ * \n
  * To listen to the login host signal
  * @code {.cpp}
  *  SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
@@ -194,9 +293,13 @@
  * You can revoke the refresh token in a similar manner. Note that this revokes the token on the server side which makes the existing token used by
  * your device invalid.
  *
+ * @section section_more_info More Samples
  * @subsection section_demo Demo Application
  * Please check out the project <b>SalesforceSDKDemo</b> under same repository for complete code sample.
  *
  * @subsection section_explorer Salesforce REST Explorer on Blackberry 10
  * TODO link to REST Explorer example
+ *
+ * @author Livan Yi Du
+ * @author Tim Shi
  */
