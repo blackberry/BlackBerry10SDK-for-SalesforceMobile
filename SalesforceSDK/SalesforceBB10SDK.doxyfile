@@ -32,7 +32,7 @@ DOXYFILE_ENCODING = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME = Salesforce SDK For Blackberry 10
+PROJECT_NAME = Blackberry 10 SDK for Salesforce Mobile
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -44,7 +44,7 @@ PROJECT_NUMBER = 1.0
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF = Salesforce SDK for Blackberry 10.2+
+PROJECT_BRIEF = Blackberry 10.2+ SDK for Salesforce Mobile
 
 # With the PROJECT_LOGO tag one can specify an logo or icon that is included in
 # the documentation. The maximum height of the logo should not exceed 55 pixels
@@ -756,7 +756,7 @@ INPUT_ENCODING = UTF-8
 # *.md, *.mm, *.dox, *.py, *.f90, *.f, *.for, *.tcl, *.vhd, *.vhdl, *.ucf,
 # *.qsf, *.as and *.js.
 
-FILE_PATTERNS = *.hpp *.h *.cpp *.c *.c++ *.m *.qml *.js *.java *.md *.markdown *.page 
+FILE_PATTERNS = *.hpp *.h *.cpp *.c *.c++ *.m *.qml *.js *.java *.md *.markdown *.page
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.

@@ -22,12 +22,28 @@ class SFOAuthInfo;
 
 using namespace bb::cascades;
 
-/*
- * Singleton class that manages salesforce account info
- * it saves and restores the oAuth credentials and uses that info to work with the oAuth coordinator
- * each one of this object has one oAuthCoordinator in its life time and it listens to some of oAuthCoordinator's signals
- * it works with the IdCoordinator in similarly manner
+/*!
+ * @class SFAccountManager
+ * @headerfile SFAccountManager.h <core/SFAccountManager>
+ * @brief Singleton class that manages salesforce.com account info
+ *
+ * @details
+ * @c SFAccountManager saves the oAuth credentials and uses it to work with the oAuth coordinator
+ * An instance of SFAccountManager uses one active oAuth coordinator at any time and listens to the coordinator's signals
+ * so that it can save or clear the account information appropriately.
+ * It works with the IdCoordinator in similarly manner
+ *
+ * Usage
+ * -----
+ * @c SFAccountManager is primarily meant to be used by other SDK classes. Normally application code should not
+ * need to use SFAccountManager directly.
+ *
+ * One potential usage of SFAccountManager is that if your application changes the salesforce consumer key or redirect url after
+ * the app has been run. You will need to use SFAccountManager to programmatically detect the change and ask the user to logout
+ * of the application to make the change take effect. However changing consumer key or redirect url after the app has been run is not recommended,
+ * since this means your application is now connecting to a different back end and all the user data should be refreshed.
  */
+
 class SFAccountManager : public QObject {
 	Q_OBJECT
 
@@ -40,46 +56,81 @@ protected:
 	static SFAccountManager * sharedInstance;
 
 public:
+	/*!
+	 * @return singleton instance of @c SFAccountManager
+	 */
 	static SFAccountManager* instance();
-	// returns the value of the login host we are currently using, for Production and Sandbox this just reads from QSettings
-    // if the login host is "CUSTOM", will read from the custom login host field to get the actual login host.
+	/*!
+	 * @return the value of the login host we are currently using, for Production and Sandbox this just reads from QSettings
+	 * if the login host is "CUSTOM", will read from the custom login host field to get the actual login host.
+	 */
 	QString loginHost();
-	// sets the information critical for getting access
-	// they should not be changed after app is started
+	/*!
+	 * @param newClientId sets the clientId (consumer key). Should not be changed after app is started.
+	 */
 	static void setClientId(QString newClientId);
+	/*!
+	 * @param newRedirectUri sets the redirect url. Should not be changed after app is started.
+	 */
 	static void setRedirectUri(QString newRedirectUri);
+	/*!
+	 * @param newScopes sets the scopes to be associated with the access token.
+	 */
 	static void setScopes(QList<QString> newScopes);
-	//do not delete the returned coordinator instance!
+	/*!
+	 * @return the oauth coordinator used by this account
+	 */
 	SFOAuthCoordinator* getCoordinator();
+	/*!
+	 * @return the identity cooridnator used by this account
+	 */
 	SFIdentityCoordinator* getIdCoordinator();
-    /**
-     * Following methods should only be used by the Setting pages
-     */
+	/*!
+	 * @return the login host saved in settings
+	 */
     Q_INVOKABLE
     QString getLoginHostFromAppSettings();
+    /*!
+     * @param value save the value to settings
+     */
     Q_INVOKABLE
     void setLoginHostToAppSettings(const QString &value);
+    /*!
+     * @return custom host value from settings
+     */
     Q_INVOKABLE
     QString getCustomHostFromAppSettings();
+    /*!
+     * @param set custom host value to settings
+     */
     Q_INVOKABLE
     void setCustomHostToAppSettings(const QString &value);
+    /*!
+     * called by the settings QML page to update the login host when user chooses a value.
+     */
     Q_INVOKABLE
     void updateLoginHost();
 
-	// Should only be used by SFAuthenticationManager
+	/*!
+	 * Clean up on application exit. Should only be used by SFAuthenticationManager
+	 */
 	void onAboutToQuit();
-	/* Should only be used by SFAuthenticationManager
-	 *
-	 * Clears the account state of the given account (i.e. clears credentials, coordinator
-	 * instances, etc. Pass false when only the loginhost changed or retrying
+	/*!
+	 * @param if true clears the account state of the given account (i.e. credentials, coordinator
+	 * instances, etc.) If false new coordinator instances are created but existing credential info still
+	 * lives (used when switching login hosts). This method should only be used by @c SFAuthenticationManager
 	 */
 	void clearAccountState(bool clearAccountData);
-    // Should only be used by SFSecurityLockout
+	/*!
+	 * @return key for storing device passcode. Should only be used by SFSecurityLockout
+	 */
     QString devicePasscodeKey();
 signals:
-	//pass on the signal from coordinator to SFAuthenticationManager
-	//application developer should not be listening to these signals
-	//listen to the Authentication Manager's signals instead.
+	/*!
+	 *pass on the signal from coordinator to SFAuthenticationManager
+	 *application code should not be listening to these signals
+	 *application code should listen to the Authentication Manager's signals instead.
+	 */
 	void willBeginAuthentication(SFOAuthInfo* info);
 	void didBeginAuthentication(WebView* view);
 	void oauthCoordinatorDidAuthenticate(SFOAuthInfo* info);

@@ -30,7 +30,7 @@ using namespace bb::cascades;
 
 /*!
  * @class SFAuthenticationManager
- * @headerfile SFAuthenticationManager.h "SFAuthenticationManager.h"
+ * @headerfile SFAuthenticationManager.h <core/SFAuthenticationManager.h>
  * @brief A singleton class that manages the oAuth 2.0 user agent/refresh flow
  *
  * @details
@@ -48,7 +48,7 @@ using namespace bb::cascades;
  * ---------------------
  * The consumer key, redirect url and scopes information is persisted on the device.
  * If you decide to reconfigured these information, the change will take effect only
- * after the app performed a logout or the app is deleted and re-installed.
+ * after the app performed a logout or the app is deleted and re-installed. See @c SFAccountManager for more details
  *
  * Usage
  * -----

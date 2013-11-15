@@ -1,6 +1,6 @@
 /*! @page page_get_started Get Started
  *
- * The BB10 Salesforce SDK is easy to use with little amount of setup work required. The setup process requires basic knowledge of Git, EGit for Eclipse, Eclipse CDT/Momentics, Blackberry Cascades packaging process and Salesforce.com authentication procedures. The steps involve downloading/importing SDK project, creating new Blackberry 10 Cascades application, linking against Cascades shared libraries and a few lines of code.
+ * The Blackberry 10 SDK for SalesforceMobile is easy to use with little amount of setup work required. The setup process requires basic knowledge of Git, EGit for Eclipse, Eclipse CDT/Momentics, Blackberry Cascades packaging process and Salesforce.com authentication procedures. The steps involve downloading/importing SDK project, creating new Blackberry 10 Cascades application, linking against Cascades shared libraries and a few lines of code.
  * We have created a template application project so you can get started quickly. The sections below will walk you through the steps required to get your first application going.
  *
  * @section section_setup Setup Your Project
@@ -8,7 +8,7 @@
  * To do this, go to the <b>Git Repository Exploring</b> perspective, click on <b>Clone a Git Repository</b> and follow the on screen instructions.
  *
  * After this is completed, you should see the SalesforceMobileSDK-BlackBerry10 repo listed under the <b>Git Repositories</b> view.
- * Under the <b>Working Directory</b> folder you should see the following projects: 
+ * Under the <b>Working Directory</b> folder you should see the following projects:
  * 		- SalesforceSDK
  * 		- SalesforceAppTemplate
  * 		- SalesforceSDKDemo
@@ -54,7 +54,8 @@
  * QString const sf::SFOAuthRedirectURI = "Your Force.com's oAuth redirect URI";
  * QString const sf::SFDefaultRestApiVersion = "/v29.0"; //REST API version
  * @endcode
- * Note that the consumer key and redirect URI are persisted on the device.
+ *
+ * @note The consumer key and redirect URI are persisted on the device.
  * If you want to change it after the application has already been installed on the device, you need to un-install the old application first before the new values takes effect.
  * For more discussion on this please refer to the documentation on @c SFAccountManager
  *
