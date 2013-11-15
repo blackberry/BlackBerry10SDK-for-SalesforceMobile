@@ -1,2 +1,5 @@
 /.settings
 /config.pri
+/arm
+/arm-p
+/x86
