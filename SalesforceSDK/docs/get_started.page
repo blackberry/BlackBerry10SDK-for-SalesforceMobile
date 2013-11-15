@@ -1,17 +1,37 @@
 /*! @page page_get_started Get Started
  *
- * It's very easy to use this SDK. The setup process requires basic knowledge of Git, EGit for Eclipse, Eclipse CDT/Momentics, Blackberry Cascades packaging process and Salesforce.com authentication procedures. The steps involve downloading/importing SDK project, creating new Blackberry 10 Cascades application, linking against Cascades shared libraries and some coding. Please read through this tutorial for step-by-step setup.
+ * The BB10 Salesforce SDK is easy to use with little amount of setup work required. The setup process requires basic knowledge of Git, EGit for Eclipse, Eclipse CDT/Momentics, Blackberry Cascades packaging process and Salesforce.com authentication procedures. The steps involve downloading/importing SDK project, creating new Blackberry 10 Cascades application, linking against Cascades shared libraries and a few lines of code.
+ * We have created a template application project so you can get started quickly. The sections below will walk you through the steps required to get your first application going.
  *
  * @section section_setup Setup Your Project
+ * Use the EGit for Eclipse plugin from within the Momentics IDE to clone the repository.
+ * To do this, go to the <b>Git Repository Exploring</b> perspective, click on <b>Clone a Git Repository</b> and follow the on screen instructions.
  *
- * @subsection section_import_sdk Download and Import SDK Project
- * TODO some details
+ * After this is completed, you should see the SalesforceMobileSDK-BlackBerry10 repo listed under the <b>Git Repositories</b> view.
+ * Under the <b>Working Directory</b> folder you should see the following projects: 
+ * 		- SalesforceSDK
+ * 		- SalesforceAppTemplate
+ * 		- SalesforceSDKDemo
  *
- * @subsection section_import_template Download and Import Template Project
- * TODO some details
+ * @subsection section_import_sdk Import SDK Project
+ * 1. Right click on the SalesforceSDK project in the working directory and select <b>Import Projects...</b>
+ * 2. Select "Import Existing Projects" option
+ * 3. Finish
  *
- * @subsection section_import_config Basic Configuration
- * 1. Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit @c SFAbstractApplicationUI:
+ * @subsection section_import_template Import Template Project
+ * 1. Right click on the SalesforceAppTemplate project in the working directory and select <b>Import Projects...</b>
+ * 2. Select "Import Existing Projects" option
+ * 3. Finish
+ *
+ * @subsection section_config_environment Configure Environment Variables
+ * Go to Momentics's <b>Preference->C/C++->Build->Environment</b>, and click <em>"Add"</em>.
+ * In the dialog, input <b>SALESFORCE_SDK_LOC</b> as the variable name and set the value to be the absolute path to your SalesforceSDK project.
+ * For example: <em>/Workspace_Blackberry/git/SalesforceMobileSDK-BlackBerry10/SalesforceSDK</em>
+ * @note Remember to update it if you changed your Salesforce SDK location on the file system.
+ *
+ * @subsection section_inspect_application Configure the Application
+ * 1. Open your <em>applicationui.hpp</em>, you will see the following code.
+ * This makes your ApplicationUI class inherit from @c SFAbstractApplicationUI:
  * @code {.hpp}
  * #include <core/SFAbstractApplicationUI.h>
  *
@@ -34,7 +54,11 @@
  * QString const sf::SFOAuthRedirectURI = "Your Force.com's oAuth redirect URI";
  * QString const sf::SFDefaultRestApiVersion = "/v29.0"; //REST API version
  * @endcode
- * 3. Call baseclass's constructor:
+ * Note that the consumer key and redirect URI are persisted on the device.
+ * If you want to change it after the application has already been installed on the device, you need to un-install the old application first before the new values takes effect.
+ * For more discussion on this please refer to the documentation on @c SFAccountManager
+ *
+ * 3. ApplicationUI's constructor calls the baseclass's constructor:
  * @code {.cpp}
  * ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFAbstractApplicationUI(app) {
  *
@@ -49,22 +73,129 @@
  * @section section_usage How to Use
  *
  * @subsection section_auth Authentication
- * The authentication happens automatically at start-up.
+ * The @c SFAuthenticationManager is responsible for handling all the tasks required to authenticate your application using [oauth 2.0] (https://help.salesforce.com/apex/HTViewHelpDoc?id=remoteaccess_authenticate.htm&language=en_US).
+ * During the login or logout process, the @c SFAuthenticationManager emits various signals so that your application can respond accordingly by connecting to these signals.
  *
- * TODO explain data persistence, signal-slots, flows and security, with code examples
+ * The authentication process is triggered automatically on startup if the app has not been authenticated before (you can also trigger the login anywhere in your application by calling the login() function).
+ * You can connect to the @c SFAuthenticationManager's signals this way:
+ * @code {.cpp}
+ * 	SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
+ * 	//connect slots
+ * 	connect(authManager, SIGNAL(SFOAuthFlowSuccess(SFOAuthInfo*)), this, SLOT(onSFOAuthFlowSuccess(SFOAuthInfo*)), Qt::UniqueConnection);
+ * 	connect(authManager, SIGNAL(SFOAuthFlowCanceled(SFOAuthInfo*)), this, SLOT(onSFOAuthFlowCanceled(SFOAuthInfo*)), Qt::UniqueConnection);
+ * 	connect(authManager, SIGNAL(SFOAuthFlowFailure(SFOAuthInfo*)), this, SLOT(onSFOAuthFlowFailure(SFOAuthInfo*)), Qt::UniqueConnection);
+ * 	connect(authManager, SIGNAL(SFUserLoggedOut()), this, SLOT(onSFUserLoggedOut()), Qt::UniqueConnection);
+ * 	connect(authManager, SIGNAL(SFLoginHostChanged()), this, SLOT(onSFLoginHostChanged()), Qt::UniqueConnection);
+ * 	//triggers the login action.
+ * 	authManager->login();
+ * @endcode
+ *
+ * In addition, as part of the authentication process the @c SFAuthenticationManager will retrieve the identity data of the authenticated user.
+ * Based on the mobile policy of the user, the @c SFAuthenticationManager will trigger the process asking the user to create a password for
+ * locking the app during period of inactivity. This is handled internally by the SDK and is transparent to the application code.
+ *
+ * Once authenticated, the access token, refresh token is encrypted and stored on the device along with the identity data of the user.
+ * This allows the application to reuse the access token without having to authenticate. If the access token is expired, the SDK automatically refresh the token transparently.
+ *
+ * When the user logs out of the application, all the stored credentials are removed from the device. The following is an example of triggering the logout action
+ * @code {.cpp}
+ *  SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
+ *	connect(authManager, SIGNAL(SFUserLoggedOut()), this, SLOT(onSFUserLoggedOut()), Qt::UniqueConnection);
+ *	authManager->logout();
+ * @endcode
  *
  * @subsection section_rest Sending REST Requests
  * TODO Code example for C++ and QML
  *
  * @subsection section_settings Launch Setting Screen
- * TODO Code example
+ * The SDK provides a default setting screen. The setting screen allows the user to switch between production and sandbox environments.
+ * To use this feature, your application needs to present the setting screen and handle the SFLoginHostChanged signal.
  *
- * @subsection section_revoke Launch Setting Screen
- * TODO Code example for logout from C++ & QML, revoking tokens
+ * The following example adds a trigger to the setting screen from the TabbedPane's menu.
+ * @code {.qml}
+ * import bb.cascades 1.0
+ * import "./salesforce"
+ * import sf 1.0
+ * TabbedPane {
+ *		id: tabbedPane
+ *		property Sheet settingsSheet;
+ *		showTabsOnActionBar: true
+ *
+ *		Menu.definition: MenuDefinition {
+ *			actions: [
+ *				//your actions...
+ *			]
+ *			settingsAction: SettingsActionItem {
+ *				onTriggered: {
+ *					console.debug("setting action triggered");
+ *					if (!settingsSheet){
+ *						settingsSheet = settingsSheetDef.createObject(tabbedPane);
+ *					}
+ *					settingsSheet.open();
+ *				}
+ *			}
+ *			attachedObjects: [
+ *				ComponentDefinition {
+ *					id: settingsSheetDef
+ *					Sheet {
+ *						id: settingsSheet
+ *						peekEnabled: false;
+ *						content: SFSettings {
+ *							titleBar: TitleBar {
+ *								title: qsTr("Settings")
+ *								dismissAction: ActionItem {
+ *									title: "Back"
+ *									imageSource: "asset:///images/ic_previous.png"
+ *									onTriggered: {
+ *										settingsSheet.close();
+ *									}
+ *								}
+ *							}
+ *
+ *							paneProperties: NavigationPaneProperties {
+ *								backButton: ActionItem {
+ *									title: "Back"
+ *								}
+ *							}
+ *						}
+ *						onClosed: {
+ *							console.debug("destroy settings page");
+ *							settingsSheet.destroy();
+ *							SFAccountManager.updateLoginHost();
+ *						}
+ *					}
+ *				}
+ *			]
+ *		}
+ *
+ *		Tab {
+ *			//your tabs
+ *		}
+ *	}
+ * @endcode
+ *
+ * To listen to the login host signal
+ * @code {.cpp}
+ *  SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
+ * 	connect(authManager, SIGNAL(SFLoginHostChanged()), this, SLOT(onSFLoginHostChanged()), Qt::UniqueConnection);
+ * @endcode
+ *
+ * @subsection section_revoke Revoking Tokens
+ * Usually you don't need to revoke your access tokens from within your application, but in case you need to do it, you can do it with the following code.
+ * @code {.cpp}
+ * 	const SFOAuthCredentials * credentials = SFRestAPI::instance()->currentCredentials();
+ *	QString accessToken = credentials ? credentials->getAccessToken() : QString();
+ *	QString path = QString("https://%1/services/oauth2/revoke?token=%2").arg(SFAuthenticationManager::instance()->loginHost(), accessToken);
+ *	SFNetworkAccessTask *task = new SFNetworkAccessTask(getSharedNetworkAccessManager(), path, HTTPMethod::HTTPGet);
+ *	connect(task, SIGNAL(taskFinished(sf::SFGenericTask*)), this, SLOT(onNetworkTaskFinished(sf::SFGenericTask*)));
+ *	task->startTaskAsync(this, SLOT(onNetworkResultReady(sf::SFResult*)));
+ * @endcode
+ * You can revoke the refresh token in a similar manner. Note that this revokes the token on the server side which makes the existing token used by
+ * your device invalid.
  *
  * @subsection section_demo Demo Application
  * Please check out the project <b>SalesforceSDKDemo</b> under same repository for complete code sample.
  *
  * @subsection section_explorer Salesforce REST Explorer on Blackberry 10
- * TODO should we talk about this here?
+ * TODO link to REST Explorer example
  */

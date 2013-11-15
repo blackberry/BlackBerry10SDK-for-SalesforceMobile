@@ -1,9 +1,7 @@
 /*! \mainpage Salesforce SDK For Blackberry 10
  *
  * \section intro_sec Introduction
- * The main APIs in the SalesforceSDK are found in the @c SFAuthenticationManager class and @c SFRestAPI class.
- * The @c SFAuthenticationManager class provides APIs for the application to manage the oAuth 2.0 authentication process.
- * The @c SFRestAPI class provides a set of interfaces to work with force.com REST APIs. The @c SFRestAPI handles the necessary step required to send a request (such as refreshing an access token when its expired).
+ * The BB10 Salesforce SDK is an open-source suite of technologies (i.e. REST API, OAuth 2.0) that developers can leverage to build mobile apps that take full advantage of the Force.com platform. 
  *
  * \section index_sec Related Documents
  *
