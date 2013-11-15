@@ -24,6 +24,7 @@
 #include <oauth/SFOAuthInfo.h>
 #include <oauth/SFOAuthCredentials.h>
 
+//TODO To use the Salesforce SDK, you need to assign proper values for following constants
 QString const sf::SFRemoteAccessConsumerKey = "3MVG9y6x0357HleejRitlDvJj0_GfIS.kLS.OK0LCO6ifB8NxYkfM_0ZcT.J_wY25w4AJu2RIOEvv4INMaamm";
 QString const sf::SFOAuthRedirectURI = "testsfdc:///mobilesdk/detect/oauth/done";
 QString const sf::SFDefaultRestApiVersion = "/v28.0";
@@ -36,8 +37,6 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFAbstractApp
 	//for debugging purpose only
 	qDebug()<<"organization name "<< QCoreApplication::organizationName();
 	qDebug()<<"application name "<< QCoreApplication::applicationName();
-
-	//required setup
 
     // prepare the localization
     m_pTranslator = new QTranslator(this);

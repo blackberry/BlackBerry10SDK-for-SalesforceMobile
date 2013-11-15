@@ -11,8 +11,9 @@ Page{
             //Todo: fill me with QML
             Label {
                 // Localized text with the dynamic translation and locale updates support
-                text: qsTr("Test Screen") + Retranslate.onLocaleOrLanguageChanged
+                text: qsTr("Salesforce SDK Demo") + Retranslate.onLocaleOrLanguageChanged
                 textStyle.base: SystemDefaults.TextStyles.BigText
+                horizontalAlignment: HorizontalAlignment.Center
             }
             Container {
                 objectName: "optionsContainer"

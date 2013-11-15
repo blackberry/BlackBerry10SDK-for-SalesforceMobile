@@ -17,7 +17,7 @@ namespace sf {
 /* Constants */
 QString const SFRemoteAccessConsumerKey = "";
 QString const SFOAuthRedirectURI = "";
-QString const SFDefaultRestApiVersion ="";
+QString const SFDefaultRestApiVersion = "";
 
 SFAbstractApplicationUI::SFAbstractApplicationUI(bb::cascades::Application *app) : QObject(app) {
 

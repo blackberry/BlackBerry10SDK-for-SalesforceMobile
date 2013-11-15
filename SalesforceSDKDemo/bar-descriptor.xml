@@ -26,11 +26,11 @@
 
     <!-- A universally unique application identifier. Must be unique across all BlackBerry 10 applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>com.example.SalesforceSDKDemo</id>
+    <id>com.blackberry.SalesforceSDKDemo</id>
 
     <!-- The name that is displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>SalesforceSDKDemo</name>
+    <name>Salesforce SDK Demo</name>
 
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -46,13 +46,19 @@
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The SalesforceSDKDemo application</description>
+    <description>The demo application of how to use SalesforceSDK library</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
-    <author>Example Inc.</author>
+    <author>Kii Mobile Technologies Inc.</author>
+    <authorId>gYAAgKBc4p2u1wu_mDDXynwvFT8</authorId>
+    <icon>
+       <image>assets/images/icon86x86.png</image>
+       <image>assets/images/icon94x94.png</image>
+       <image>assets/images/icon114x114.png</image>
+    </icon>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/SalesforceSDKDemo" entry="true" type="Qnx/Elf">SalesforceSDKDemo</asset>
@@ -79,17 +85,14 @@
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->
 
     <initialWindow>
-        <autoOrients>true</autoOrients>
+        <aspectRatio>portrait</aspectRatio>
+        <autoOrients>false</autoOrients>
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
     </initialWindow>
 
     <!--  The icon for the application, which should be 114x114. -->
-    <icon>
-        <image>icon.png</image>
-    </icon>
 
-    <asset path="icon.png">icon.png</asset>
     <asset path="assets">assets</asset>
     <asset path="${workspace_loc:/SalesforceSDK/assets}">assets</asset>
 

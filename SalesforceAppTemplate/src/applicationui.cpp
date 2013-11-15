@@ -21,6 +21,11 @@
 #include <bb/cascades/AbstractPane>
 #include <bb/cascades/LocaleHandler>
 
+//TODO To use the Salesforce SDK, you need to assign proper values for following constants
+QString const sf::SFRemoteAccessConsumerKey = "";
+QString const sf::SFOAuthRedirectURI = "";
+QString const sf::SFDefaultRestApiVersion = "";
+
 using namespace bb::cascades;
 
 ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFAbstractApplicationUI(app)
