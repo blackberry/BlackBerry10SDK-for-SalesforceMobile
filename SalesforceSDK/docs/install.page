@@ -1,0 +1,131 @@
+/*! \page page_install Create a Project without Template
+ *
+ * This document contains information on how to link SalesforceSDK project with your newly created Cascades project.
+ * This document focus on Blackberry's Momentics IDE 2.1.
+ * If you are not using this IDE for development, you could skip this document.
+ *
+ * \section section_approach_1 Recommended Procedure
+ * The latest Momentics IDE 2.1 introduced a plug-in called "Add Library".
+ * This plug-in provides a convenient way to link shared library to your project.
+ * This plug-in assumes that the location of your application project and the library project on the file system are siblings.
+ * However, this is not always the case. For example, your application project is version controlled by Git and
+ * the physical location is inside Git's working directory, which is outside of your Eclipse workspace,
+ * but your SalesforceSDK project stays in our repo's working directory.
+ * The build process would fail if you have such projects setup.
+ * The following procedure take the advantage of "Add Library" plug-in and fix the mentioned issue.
+ *
+ *	- Import SalesforceSDK. Make sure you have imported our SalesforceSDK project into your workspace. The project name should be exactly "SalesforceSDK".
+ *	Project can be imported using <b>"File->Import..."</b>
+ *	- Set a Environment Variable. Go to Momentics's <b>Preference->C/C++->Build->Environment</b>, and click <em>"Add"</em>.
+ *	In the dialog, input <b>SALESFORCE_SDK_LOC</b> as the variable name and set the value to be the absolute path to your SalesforceSDK project.
+ *	For example: <em>/Workspace_Blackberry/git/SalesforceMobileSDK-BlackBerry10/SalesforceSDK</em>
+ *	@note Remember to update it if you changed your Salesforce SDK location on the file system.
+ *	- Create your Casecades Project. Use New Project Wizard and Cascades templates to create a new project
+ *	- Add Library
+ *		1. Select your project in <b>Project Explorer</b> right-click. Select <b>Configure->Add Library</b>.
+ *		2. Choose <em>"Library project in the workspace"</em> and click "Next".
+ *		3. Check both <em>"Salesforce"</em> and <em>"include"</em> folder and click "Finish".
+ *		4. Eclipse will do the necessary configuration at this point.
+ *
+ *	- @b Optional Edit .cproject file.
+ *		1. Open <b>Navigator View</b> and find .cproject.
+ *		2. Search for <em>"com.qnx.qcc.option.compiler.includePath"</em> and remove all occurrences of following lines:
+ * @code {xml}
+ * <option id="com.qnx.qcc.option.compiler.includePath.##########" name="Include Directories (-I)" superClass="com.qnx.qcc.option.compiler.includePath" valueType="includePath">
+ * 	<listOptionValue builtIn="false" value="${workspace_loc:/SalesforceSDK/include}"/>
+ * </option>
+ * @endcode
+ *		3. The Momentics sometimes incorrectly insert absolution path of .so file. To fix this, search for <em>"com.qnx.qcc.option.linker.libraryPaths"</em> and you would find some lines like:
+ * @code {xml}
+ * <option id="com.qnx.qcc.option.linker.libraryPaths.161951655" name="Library Paths (-L)" superClass="com.qnx.qcc.option.linker.libraryPaths" valueType="libPaths">
+ * 	<listOptionValue builtIn="false" value="/Path/To/Your_Library/SalesforceSDK/arm/so.le-v7-g"/>
+ * </option>
+ * @endcode
+ * Change the absolute path to relative path like <em>${workspace_loc:/Path/To/The/Livrary.so</em>.
+ * @note ${workspace_loc:SalesforceSDK/arm} is different from ${workspace_loc}/SalesforceSDK/arm
+ *		4. Save the file and refresh the project.
+ *
+ *	- Edit <em>Makefile</em> under project's root folder. Add following lines before <em>include mk/cs-base.mk</em>:
+ * @code {makefile}
+ * QMAKEFEATURES = $(SALESFORCE_SDK_LOC)
+ * export QMAKEFEATURES
+ * @endcode
+ *	- Edit your project's <em>.pro</em> file. Add following lines after <em>include(config.pri)</em>:
+ * @code
+ * PRE_TARGETDEPS ~= s/.*SalesforceSDK.+/
+ * CONFIG += salesforcesdk
+ * @endcode
+ *	- Edit <em>bar_descripter.xml</em>.
+ * 		1. Add Salesforce SDK's assets to your application. Insert following line at the end of the file:
+ * @code {.xml}
+ * <asset path="${workspace_loc:/SalesforceSDK/assets}">assets</asset>
+ * @endcode
+ * 		2. Double check packaging rules for each configuration. For example, the following configuration is WRONG:
+ * @code {.xml}
+ * <configuration name="Device-Debug">
+ * 	<platformArchitecture>armle-v7</platformArchitecture>
+ * 	<asset path="arm/o.le-v7-g/SalesforceSDKDemo" entry="true" type="Qnx/Elf">SalesforceSDKDemo</asset>
+ * 	<asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+ * </configuration>
+ * @endcode
+ * 		Note that the application's binary asset path doesn't match with library's .so path (<em>so.le-v7</em> should be <em>so.le-v7-g</em>). The correct configuration should be:
+ * @code {.xml}
+ * <configuration name="Device-Debug">
+ * 	<platformArchitecture>armle-v7</platformArchitecture>
+ * 	<asset path="arm/o.le-v7-g/SalesforceSDKDemo" entry="true" type="Qnx/Elf">SalesforceSDKDemo</asset>
+ * 	<asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+ * </configuration>
+ * @endcode
+ *
+ *	- All configuration has been done, you now have the Salesforce SDK linked to your project. But to start using the SDK, you still need to change couple lines of code.
+ * 		1. Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit @c SFAbstractApplicationUI:
+ * @code {.hpp}
+ * #include <core/SFAbstractApplicationUI.h>
+ *
+ * namespace sf {
+ * 	class SFGenericTask;
+ * 	class SFResult;
+ * 	class SFOAuthInfo;
+ * }
+ *
+ * class ApplicationUI : public sf::SFAbstractApplicationUI
+ * {
+ * 	Q_OBJECT
+ *
+ * 	// The rest of your class members
+ * }
+ * @endcode
+ * 		2. Define three const variables in your <em>applicationui.cpp</em>:
+ * @code {.cpp}
+ * QString const sf::SFRemoteAccessConsumerKey = "Your Force.com's oAuth client id";
+ * QString const sf::SFOAuthRedirectURI = "Your Force.com's oAuth redirect URI";
+ * QString const sf::SFDefaultRestApiVersion = "/v29.0"; //REST API version
+ * @endcode
+ * 		3. Call baseclass's constructor:
+ * @code {.cpp}
+ * ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFAbstractApplicationUI(app) {
+ *
+ * //Your own code
+ *
+ * }
+ * @endcode
+ *
+ *	- Now you can build and run your application. If your @c SFRemoteAccessConsumerKey and @c SFOAuthRedirectURI is set correctly,
+ *	you should see Salesforce's oAuth login page automatically loaded at application start up.
+ *
+ *
+ *	@note The steps above are tested with Momentics IDE 2.1.201310251603 on MacOS 10.9. If you use Windows, the procedures may differ.
+ *	@sa SFAbstractApplicationUI
+ *
+ * \section section_approach_2 Convenient Template Project
+ * We also included an empty template project <b>SalesforceAppTemplate</b> under the same repository.
+ * This project have everything configured for you. All you need to do is:
+ * 	1. Check out and import the project
+ * 	2. Change the project's name and build targets
+ * 	3. Define @c SFRemoteAccessConsumerKey, @c SFOAuthRedirectURI and @c SFDefaultRestApiVersion in <em>applicationui.cpp</em>
+ * 	according to your Force.com configuration.
+ *
+ * 	Please see @ref page_get_started for tutorial.
+ * @author Livan Yi Du
+ * @author Tim Shi
+ */

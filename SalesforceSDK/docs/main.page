@@ -1,0 +1,13 @@
+/*! \mainpage Salesforce SDK For Blackberry 10
+ *
+ * \section intro_sec Introduction
+ * The main APIs in the SalesforceSDK are found in the @c SFAuthenticationManager class and @c SFRestAPI class.
+ * The @c SFAuthenticationManager class provides APIs for the application to manage the oAuth 2.0 authentication process.
+ * The @c SFRestAPI class provides a set of interfaces to work with force.com REST APIs. The @c SFRestAPI handles the necessary step required to send a request (such as refreshing an access token when its expired).
+ *
+ * \section index_sec Related Documents
+ *
+ * \ref page_get_started Tutorial for getting started
+ *
+ * \ref page_install Create new Salesforce.com powered Cascades application from scrach
+ */

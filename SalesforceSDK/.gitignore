@@ -1,6 +1,7 @@
 /.DS_Store
 /config.pri
-/docs
+/documents
 /arm
 /x86
 /arm-p
+/.settings

@@ -1,0 +1,10 @@
+/*! @page page_get_started Get Started
+ *
+ * It's very easy to use this SDK. The setup process requires basic knowledge of Git, EGit for Eclipse, Eclipse CDT/Momentics, Blackberry Cascades packaging process and Salesforce.com authentication procedures. The steps involve downloading/importing SDK project, creating new Blackberry 10 Cascades application, linking against Cascades shared libraries and some coding. Please read through this tutorial for step-by-step setup.
+ *
+ * @section section_import_sdk Download and Import SDK Project
+ *
+ * @section section_import_template Download and Import Template Project
+ *
+ * @section section_import_template Basic Configuration
+ */
