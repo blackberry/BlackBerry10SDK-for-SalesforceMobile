@@ -1,6 +1,3 @@
-README
-------
-
 SalesforceMobileSDK-BlackBerry10
 ================================
 The BB10 Salesforce SDK is an open-source suite of technologies (i.e. REST API, OAuth 2.0) that developers can leverage to build mobile apps that take advantage of the salesforce.com platform.
@@ -8,23 +5,23 @@ The BB10 Salesforce SDK is an open-source suite of technologies (i.e. REST API, 
 This repository contains the SalesforcesSDK for BB10 cascades applications, a template application to help you get started quickly and
 a demo application that shows the basic features of the Salesforce SDK.
 
-** Tested On **
+**Tested On**
 
 BlackBerry Z10, Blackberry Dev Alpha C
 
-** Author **
+**Author**
 
 [Livan Yi Du] (https://github.com/stonedu)
 
 [Tim Shi] (https://github.com/timkiimobiletech)
 
-** Getting Started **
+## Getting Started
 Follow this [Get Started](http://kiimobiletech.github.io/SalesforceSDKDocs/d5/dfe/page_get_started.html) tutorial to start building using the template application and running the demo app.
 
-** Using SalesforceSDK with Your application **
+## Using SalesforceSDK with Your application
 Follow this [Project Configuration](http://kiimobiletech.github.io/SalesforceSDKDocs/d2/dc8/page_install.html) tutorial to learn how to create new salesforce.com powered Cascades application from scratch.
 
-** More Application Samples **
+##More Application Samples
 
 ## Disclaimer
 
