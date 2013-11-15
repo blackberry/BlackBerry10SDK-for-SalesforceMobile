@@ -18,6 +18,13 @@ typedef enum {
     SFOAuthTypeRefresh
 } SFOAuthType;
 
+/*!
+ * @class SFOAuthInfo
+ * @headerfile SFOAuthInfo.h <oauth/SFOAuthInfo.h>
+ *
+ * @brief  Data class containing members denoting state information for an OAuth coordinator authentication cycle.
+ *
+ */
 class SFOAuthInfo : public QObject {
 	Q_OBJECT
 public:

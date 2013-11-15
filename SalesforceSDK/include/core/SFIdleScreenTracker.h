@@ -21,14 +21,33 @@ class QTimer;
 namespace sf {
 using namespace bb;
 
+/*!
+ * @class SFIdleScreenTracker
+ * @headerfile SFIdleScreenTracker.h <core/SFIdleScreenTracker.h>
+ *
+ * @brief @c SFIdleScreenTracker monitors user activity and emits a singal when the user has been idle for the
+ * specified amount of time. This class is meant to be used by the SDK classes.
+ */
 class SFIdleScreenTracker : public QObject, public bb::AbstractBpsEventHandler {
 	Q_OBJECT
 
 signals:
+	/*!
+	 * Singal emitted when the screen idle timer times out.
+	 */
 	void screenIdleTimeout();
 public slots:
+	/*!
+	 * starts tracking
+	 */
 	void startTracking(const int & timeoutSeconds = 0);
+	/*!
+	 * stops tracking
+	 */
 	void stopTracking();
+	/*!
+	 * handles the screen idle signal from BPS service.
+	 */
 	void onTimerTimeout();
 public:
 	enum ScreenIdleState {

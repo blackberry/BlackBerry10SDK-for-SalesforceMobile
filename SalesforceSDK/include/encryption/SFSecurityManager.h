@@ -13,13 +13,12 @@
 #include "GlobalContext.hpp"
 
 namespace sf {
-/*
- * singleton that will manage the encryption context
- * should be connected to the application's aboutToQuite signal so it can clean up when the app quits
+/*!
+ * @class SFSecurityManager
+ * @headerfile SFSecurityManager.h <encryption/SFSecurityManager.h>
  *
- * uses AES encryption, saves the key and iv in QSetting
+ * @brief A singleton class that will provides functions for AES encryption and SHA.
  */
-
 class SFSecurityManager : public QObject {
 	Q_OBJECT
 
@@ -29,12 +28,24 @@ private:
     GlobalContext mGlobalContext;
 
 public:
+    /*!
+     * @return the singleton instance
+     */
 	static SFSecurityManager* instance();
-	//encrypts the clear text string in hex format
+	/*!
+	 * @param clearText to be encrypted
+	 * @return the encrypted string
+	 */
 	QString encrypt(QString clearText);
-	//expects an encoded string in hex format and decodes it to clear text
+	/*!
+	 * @param cipherTextHex the encoded string in hex format
+	 * @return decoded string
+	 */
 	QString decrypt(QString cipherTextHex);
-	//returns the hashed value of the clear text string
+	/*!
+	 * @param clearText to be hashed
+	 * @return the hashed string
+	 */
 	QString hash(QString clearText);
 
 private:

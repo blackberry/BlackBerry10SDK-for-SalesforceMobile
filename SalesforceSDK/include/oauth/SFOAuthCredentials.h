@@ -16,6 +16,22 @@
 
 namespace sf {
 
+/*!
+ * @class SFOAuthCredentials
+ * @headerfile SFOAuthCredentials.h <oauth/SFOAuthCredentials.h>
+ *
+ * @brief Object representing an individual user account's logon credentials.
+ *
+ * @details
+ * This object represents information about a user account necessary to authenticate and
+ * reauthenticate against Salesforce.com servers using OAuth2. It includes information such as
+ * the user's account ID, the protocol to use, and any access or refresh tokens assigned by the server.
+ *
+ * The secure information contained in this object is stored on in the application's data folder after encrypted with AES encryption
+ *
+ * Instances of this object are used to begin the authentication process, by supplying
+ * it to an `SFOAuthCoordinator` instance which conducts the authentication workflow.
+ */
 class SFOAuthCredentials : public Serializable{
 	Q_OBJECT
 	Q_PROPERTY(QString clientId READ getClientId WRITE setClientId)
@@ -58,14 +74,32 @@ public:
 	const QString& getIdentifier() const;
 	void setIdentifier(const QString& identifier);
 
-	//interfaces
+	/*!
+	 * Removes all tokens from the device.
+	 */
 	void revoke();
+	/*!
+	 * Removes the access token
+	 */
 	void revokeAccessToken();
+	/*!
+	 * Removes the refresh token
+	 */
 	void revokeRefreshToken();
-
+	/*!
+	 * @param key
+	 * Persist the object to file using key.
+	 */
 	void archiveValueToFile(QString key);
+	/*!
+	 * @param key
+	 * @return true if the object can be deserialized from file using the key
+	 */
 	bool unArchiveValueFromFile(QString key);
-
+	/*!
+	 * @param key
+	 * @return true if the credential object is removed from the device successfully
+	 */
 	static bool removeCredentialArchive(QString key);
 
 private:

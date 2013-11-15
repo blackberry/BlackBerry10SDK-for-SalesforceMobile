@@ -14,6 +14,11 @@
 #include <QUrl>
 namespace sf {
 
+/*!
+ * @class SFIdentityData
+ * @headerfile SFIdentityData.h <core/SFIdentityData.h>
+ * @brief The data structure for the identity data that's retrieved from the Salesforce service.
+ */
 class SFIdentityData : public Serializable{
 	Q_OBJECT
 	Q_PROPERTY(QUrl id READ getIdUrl WRITE setIdUrl)
