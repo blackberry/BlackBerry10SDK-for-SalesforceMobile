@@ -220,9 +220,7 @@ QString SFRestAPI::generateSOSLSearchQuery(const QString & searchTerm, const QSt
 	QString query = "";
 	QTextStream tsQuery(&query);
 
-	//escape searchTerm
-	QString escapedTerm = sanitizeSOSLSearchTerm(searchTerm);
-	tsQuery << "FIND {"<< escapedTerm << "} " << (fieldScope.isNull() || fieldScope.isEmpty() ? "IN NAME FIELDS" : fieldScope);
+	tsQuery << "FIND {"<< searchTerm << "} " << (fieldScope.isNull() || fieldScope.isEmpty() ? "IN NAME FIELDS" : "IN "+fieldScope);
 
 	if (!objectScope.isEmpty()) {
 		//key=sObject, value=scope

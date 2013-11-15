@@ -3,8 +3,17 @@ salesforcesdk {
 	BASEDIR = $${PWD}$$dirname($${_FILE_})
 	LIBTARGET = SalesforceSDK
 
-	INCLUDEPATH *=  $$quote($${BASEDIR}/include)
-	DEPENDPATH *=  $$quote($${BASEDIR}/include)
+	INCLUDEPATH *=  $$quote($${BASEDIR}/include) \ 
+		$$quote($${BASEDIR}/include/core) \
+		$$quote($${BASEDIR}/include/oauth) \
+		$$quote($${BASEDIR}/include/encryption) \
+		$$quote($${BASEDIR}/include/rest)
+		
+	DEPENDPATH *=  $$quote($${BASEDIR}/include) \ 
+		$$quote($${BASEDIR}/include/core) \
+		$$quote($${BASEDIR}/include/oauth) \
+		$$quote($${BASEDIR}/include/encryption) \
+		$$quote($${BASEDIR}/include/rest)
 	
 	LIBS += 
 	device {

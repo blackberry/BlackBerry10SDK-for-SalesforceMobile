@@ -62,12 +62,12 @@
        <entryPointType>Qnx/Cascades</entryPointType>
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7/SalesforceAppTemplate.so" entry="true" type="Qnx/Elf">SalesforceAppTemplate.so</asset>
-       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
     </configuration>
     <configuration name="Device-Profile">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm-p/o.le-v7-g/SalesforceAppTemplate" entry="true" type="Qnx/Elf">SalesforceAppTemplate</asset>
-       <asset path="${workspace_loc:/SalesforceSDK/arm/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
+       <asset path="${workspace_loc:/SalesforceSDK/arm-p/so.le-v7-g/libSalesforceSDK.so}" type="Qnx/Elf">lib/libSalesforceSDK.so.1</asset>
     </configuration>
     <configuration name="Simulator-Debug">
        <platformArchitecture>x86</platformArchitecture>
