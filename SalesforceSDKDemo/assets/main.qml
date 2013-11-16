@@ -61,7 +61,7 @@ TabbedPane {
                             title: qsTr("Settings")
                             dismissAction: ActionItem {
                                 title: "Back"
-                                imageSource: "asset:///images/ic_previous.png"
+                                imageSource: "asset:///images/icon_previous.png"
                                 onTriggered: {
                                     settingsSheet.close();
                                 }
@@ -89,7 +89,6 @@ TabbedPane {
         id: basicTab
         objectName: "basicTab"
         title: qsTr("Basic")
-        imageSource: "asset:///images/icon_salesforce.png"
         content: NavigationPane {
             id:mainNav
         }
