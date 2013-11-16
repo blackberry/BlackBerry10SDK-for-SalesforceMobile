@@ -16,10 +16,10 @@ BlackBerry Z10, Blackberry Dev Alpha C
 [Tim Shi] (https://github.com/timkiimobiletech)
 
 ## Getting Started
-Follow this [Get Started](http://kiimobiletech.github.io/SalesforceSDKDocs/d5/dfe/page_get_started.html) tutorial to start building using the template application and running the demo app.
+Follow this [Get Started](http://blackberry.github.io/BlackBerry10SDK-for-SalesforceMobile/d5/dfe/page_get_started.html) tutorial to start building using the template application and running the demo app.
 
 ## Using SalesforceSDK with Your application
-Follow this [Project Configuration](http://kiimobiletech.github.io/SalesforceSDKDocs/d2/dc8/page_install.html) tutorial to learn how to create new salesforce.com powered Cascades application from scratch.
+Follow this [Project Configuration](http://blackberry.github.io/BlackBerry10SDK-for-SalesforceMobile/d2/dc8/page_install.html) tutorial to learn how to create new salesforce.com powered Cascades application from scratch.
 
 ##More Application Samples
 
