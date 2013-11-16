@@ -22,6 +22,12 @@
 #include <bb/cascades/LocaleHandler>
 
 //TODO To use the Salesforce SDK, you need to assign proper values for following constants
+/*
+ * The consumer key and redirect URI are persisted on the device.
+ * If you want to change it after the application has already been installed on the device,
+ * you need to un-install the old application first before the new values takes effect.
+ * For more discussion on this please refer to the documentation on sf::SFAccountManager
+ */
 QString const sf::SFRemoteAccessConsumerKey = "";
 QString const sf::SFOAuthRedirectURI = "";
 QString const sf::SFDefaultRestApiVersion = "";
