@@ -1,9 +1,23 @@
 /*
- * SFSecurityManager.h
- *
- *  Created on: Oct 22, 2013
- *      Author: timshi
- */
+* Copyright 2013 BlackBerry Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SFSecurityManager.h
+*
+*  Created on: Oct 22, 2013
+*      Author: timshi
+*/
 
 #ifndef SFSECURITYMANAGER_H_
 #define SFSECURITYMANAGER_H_
@@ -13,13 +27,12 @@
 #include "GlobalContext.hpp"
 
 namespace sf {
-/*
- * singleton that will manage the encryption context
- * should be connected to the application's aboutToQuite signal so it can clean up when the app quits
+/*!
+ * @class SFSecurityManager
+ * @headerfile SFSecurityManager.h <encryption/SFSecurityManager.h>
  *
- * uses AES encryption, saves the key and iv in QSetting
+ * @brief A singleton class that will provides functions for AES encryption and SHA.
  */
-
 class SFSecurityManager : public QObject {
 	Q_OBJECT
 
@@ -29,12 +42,24 @@ private:
     GlobalContext mGlobalContext;
 
 public:
+    /*!
+     * @return the singleton instance
+     */
 	static SFSecurityManager* instance();
-	//encrypts the clear text string in hex format
+	/*!
+	 * @param clearText to be encrypted
+	 * @return the encrypted string
+	 */
 	QString encrypt(QString clearText);
-	//expects an encoded string in hex format and decodes it to clear text
+	/*!
+	 * @param cipherTextHex the encoded string in hex format
+	 * @return decoded string
+	 */
 	QString decrypt(QString cipherTextHex);
-	//returns the hashed value of the clear text string
+	/*!
+	 * @param clearText to be hashed
+	 * @return the hashed string
+	 */
 	QString hash(QString clearText);
 
 private:

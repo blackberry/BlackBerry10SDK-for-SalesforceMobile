@@ -1,9 +1,23 @@
 /*
- * SFSecurityLockout.h
- *
- *  Created on: Nov 1, 2013
- *      Author: timshi
- */
+* Copyright 2013 BlackBerry Limited.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SFSecurityLockout.h
+*
+*  Created on: Nov 1, 2013
+*      Author: timshi
+*/
 
 #ifndef SFSECURITYLOCKOUT_H_
 #define SFSECURITYLOCKOUT_H_
@@ -15,6 +29,13 @@ namespace sf {
 
 class SFIdleScreenTracker;
 
+/*!
+ * @class SFSecurityLockout
+ * @headerfile SFSecurityLockout.h <core/SFSecurityLockout.h>
+ *
+ * @brief @c SFSecurityLockout manages the process involved with locking the device when user is idle
+ * The class is meant to be used by the classes in the SDK.
+ */
 class SFSecurityLockout : public QObject {
 	Q_OBJECT
 
@@ -26,20 +47,55 @@ public:
 	static SFSecurityLockout* instance();
 	virtual ~SFSecurityLockout();
 
-	void createPasscode(); //presents the passcode creation screen
+	/*!
+	 * presents the passcode creation screen
+	 */
+	void createPasscode();
+	/*!
+	 * locks the app with the enter password screen
+	 */
 	void lock();
+	/*!
+	 * cancels the lock
+	 */
 	void cancelLock();
+	/*!
+	 * @return if the user has set a passcode for the device
+	 */
 	bool hasPasscode();
+	/*!
+	 * @return if is currently in the process of creating passcode
+	 */
 	bool isCreatingPasscode();
 
-	Q_INVOKABLE void reset(); //logs out and resets everything
-	Q_INVOKABLE void savePasscode(QString passcode); //save passcode and starts the monitoring
-	Q_INVOKABLE bool validatePasscode(QString passcode); //unlocks the screen and starts the monitoring
+	/*!
+	 * logs out and resets everything
+	 */
+	Q_INVOKABLE void reset();
+	/*!
+	 * save passcode and starts the monitoring for user activity
+	 */
+	Q_INVOKABLE void savePasscode(QString passcode);
+	/*!
+	 * @return if passcode matches returns true and unlocks the screen and starts the monitoring.
+	 * otherwise return false.
+	 */
+	Q_INVOKABLE bool validatePasscode(QString passcode);
+	/*!
+	 * @return the required passcode length
+	 */
 	Q_INVOKABLE int requiredPasscodeLength();
-
+	/*!
+	 * @return the activity tracker
+	 */
 	SFIdleScreenTracker* getIdleScreenTracker() const;
-
+	/*!
+	 * Do the clean up required on app exit
+	 */
 	void onAboutToQuit();
+	/*!
+	 * @return the Sheet for the create passcode screen
+	 */
 	bb::cascades::Sheet* getCreatePasscodeSheet();
 signals:
 	void devicePasscodeCreated();
