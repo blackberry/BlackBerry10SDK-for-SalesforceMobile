@@ -297,7 +297,7 @@ public:
 	/* Convenience APIs */
 	/*! Generate a SOQL query.
 	 * @param fields - @c QStringList of fields to select. e.g. ["Id", "CustomField__c"]
-	 * @param sObject - object type to query. e.g. "Account"
+	 * @param sObjectType - object type to query. e.g. "Account"
 	 * @param where - WHERE clause. e.g. "Name='Salesforce'"
 	 * @param groupBy - @c QStringList of GROUP BY fields
 	 * @param having - HAVING clause
@@ -313,7 +313,7 @@ public:
 
 	/*!
 	 * Generate a SOSL search string.
-	 * @param term - the search term. e.g. "John*"
+	 * @param searchTerm - the search term. e.g. "John*"
 	 * @param fieldScope - the SOSL scope, e.g. "IN ALL FIELDS". If empty, defaults to "IN NAME FIELDS"
 	 * @param objectScope - a @c QVariantMap where each key is an sObject name and each value is a string
 	 * with the fieldlist and (optional) where, order by, and limit clause for that object.
