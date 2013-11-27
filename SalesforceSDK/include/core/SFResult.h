@@ -33,46 +33,94 @@ class QScriptEngine;
 namespace sf {
 class SFRestResourceTask;
 class SFGenericTask;
+
+/*!
+ * @class SFResult
+ * @headerfile SFResult.h <core/SFResult.h>
+ * @brief Generic wrapper class that carry result of any task performed by the SDK.
+ *
+ * @details This class is designed to carry information regarding to the result of an operation/task. The class also implemented
+ * a payload smart conversion system for convenience.
+ *
+ * @see SFResultCode, SFGenericTask, SFNetworkAccessTask, SFRestResourceTask
+ *
+ * \author Livan Yi Du
+ */
 class SFResult: public QObject {
 	Q_OBJECT
-	Q_ENUMS(TaskResult);
-	Q_ENUMS(SFErrorCode);
-	Q_PROPERTY(TaskResult status READ status);
-	Q_PROPERTY(bool hasError READ hasError);
-	Q_PROPERTY(int code READ code);
-	Q_PROPERTY(QString message READ message);
-	Q_PROPERTY(QVariant payload READ payload);
-	Q_PROPERTY(QVariantHash tags READ tags);
+	Q_ENUMS(TaskResult)
+	Q_PROPERTY(TaskResult status READ status) /*!< The status code of the corresponding task. See @c TaskResult */
+	Q_PROPERTY(bool hasError READ hasError) /*!< Indicating whether the task finished with error */
+	Q_PROPERTY(int code READ code) /*!< The code of the result. Common code values are defined in @c SFResultCode @note This property serves the purpose of categorizing the result. A non-zero code doesn't imply error. */
+	Q_PROPERTY(QString message READ message) /*!< A human friendly message string for @a code, localized or not localized. */
+	Q_PROPERTY(QVariant payload READ payload) /*!< The payload/content of the result. May contains any kind of data. Use @c SFResult::payload<T>() if you want auto-convert it */
+	Q_PROPERTY(QVariantHash tags READ tags) /*!< A hash map that holds additional objects */
 	friend class SFGenericTask;
 	friend class SFRestResourceTask;
 	friend class SFNetworkAccessTask;
 public:
+	/*! Task's result code */
 	enum TaskResult {
-		TaskResultSuccess= 0,
-		TaskResultError = 1,
-		TaskResultCancelled = 2,
-		TaskResultNotAvailable= -1,
+		TaskResultSuccess= 0, /*!< Task finished successfully */
+		TaskResultError = 1, /*!< Task finished with error */
+		TaskResultCancelled = 2, /*!< Task is canceled. */
+		TaskResultNotAvailable= -1, /*!< Result is not determined. Default value for new tasks. */
 	};
 
-	SFResult();
-	SFResult(QObject *parent);
-	virtual ~SFResult();
+	SFResult();  /*!< Default constructor */
+	SFResult(QObject *parent);  /*!< Constructor with parent QObject */
+	virtual ~SFResult();  /*!< Default destructor */
+
+	/*! Convenient function to create an empty result object.
+	 * @return pointer to the created object */
 	static SFResult *create();
+	/*! Convenient function to create a result object with given code and message
+	 * @param code the code of the result. Common code values are defined in @c SFResultCode
+	 * @param message locolized/non-locolized human readable message string.
+	 * @return pointer to the created object */
 	static SFResult *createErrorResult(const int & code, const QString & message);
+	/*! Convenient function to create a result object with "canceled" status
+	 * @param code the code of the result. Common code values are defined in @c SFResultCode. Default: SFResultCode::SFErrorCancelled
+	 * @param message locolized/non-locolized human readable message string.
+	 * @return pointer to the created object */
 	static SFResult *createCancelResult(const int & code = SFResultCode::SFErrorCancelled, const QString & message = "Task Cancelled");
+
+	/*! @see SFResult::status @return the status code */
 	TaskResult status() {return mStatus;};
+	/*! @see SFResult::code @return the code of the result */
 	const int & code() {return mCode;};
+	/*! @see SFResult::message @return the message */
 	const QString & message() {return mMessage;};
+	/*! @see SFResult::hasError @return true if the result is an error result. Otherwise, false */
 	bool hasError() {return mStatus != TaskResultSuccess && mStatus != TaskResultNotAvailable;};
+	/*! Get the raw payload of the result as @c QVariant. If auto-conversion is needed, use the template version @c SFResult::payload<T>()
+	 * @see SFResult::payload
+	 * @return the raw payload of the result as @c QVariant. */
 	const QVariant & payload() {return mPayload;};
+	/*! Set the raw payload
+	 * @see SFResult::payload
+	 * @param payload the payload encapsulated in QVariant */
+	void setPayload(const QVariant & payload) { mPayload = payload;};
+
+	/*! @see SFResult::tags @return the hash map of all additional objects. */
 	const QVariantHash & tags() { return mTags;};
+
+	/*! Add an additional object and associate it with a key
+	 * @param key the key associated with the object
+	 * @param tag the object */
 	void putTag(const QString & key, const QVariant & tag) {mTags[key] = tag;};
 
+	/*! Get the payload as specified type T
+	 * @return an object with the specified type T. @note When the payload cannot be converted to the specified type: <br>return NULL if T is a pointer
+	 * type, <br>return an object using default constructor if T is a class type. */
 	template<class T>
 	T payload() {
 		return QVariantConverter<T>::convert(mPayload);
 	};
 
+	/*! Get the additional object associated with given key
+	 * @param key the key
+	 * @return the object associated with the @a key */
 	template<class T>
 	T getTag(const QString & key) { return QVariantConverter<T>::convert(mTags[key]);};
 
@@ -80,10 +128,12 @@ public:
 	/* In order to completely use this QObject type in QML javascript, we need to provide conversion functions
 	 * and Q_DECLARE_METATYPE(). This is necessary for javascript functions to recieve this type as parameter
 	 */
+	/*! Serializing function that can be registered with QScriptEngine */
 	static QScriptValue toScriptValue(QScriptEngine *engine, SFResult* const &inObj);
+	/*! Deserializing function that can be registered with QScriptEngine */
 	static void fromScriptValue(const QScriptValue & obj, SFResult * &outObj);
 
-protected:
+private:
 	TaskResult mStatus;
 	int mCode;
 	QString mMessage;

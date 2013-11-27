@@ -32,16 +32,6 @@ using namespace bb::data;
 
 namespace sf {
 
-SFRestResourceTask::SFRestResourceTask()
-: SFNetworkAccessTask(NULL) {
-	this->mRestRequest = NULL;
-}
-
-SFRestResourceTask::SFRestResourceTask(QNetworkAccessManager *networkAccessManager)
-: SFNetworkAccessTask(networkAccessManager) {
-	this->mRestRequest = NULL;
-}
-
 SFRestResourceTask::SFRestResourceTask(QNetworkAccessManager * const networkAccessManager, SFRestRequest * request)
 : SFNetworkAccessTask(networkAccessManager) {
 	this->mRestRequest = request;
