@@ -18,6 +18,69 @@ import bb.cascades 1.2
 import "./salesforce"
 
 Page {
+    id: page
     objectName: "page";
+    property Sheet settingsSheet;
+    Menu.definition: MenuDefinition {        
+        // Add any remaining actions
+        actions: [
+            ActionItem {
+                title: "Logout"
+                imageSource: "asset:///images/icon_logout.png"
+                onTriggered: {
+                    console.debug("logout action triggered");
+                    SFAuthenticationManager.logout();
+                }
+            }
+        ]
+        settingsAction: SettingsActionItem {
+            onTriggered: {
+                console.debug("setting action triggered");
+                if (!settingsSheet){
+                    settingsSheet = settingsSheetDef.createObject(page);
+                }
+                settingsSheet.open();
+            }
+        }
+        helpAction: HelpActionItem {
+            onTriggered: {
+                console.debug("help action triggered");
+            }
+        }
+        //Tim: this is for the setting page
+        attachedObjects: [
+            ComponentDefinition {
+                id: settingsSheetDef
+                Sheet {
+                    id: settingsSheet
+                    peekEnabled: false; 
+                    content: SFSettings { 
+                        titleBar: TitleBar {
+                            title: qsTr("Settings")
+                            dismissAction: ActionItem {
+                                title: "Back"
+                                imageSource: "asset:///RestExplorer/images/icon_previous.png"
+                                onTriggered: {
+                                    settingsSheet.close();
+                                }
+                            }
+                        } 
+                        
+                        paneProperties: NavigationPaneProperties {
+                            backButton: ActionItem {
+                                title: "Back"
+                            }
+                        }
+                    } 
+                    //Tim: settings page is created new every time, so destroy it when it's popped
+                    onClosed: {
+                        console.debug("destroy settings page");
+                        settingsSheet.destroy();
+                        SFAccountManager.updateLoginHost();
+                    }
+                }
+            }
+        ]
+    }
     SFHybridWebView{}
 }

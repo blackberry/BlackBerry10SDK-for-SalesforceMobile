@@ -39,7 +39,9 @@
 			function onSFOAuthFlowCancel(message){
 				document.getElementById("output").innerHTML = "<p>received logged in cancel signal:" + JSON.stringify(message) + "</p>";			
 			}
-						
+			function onSFLoginHostChanged(){
+				document.getElementById("output").innerHTML = "<p>received login host changed signal</p>";						
+			}						
 			function restRequestSuccess(message){
 				document.getElementById("output").innerHTML = "<p>" + JSON.stringify(message) + "</p>";
 			}

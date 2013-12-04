@@ -37,6 +37,7 @@ static QString const kLoginDefaultSuccessCallback = "onSFOAuthFlowSuccess";
 static QString const kLoginDefaultFailCallback = "onSFOAuthFlowFailure";
 static QString const kLoginDefaultCancelCallback = "onSFOAuthFlowCancel";
 static QString const kLogoutDefaultSuccessCallback = "onSFUserLoggedOut";
+static QString const kLoginHostChangedDefaultCallback = "onSFLoginHostChanged";
 
 SFAuthPlugin::SFAuthPlugin(WebView* webView):SFPlugin(webView){
     //connect slots for authentication
@@ -46,6 +47,7 @@ SFAuthPlugin::SFAuthPlugin(WebView* webView):SFPlugin(webView){
 	connect(authManager, SIGNAL(SFOAuthFlowCanceled(SFOAuthInfo*)), this, SLOT(onSFOAuthFlowCanceled(SFOAuthInfo*)), Qt::UniqueConnection);
 	connect(authManager, SIGNAL(SFOAuthFlowFailure(SFOAuthInfo*)), this, SLOT(onSFOAuthFlowFailure(SFOAuthInfo*)), Qt::UniqueConnection);
 	connect(authManager, SIGNAL(SFUserLoggedOut()), this, SLOT(onSFUserLoggedOut()), Qt::UniqueConnection);
+	connect(authManager, SIGNAL(SFLoginHostChanged()), this, SLOT(onSFLoginHostChanged()), Qt::UniqueConnection);
 }
 
 SFAuthPlugin::~SFAuthPlugin() {
@@ -140,4 +142,10 @@ void SFAuthPlugin::onSFUserLoggedOut(){
 		this->evalJavascript(js);
 	}
 }
+
+void SFAuthPlugin::onSFLoginHostChanged(){
+	QString js = QString("%1()").arg(kLoginHostChangedDefaultCallback);
+	this->evalJavascript(js);
+}
+
 }/* namespace sf */

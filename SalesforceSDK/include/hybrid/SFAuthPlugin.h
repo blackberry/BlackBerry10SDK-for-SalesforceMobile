@@ -54,6 +54,7 @@ using namespace bb::cascades;
  * onSFOAuthFlowFailure(message)
  * onSFOAuthFlowCancel(message)
  * onSFUserLoggedOut()
+ * onSFLoginHostChanged()
  *
  * Usage
  * -----
@@ -113,6 +114,7 @@ protected slots:
 	void onSFOAuthFlowFailure(SFOAuthInfo* info);
 	void onSFOAuthFlowCanceled(SFOAuthInfo* info);
 	void onSFUserLoggedOut();
+	void onSFLoginHostChanged();
 
 public:
 	//Q_INVOKABLE so that the MOC will include it

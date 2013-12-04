@@ -41,16 +41,9 @@ static const QString kSFPluginCommandClassName = "className";
 static const QString kSFPluginCommandMethodName = "methodName";
 
 SFHybridApplicationUI::SFHybridApplicationUI(bb::cascades::Application *app) :
-        QObject(app)
+		SFAbstractApplicationUI(app)
 {
 	mWebView = NULL; //expect the subclass to call setupWebView
-
-	SFAccountManager::setClientId(SFRemoteAccessConsumerKey);
-	SFAccountManager::setRedirectUri(SFOAuthRedirectURI);
-	SFRestAPI::instance()->setApiVersion(SFDefaultRestApiVersion);
-
-	connect(app, SIGNAL(aboutToQuit()), SFAuthenticationManager::instance(), SLOT(onAboutToQuit()));
-	connect(app, SIGNAL(fullscreen()), SFAuthenticationManager::instance(), SLOT(onAppStart()));
 }
 
 void SFHybridApplicationUI::setupWebView(AbstractPane* root){

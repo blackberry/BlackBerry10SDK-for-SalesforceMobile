@@ -24,6 +24,7 @@
 #include "SFAuthPlugin.h"
 #include "SFPlugin.h"
 #include "SFPluginResult.h"
+#include "SFAbstractApplicationUI.h"
 
 namespace sf {
 
@@ -77,7 +78,7 @@ extern QString const SFDefaultRestApiVersion;
  *
  * \author Tim Shi
  */
-class SFHybridApplicationUI : public QObject
+class SFHybridApplicationUI : public SFAbstractApplicationUI
 {
     Q_OBJECT
 public:
