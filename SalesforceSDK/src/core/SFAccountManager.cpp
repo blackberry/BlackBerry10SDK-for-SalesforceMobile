@@ -236,10 +236,14 @@ void SFAccountManager::clearAccountState(bool clearAccountData){
 		saveIdentityData(NULL);
 	}
 	//note: the caller is responsible of removing the oauth view if it's being presented
-	mCoordinator->deleteLater();
-	mCoordinator = NULL;
-	mIdCoordinator->deleteLater();
-	mIdCoordinator = NULL;
+	if (mCoordinator!=NULL){
+		mCoordinator->deleteLater();
+		mCoordinator = NULL;
+	}
+	if (mIdCoordinator!=NULL){
+		mIdCoordinator->deleteLater();
+		mIdCoordinator = NULL;
+	}
 }
 void SFAccountManager::onAboutToQuit(){
 	if (mCoordinator->getView()!=NULL){
