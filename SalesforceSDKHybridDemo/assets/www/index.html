@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="sf.js"></script>			
+		<script type="text/javascript">
+			var outputDiv = document.getElementById("output");
+			
+			/*
+			default notification handler
+			*/
+			function onSFUserLoggedOut(){
+				document.getElementById("output").innerHTML = "<p>logged out</p>";				
+			}
+			function onSFOAuthFlowSuccess(message){
+				document.getElementById("output").innerHTML = "<p>logged in success:" + JSON.stringify(message) + "</p>";			
+			}
+			function onSFOAuthFlowFailure(message){
+				document.getElementById("output").innerHTML = "<p>logged in fail:" + JSON.stringify(message) + "</p>";			
+			}
+			function onSFOAuthFlowCancel(message){
+				document.getElementById("output").innerHTML = "<p>logged in cancel:" + JSON.stringify(message) + "</p>";			
+			}
+						
+			function restRequestSuccess(message){
+				document.getElementById("output").innerHTML = "<p>" + JSON.stringify(message) + "</p>";
+			}
+			function restRequestFail(message){
+				document.getElementById("output").innerHTML = "<p>" + message + "</p>";			
+			}
+			
+			//if plugin executed successfully
+			function credentialSuccess(message){
+			    document.getElementById("output").innerHTML = "<p>access token:<br>" + message.accessToken + "</br></p>";
+			    document.getElementById("output").innerHTML += "<p>instance url:<br>" + message.instanceUrl + "</br></p>";			    
+			}
+			
+			function credentialFailure(message){
+			    document.getElementById("output").innerHTML = "<p>access token: failed </p>";			
+			}
+			
+			function loginSuccess(message) {
+				if (message.authStatus == 0){ //see SFAuthPlugin.h for the status enum
+				    sf.exec(credentialSuccess,credentialFailure,"sf::SFAuthPlugin", "getCredentials", {});					
+				}else if (message.authStatus == 2){ //see SFAuthPlugin.h for the status enum
+				    document.getElementById("output").innerHTML = "<p>login canceled</p>";
+				}else {
+				    document.getElementById("output").innerHTML = "<p>login failed</p>";					
+				}
+			}
+			//if plugin wasn't able to be executed successfully
+			function loginFail(message) {
+			    document.getElementById("output").innerHTML = "<p>login failed: " + message + "</p>";
+			}			
+
+			function logoutSuccess(){
+				document.getElementById("output").innerHTML = "<p>logout success</p>";
+			}
+
+			function logoutFail(){
+				document.getElementById("output").innerHTML = "<p>logout fail</p>";
+			}
+
+			function login(){
+				document.getElementById("output").innerHTML = "<p>authenticating</p>";
+				sf.exec(loginSuccess,loginFail,"sf::SFAuthPlugin", "login", {});
+			}
+			function logout(){
+				sf.exec(logoutSuccess,logoutFail,"sf::SFAuthPlugin", "logout", {});
+			}
+			
+			function sendRestRequest(){
+				document.getElementById("output").innerHTML = "sending rest request";
+				var args = {"soql":"SELECT Name FROM Account LIMIT 1"};
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForQuery",args);
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForVersions",{});
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForResources",{});								
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForDescribeGlobal",{});												
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForMetadata",{"objectType":"account"});
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForDescribeObject",{"objectType":"account"});
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForRetrieveObject",{"objectType":"account", "objectId":"001E000000lcB2mIAE", "fields":["accountsource"]});
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForCreateObject",{"objectType":"account", "fields":{"name":"html5 account"}});
+				*/				
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForUpdateObject",{"objectType":"account", "objectId":"001E000000lcB2mIAE", "fields":{"name":"html5 account new"}});				
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForUpsertObject",{"objectType":"account", "extIdField":"id", "extIdValue":"001E000000lcB2mIAE", "fields":{"name":"html5 account new upsert"}});				
+				*/		
+				/*		
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForDeleteObject",{"objectType":"account", "objectId":"001E000000lcB2mIAE"});
+				*/
+				/*
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForSearch",{"sosl":"Find {test}"});
+				*/
+				/*
+				var args = {"path":"/services/data/v28.0/query",
+							"method":HTTPMethodType.HTTPGet,
+							"params":{"q":"SELECT Name FROM Account LIMIT 1"},
+							"contentType":HTTPContentType.HTTPContentTypeUrlEncoded}; //you can also pass params and contentType
+				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendCustomRequest",args);
+				*/				
+				/*
+				//Testing cross origin request...this doesn't work	
+				var httpRequest = new XMLHttpRequest();
+				if (!httpRequest){
+					alert("no httprequest");
+				}
+				httpRequest.onreadystatechange = function(){	
+					if (httpRequest.readyState === 4) {
+				      if (httpRequest.status === 200) {
+				        alert(httpRequest.responseText);
+				      } else {
+				        alert(httpRequest.status);
+				      }
+				    }
+				};
+				httpRequest.open('GET', 'https://na9.salesforce.com/services/data/', true);
+				httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
+				httpRequest.send(null);
+				*/
+			}
+		</script>
+	</head>
+	
+	<body>
+		<p>Salesforce Hybrid SDK Demo</p>
+		<div class="interactive" id="login" ontouchend='login()' style="background-color:#cc3f10">login to salesforce</div>
+		<div class="interactive" id="logout" ontouchend='logout()' style="background-color: #0098f0">logout from salesforce</div>
+		<div class="interactive" id="rest" ontouchend='sendRestRequest()' style="background-color:#cc3f10">Send Rest Request</div>
+		<div id="output"></div>		
+	</body>
+</html>

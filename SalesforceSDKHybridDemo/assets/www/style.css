@@ -1,0 +1,10 @@
+body {
+        margin: 0;
+}
+
+.interactive {
+        padding: 7%;
+        color: #F8F8F8;
+        font-size: 3em;
+        text-align: center;
+}

@@ -236,7 +236,6 @@ void SFAccountManager::clearAccountState(bool clearAccountData){
 		saveIdentityData(NULL);
 	}
 	//note: the caller is responsible of removing the oauth view if it's being presented
-	//TODO: for hybrid app call authentication manager to remove cookies
 	mCoordinator->deleteLater();
 	mCoordinator = NULL;
 	mIdCoordinator->deleteLater();
