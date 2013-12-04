@@ -1,31 +1,50 @@
+<!--
+  Copyright (c) 2011-2013 BlackBerry Limited.
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+  http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ 
+  SFPluginResult.h
+ 
+   Created on: Dec 3, 2013
+       Author: timshi
+-->
 <html>
 	<head>
 		<link href="style.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="sf.js"></script>			
 		<script type="text/javascript">
 			var outputDiv = document.getElementById("output");
-			
 			/*
 			default notification handler
 			*/
 			function onSFUserLoggedOut(){
-				document.getElementById("output").innerHTML = "<p>logged out</p>";				
+				document.getElementById("output").innerHTML = "<p>received logged out signal</p>";				
 			}
 			function onSFOAuthFlowSuccess(message){
-				document.getElementById("output").innerHTML = "<p>logged in success:" + JSON.stringify(message) + "</p>";			
+				document.getElementById("output").innerHTML = "<p>received logged in success signal:" + JSON.stringify(message) + "</p>";			
 			}
 			function onSFOAuthFlowFailure(message){
-				document.getElementById("output").innerHTML = "<p>logged in fail:" + JSON.stringify(message) + "</p>";			
+				document.getElementById("output").innerHTML = "<p>received logged in fail signal:" + JSON.stringify(message) + "</p>";			
 			}
 			function onSFOAuthFlowCancel(message){
-				document.getElementById("output").innerHTML = "<p>logged in cancel:" + JSON.stringify(message) + "</p>";			
+				document.getElementById("output").innerHTML = "<p>received logged in cancel signal:" + JSON.stringify(message) + "</p>";			
 			}
 						
 			function restRequestSuccess(message){
 				document.getElementById("output").innerHTML = "<p>" + JSON.stringify(message) + "</p>";
 			}
 			function restRequestFail(message){
-				document.getElementById("output").innerHTML = "<p>" + message + "</p>";			
+				document.getElementById("output").innerHTML = "<p>" + JSON.stringify(message) + "</p>";			
 			}
 			
 			//if plugin executed successfully
@@ -49,7 +68,7 @@
 			}
 			//if plugin wasn't able to be executed successfully
 			function loginFail(message) {
-			    document.getElementById("output").innerHTML = "<p>login failed: " + message + "</p>";
+			    document.getElementById("output").innerHTML = "<p>login failed: " + JSON.stringify(message) + "</p>";
 			}			
 
 			function logoutSuccess(){
@@ -69,68 +88,10 @@
 			}
 			
 			function sendRestRequest(){
+				//sends a query to salesforce 
 				document.getElementById("output").innerHTML = "sending rest request";
 				var args = {"soql":"SELECT Name FROM Account LIMIT 1"};
 				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForQuery",args);
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForVersions",{});
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForResources",{});								
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForDescribeGlobal",{});												
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForMetadata",{"objectType":"account"});
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForDescribeObject",{"objectType":"account"});
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForRetrieveObject",{"objectType":"account", "objectId":"001E000000lcB2mIAE", "fields":["accountsource"]});
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForCreateObject",{"objectType":"account", "fields":{"name":"html5 account"}});
-				*/				
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForUpdateObject",{"objectType":"account", "objectId":"001E000000lcB2mIAE", "fields":{"name":"html5 account new"}});				
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForUpsertObject",{"objectType":"account", "extIdField":"id", "extIdValue":"001E000000lcB2mIAE", "fields":{"name":"html5 account new upsert"}});				
-				*/		
-				/*		
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForDeleteObject",{"objectType":"account", "objectId":"001E000000lcB2mIAE"});
-				*/
-				/*
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendRequestForSearch",{"sosl":"Find {test}"});
-				*/
-				/*
-				var args = {"path":"/services/data/v28.0/query",
-							"method":HTTPMethodType.HTTPGet,
-							"params":{"q":"SELECT Name FROM Account LIMIT 1"},
-							"contentType":HTTPContentType.HTTPContentTypeUrlEncoded}; //you can also pass params and contentType
-				sf.exec(restRequestSuccess,restRequestFail,"sf::SFRestPlugin","sendCustomRequest",args);
-				*/				
-				/*
-				//Testing cross origin request...this doesn't work	
-				var httpRequest = new XMLHttpRequest();
-				if (!httpRequest){
-					alert("no httprequest");
-				}
-				httpRequest.onreadystatechange = function(){	
-					if (httpRequest.readyState === 4) {
-				      if (httpRequest.status === 200) {
-				        alert(httpRequest.responseText);
-				      } else {
-				        alert(httpRequest.status);
-				      }
-				    }
-				};
-				httpRequest.open('GET', 'https://na9.salesforce.com/services/data/', true);
-				httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
-				httpRequest.send(null);
-				*/
 			}
 		</script>
 	</head>

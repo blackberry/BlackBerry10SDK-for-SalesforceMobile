@@ -21,7 +21,7 @@ var sf = {
 	callbackId: Math.floor(Math.random() * 2000000000),
 	//map of callbackId to callbacks
 	callbacks: {},
-	//matches with the enum in SFPluginResult
+	//matches with the enum in SFPluginResult.h
     callbackStatus: {
         NO_RESULT: 0,
         OK: 1,
@@ -34,6 +34,9 @@ var sf = {
         JSON_EXCEPTION: 8,
         ERROR: 9
     },
+    /*
+     * Used by SFPlugin to trigger callback when plugin finishes executing the native code
+     */
 	executeCallback:function(callbackId, status, message, keepCallback){
 		var callback = sf.callbacks[callbackId];
         if (callback) {
@@ -53,7 +56,7 @@ var sf = {
 	 * failCallBack is if the plugin couldn't be invoked properly
 	 * className is the corresponding fully qualified class name on native side, i.e. sf::SFAuthPlugin
 	 * methodName is the method on the plugin to be called
-	 * args is an array of arguments to be passed in
+	 * args is a json object where each attribute represents an argument to be passed into the native code. 
 	 */
 	exec:function(successCallBack, failCallBack, className, methodName, args){
 		callbackId = className + "_" + methodName + "_" + sf.callbackId++;
@@ -65,6 +68,9 @@ var sf = {
 	}
 };
 
+/*
+ * matches the enum of same name defined in SFGlobal.h
+ */
 var HTTPMethodType = {
 	HTTPGet:0, //!< HTTP GET
 	HTTPHead:1, //!< HTTP HEAD
@@ -74,6 +80,9 @@ var HTTPMethodType = {
 	HTTPPatch:5 //!< HTTP PATCH
 };
 
+/*
+ * matches the enum of the same name defined in SFRestRequest.h
+ */
 var HTTPContentType = {
 	HTTPContentTypeUrlEncoded:0, /*!< parameters are encoded into the URL as key-value pair. e.g. "?firstname=John&lastname=Smith" */
 	HTTPContentTypeJSON:1, /*!< parameters are encoded into request body using JSON format. */

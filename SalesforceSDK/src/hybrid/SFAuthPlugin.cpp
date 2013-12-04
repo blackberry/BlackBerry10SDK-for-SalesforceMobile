@@ -38,14 +38,7 @@ static QString const kLoginDefaultFailCallback = "onSFOAuthFlowFailure";
 static QString const kLoginDefaultCancelCallback = "onSFOAuthFlowCancel";
 static QString const kLogoutDefaultSuccessCallback = "onSFUserLoggedOut";
 
-/*
-SFAuthPlugin::SFAuthPlugin() {
-	mWebView = NULL;
-}
-*/
-
 SFAuthPlugin::SFAuthPlugin(WebView* webView):SFPlugin(webView){
-	//mWebView = webView;
     //connect slots for authentication
 	SFAuthenticationManager* authManager = SFAuthenticationManager::instance();
 	//connect slots

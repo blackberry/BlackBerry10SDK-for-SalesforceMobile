@@ -36,19 +36,69 @@ typedef enum {
     SFAuth_CANCEL
 } SFAuthStatus;
 
-/*An plugin should have the following characteristics
- *
- * 1. belongs to one webview (and has a reference to it)
- * 2. has methods that can be called from javascript
- * 3. has internal methods to write back to the javascript
- * 4. has internal methods to write success back to javascript, and invoke a callback
- * 5. has internal methods to write failure back to javascript, and invoke a callback
- *
- * if the plugin is asynchronous, keep track of the callerbackId
- *
- * all the methods that can be invoked from js should take SFInvokedUrlCommand as input
- */
 using namespace bb::cascades;
+
+/*!
+ * @class SFAuthPlugin
+ * @headerfile SFAuthPlugin <hybrid/SFAuthPlugin.h>
+ * @brief The SFAuthPlugin class makes the methods on @c SFAuthenticationManager available to javascript
+ *
+ * @details
+ * The javascript running in the webview that is registered with this plugin can invoke the methods on @c SFAuthenticationManager via this plugin.
+ * Each function can be invoked with success and failure callbacks. In addition if log in or log out occured inside the app without being implicitly invoked
+ * from the javascript side, the plugin will notify the javascript default call back functions if they are defined.
+ *
+ * The default callbacks for login state changes are:
+ *
+ * onSFOAuthFlowSuccess(message)
+ * onSFOAuthFlowFailure(message)
+ * onSFOAuthFlowCancel(message)
+ * onSFUserLoggedOut()
+ *
+ * Usage
+ * -----
+ * Calling the login method from javascript
+ * @code {.html}
+ * <html>
+ *	<head>
+ *		<script type="text/javascript" src="sf.js"></script>
+ *		<script type="text/javascript">
+ *			//default handler if no callback is provided
+ *			function onSFOAuthFlowSuccess(message){
+ *				document.getElementById("output").innerHTML = "<p>logged in success:" + JSON.stringify(message) + "</p>";
+ *			}
+ *			//plugin was executed successfully
+ *			function loginSuccess(message) {
+ *				if (message.authStatus == 0){ //see SFAuthPlugin.h for the status enum
+ *				    sf.exec(credentialSuccess,credentialFailure,"sf::SFAuthPlugin", "getCredentials", {});
+ *				}else if (message.authStatus == 2){ //see SFAuthPlugin.h for the status enum
+ *				    document.getElementById("output").innerHTML = "<p>login canceled</p>";
+ *				}else {
+ *				    document.getElementById("output").innerHTML = "<p>login failed</p>";
+ *				}
+ *			}
+ *			//if plugin wasn't able to be executed successfully
+ *			function loginFail(message) {
+ *			    document.getElementById("output").innerHTML = "<p>login failed: " + message + "</p>";
+ *			}
+ *			//trigger the plugin's method
+ *			function login(){
+ *				document.getElementById("output").innerHTML = "<p>authenticating</p>";
+ *				sf.exec(loginSuccess,loginFail,"sf::SFAuthPlugin", "login", {});
+ *			}
+ * 		</script>
+ *	</head>
+ *	<body>
+ *		<div class="interactive" id="login" ontouchend='login()' style="background-color:#cc3f10">login to salesforce</div>
+ *		<div id="output"></div>
+ *	</body>
+ * </html>
+ * @endcode
+ *
+ * \sa SFRestPlugin, SFInvokedUrlCommand, SFPluginResult, SFHybridApplicationui
+ * \author Tim Shi
+ */
+
 class SFAuthPlugin : public SFPlugin{
 	Q_OBJECT
 public:
@@ -66,12 +116,28 @@ protected slots:
 
 public:
 	//Q_INVOKABLE so that the MOC will include it
-	Q_INVOKABLE
-	void login(const SFInvokedUrlCommand& command);
-	Q_INVOKABLE
-	void logout(const SFInvokedUrlCommand& command);
-	Q_INVOKABLE
-	void getCredentials(const SFInvokedUrlCommand& command);
+	/*!
+	 * Logs in the user, invokable from javascript.
+	 * The javascript callback will get a message of the following form in the callback
+	 * {
+	 * 	"authType":0,
+	 * 	"authStatus":0
+	 * }
+	 * See SFOAuthType, and SFAuthStatus enum for possible values.
+	 * @param command The command passed in from javascript
+	 */
+	Q_INVOKABLE void login(const SFInvokedUrlCommand& command);
+	/*!
+	 * logs out the user, invokable from javascript
+	 * @param command The command passed in from javascript
+	 */
+	Q_INVOKABLE void logout(const SFInvokedUrlCommand& command);
+	/*!
+	 * Get the @c SFOAuthCredentials, invokable from javascript
+	 * The message passed back to javascript is the json representation of @c SFOAuthCredentials
+	 * @param command The command passed in from javascript
+	 */
+	Q_INVOKABLE void getCredentials(const SFInvokedUrlCommand& command);
 };
 } /* namespace sf */
 #endif /* SFAUTHPLUGIN_H_ */

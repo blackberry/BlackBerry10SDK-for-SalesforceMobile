@@ -18,7 +18,7 @@
 #define ApplicationUI_HPP_
 
 #include <QObject>
-#include <hybrid/SFHybridApplicationui.hpp>
+#include <hybrid/SFHybridApplicationUI.hpp>
 
 namespace bb
 {
