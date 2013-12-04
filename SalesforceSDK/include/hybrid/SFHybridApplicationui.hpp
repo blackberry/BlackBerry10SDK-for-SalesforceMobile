@@ -45,6 +45,8 @@ protected:
     QList<SFPlugin*> mPlugins;
 protected:
     void addPlugin(SFPlugin* plugin);
+    void setupWebView(AbstractPane* root);
+    void registerDefaultPlugins();
 protected slots:
 	void onMessageReceived(const QVariantMap& message);
 private:

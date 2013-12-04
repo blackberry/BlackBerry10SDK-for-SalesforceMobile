@@ -15,7 +15,9 @@
  */
 
 import bb.cascades 1.2
+import "./salesforce"
 
 Page {
     objectName: "page";
+    SFHybridWebView{}
 }

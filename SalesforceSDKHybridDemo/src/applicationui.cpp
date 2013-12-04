@@ -42,6 +42,13 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFHybridAppli
 
     // initial load
     onSystemLanguageChanged();
+
+    QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+    AbstractPane *root = qml->createRootObject<AbstractPane>();
+    app->setScene(root);
+
+    this->setupWebView(root);
+    this->registerDefaultPlugins();
 }
 
 void ApplicationUI::onSystemLanguageChanged()

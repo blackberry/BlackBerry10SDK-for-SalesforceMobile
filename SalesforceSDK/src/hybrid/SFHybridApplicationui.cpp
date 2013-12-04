@@ -30,7 +30,6 @@
 #include <QString>
 #include <SFAccountManager.h>
 #include <SFAuthenticationManager.h>
-#include "SFWebResourceRequestFilter.h"
 #include "SFRestAPI.h"
 #include "SFRestPlugin.h"
 
@@ -44,16 +43,22 @@ static const QString kSFPluginCommandMethodName = "methodName";
 SFHybridApplicationUI::SFHybridApplicationUI(bb::cascades::Application *app) :
         QObject(app)
 {
+	mWebView = NULL; //expect the subclass to call setupWebView
+
 	SFAccountManager::setClientId(SFRemoteAccessConsumerKey);
 	SFAccountManager::setRedirectUri(SFOAuthRedirectURI);
 	SFRestAPI::instance()->setApiVersion(SFDefaultRestApiVersion);
 
-    QmlDocument *qml = QmlDocument::create("asset:///salesforce/SFHybridWebView.qml").parent(this);
-    AbstractPane *root = qml->createRootObject<AbstractPane>();
-    mWebView = root->findChild<WebView*>("webView");
-    mWebView->setResourceRequestFilter(new SFWebResourceRequestFilter());
-    connect(mWebView, SIGNAL(messageReceived(QVariantMap)), this, SLOT(onMessageReceived(QVariantMap)));
+	connect(app, SIGNAL(aboutToQuit()), SFAuthenticationManager::instance(), SLOT(onAboutToQuit()));
+	connect(app, SIGNAL(fullscreen()), SFAuthenticationManager::instance(), SLOT(onAppStart()));
+}
 
+void SFHybridApplicationUI::setupWebView(AbstractPane* root){
+    mWebView = root->findChild<WebView*>("webView");
+    connect(mWebView, SIGNAL(messageReceived(QVariantMap)), this, SLOT(onMessageReceived(QVariantMap)));
+}
+
+void SFHybridApplicationUI::registerDefaultPlugins(){
     SFAuthPlugin* authPlugin = new SFAuthPlugin(mWebView);
     authPlugin->setParent(this);
     this->addPlugin(authPlugin);
@@ -61,12 +66,6 @@ SFHybridApplicationUI::SFHybridApplicationUI(bb::cascades::Application *app) :
     SFRestPlugin* restPlugin = new SFRestPlugin(mWebView);
     restPlugin->setParent(this);
     this->addPlugin(restPlugin);
-
-    // Set created root object as the application scene
-    app->setScene(root);
-
-	connect(app, SIGNAL(aboutToQuit()), SFAuthenticationManager::instance(), SLOT(onAboutToQuit()));
-	connect(app, SIGNAL(fullscreen()), SFAuthenticationManager::instance(), SLOT(onAppStart()));
 }
 
 /*
