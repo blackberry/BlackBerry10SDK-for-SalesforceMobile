@@ -22,7 +22,7 @@ Follow this [Get Started](http://blackberry.github.io/BlackBerry10SDK-for-Salesf
 Follow this [Project Configuration](http://blackberry.github.io/BlackBerry10SDK-for-SalesforceMobile/d2/dc8/page_install.html) tutorial to learn how to create new salesforce.com powered Cascades application from scratch.
 
 ##More Application Samples
-[Salesforce REST API Explorer] https://github.com/KiiMobileTech/SalesforceRestExplorer
+[Salesforce REST API Explorer] (https://github.com/KiiMobileTech/SalesforceRestExplorer)
 
 ## Disclaimer
 
