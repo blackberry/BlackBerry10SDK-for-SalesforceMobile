@@ -76,11 +76,11 @@ void SFHybridApplicationUI::registerDefaultPlugins(){
  * }
  */
 void SFHybridApplicationUI::onMessageReceived(const QVariantMap& message){
-	qDebug()<<"message received " << message.value("data").toString();
+	sfDebug()<<"message received " << message.value("data").toString();
 	bb::data::JsonDataAccess jda;
 	QVariant jsonData = jda.loadFromBuffer(message.value("data").toString().toUtf8());
 	if (jda.hasError()){
-		qDebug()<<"error is " << jda.error();
+		sfWarning()<<"error is " << jda.error();
 	}
 	//qDebug()<<"jsonData is " << jsonData;
 	QVariantMap data = jsonData.toMap();
@@ -97,7 +97,7 @@ void SFHybridApplicationUI::onMessageReceived(const QVariantMap& message){
 		SFPlugin* plugin = mPlugins[i];
 		const QMetaObject* metaObject = plugin->metaObject();
 		if (metaObject->className() == command.getClassName()){
-			qDebug()<<"class name match";
+			sfDebug()<<"class name match";
 			for (int i = 0; i < metaObject->methodCount(); i++){
 				QMetaMethod m = metaObject->method(i);
 				//qDebug()<<"metaMethod is " << m.signature();
@@ -114,7 +114,7 @@ void SFHybridApplicationUI::onMessageReceived(const QVariantMap& message){
 	}
 
 	if (!pluginFound){
-		qDebug()<<"plugin not found";
+		sfDebug()<<"plugin not found";
 		QString callbackId = command.getCallbackId();
 		this->sendErrorToJs(callbackId, SFCommandStatus_CLASS_NOT_FOUND_EXCEPTION);
 	}
