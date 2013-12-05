@@ -73,7 +73,6 @@ $(document).ready(function(){initNavTree('d9/dd1/classsf_1_1_s_f_result.html','.
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="../../d8/de1/classsf_1_1_s_f_result-members.html">List of all members</a>  </div>
@@ -82,7 +81,10 @@ $(document).ready(function(){initNavTree('d9/dd1/classsf_1_1_s_f_result.html','.
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>&gt;</code></p>
+<p>Generic wrapper class that carry result of any task performed by the SDK.  
+ <a href="../../d9/dd1/classsf_1_1_s_f_result.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d0/d17/_s_f_result_8h_source.html">core/SFResult.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for sf::SFResult:</div>
 <div class="dyncontent">
@@ -92,13 +94,6 @@ Inheritance diagram for sf::SFResult:</div>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d5b/classsf_1_1_s_f_result_1_1_q_variant_converter.html">QVariantConverter</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/ded/classsf_1_1_s_f_result_1_1_q_variant_converter_3_01_t_01_5_01_4.html">QVariantConverter&lt; T * &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a69cf304fc6a86eeb76a8184cff0c8cf5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a69cf304fc6a86eeb76a8184cff0c8cf5">TaskResult</a> { <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a69cf304fc6a86eeb76a8184cff0c8cf5a04ad3a96b711ee4876353f0e3e1c6d05">TaskResultSuccess</a> = 0, 
@@ -126,6 +121,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0be9e856ad93a408bb129deb1289f0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95557100273382194758540198f94315"><td class="memItemLeft" align="right" valign="top">const QVariant &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a95557100273382194758540198f94315">payload</a> ()</td></tr>
 <tr class="separator:a95557100273382194758540198f94315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae22999843613074d25d77685d8796574"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#ae22999843613074d25d77685d8796574">setPayload</a> (const QVariant &amp;<a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#aa43403a8aa2e0bb9c6f7d01bc1aadab8">payload</a>)</td></tr>
+<tr class="separator:ae22999843613074d25d77685d8796574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a616cf1f150f23aa5a03c735205f23b6d"><td class="memItemLeft" align="right" valign="top">const QVariantHash &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a616cf1f150f23aa5a03c735205f23b6d">tags</a> ()</td></tr>
 <tr class="separator:a616cf1f150f23aa5a03c735205f23b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae39fa5ae33b37fa6a9e39d8401ec84ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#ae39fa5ae33b37fa6a9e39d8401ec84ee">putTag</a> (const QString &amp;key, const QVariant &amp;tag)</td></tr>
@@ -149,19 +146,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a60dd9f06f1141908b768f2c7e95a669d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a31c39626ba8ba5cf8b6c1acf93ffd1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a1a31c39626ba8ba5cf8b6c1acf93ffd1">fromScriptValue</a> (const QScriptValue &amp;obj, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a> *&amp;outObj)</td></tr>
 <tr class="separator:a1a31c39626ba8ba5cf8b6c1acf93ffd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a639559210b7fd2092c3adf8263eb323a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a69cf304fc6a86eeb76a8184cff0c8cf5">TaskResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a639559210b7fd2092c3adf8263eb323a">mStatus</a></td></tr>
-<tr class="separator:a639559210b7fd2092c3adf8263eb323a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a605b96e1935ec20dcb823ae2595d72a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a605b96e1935ec20dcb823ae2595d72a0">mCode</a></td></tr>
-<tr class="separator:a605b96e1935ec20dcb823ae2595d72a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefdcddac943b1b1c661bca868fb6f036"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#aefdcddac943b1b1c661bca868fb6f036">mMessage</a></td></tr>
-<tr class="separator:aefdcddac943b1b1c661bca868fb6f036"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a063180d36b340db42812de27115fcf6a"><td class="memItemLeft" align="right" valign="top">QVariantHash&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a063180d36b340db42812de27115fcf6a">mTags</a></td></tr>
-<tr class="separator:a063180d36b340db42812de27115fcf6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe96ecb4b94c7ba4aafacb309678fbfe"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#afe96ecb4b94c7ba4aafacb309678fbfe">mPayload</a></td></tr>
-<tr class="separator:afe96ecb4b94c7ba4aafacb309678fbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -188,8 +172,12 @@ Friends</h2></td></tr>
 <tr class="separator:aae1b332d1e0d31d2bcc1ede4a2577ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00036">36</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<div class="textblock"><p>Generic wrapper class that carry result of any task performed by the SDK. </p>
+<p>This class is designed to carry information regarding to the result of an operation/task. The class also implemented a payload smart conversion system for convenience.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html" title="Pre-defined SDK error codes. ">SFResultCode</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html" title="An abstract class that defines a concurrent Task-Oriented logic block. ">SFGenericTask</a>, <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html" title="A class for performing basic HTTP/HTTPS transactions. ">SFNetworkAccessTask</a>, <a class="el" href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html" title="The SFRestResourceTask is designed to execute REST transactions and handle the server response...">SFRestResourceTask</a></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Livan Yi Du </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00049">49</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="a69cf304fc6a86eeb76a8184cff0c8cf5"></a>
 <div class="memitem">
@@ -200,18 +188,23 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Task's result code </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a69cf304fc6a86eeb76a8184cff0c8cf5a04ad3a96b711ee4876353f0e3e1c6d05"></a>TaskResultSuccess</em>&nbsp;</td><td class="fielddoc">
+<p>Task finished successfully </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a69cf304fc6a86eeb76a8184cff0c8cf5a4e9b715602d02bfd8d05f013e9795dfa"></a>TaskResultError</em>&nbsp;</td><td class="fielddoc">
+<p>Task finished with error </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a69cf304fc6a86eeb76a8184cff0c8cf5a610487fd5cfc87d2953357a0f5aab517"></a>TaskResultCancelled</em>&nbsp;</td><td class="fielddoc">
+<p>Task is canceled. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="a69cf304fc6a86eeb76a8184cff0c8cf5aaacafc28e7cb1e306cace784feee06d9"></a>TaskResultNotAvailable</em>&nbsp;</td><td class="fielddoc">
+<p>Result is not determined. Default value for new tasks. </p>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00050">50</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00063">63</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -228,6 +221,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Default constructor </p>
 
 </div>
 </div>
@@ -244,6 +238,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constructor with parent QObject </p>
 
 </div>
 </div>
@@ -267,6 +262,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Default destructor </p>
 
 </div>
 </div>
@@ -291,8 +287,10 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#ac519277488b2ba58307e7fecb20eb307">SFResult::code</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the code of the result </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00064">64</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00091">91</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -316,6 +314,8 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Convenient function to create an empty result object. </p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the created object </dd></dl>
 
 </div>
 </div>
@@ -350,6 +350,15 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Convenient function to create a result object with "canceled" status </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>the code of the result. Common code values are defined in <code><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html" title="Pre-defined SDK error codes. ">SFResultCode</a></code>. Default: <a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html#aa87a49b96d32fe7f034d71eed6e2eea3ac9449599343b33e36001bddccd80da3b" title="The task is canceled. ">SFResultCode::SFErrorCancelled</a> </td></tr>
+    <tr><td class="paramname">message</td><td>locolized/non-locolized human readable message string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the created object </dd></dl>
 
 </div>
 </div>
@@ -384,6 +393,15 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Convenient function to create a result object with given code and message </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>the code of the result. Common code values are defined in <code><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html" title="Pre-defined SDK error codes. ">SFResultCode</a></code> </td></tr>
+    <tr><td class="paramname">message</td><td>locolized/non-locolized human readable message string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the created object </dd></dl>
 
 </div>
 </div>
@@ -418,6 +436,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Deserializing function that can be registered with QScriptEngine </p>
 
 </div>
 </div>
@@ -444,8 +463,16 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Get the additional object associated with given key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>the key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the object associated with the <em>key</em> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00077">77</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00125">125</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -469,8 +496,10 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a1d3f6e06af8d6a51d8b7cfeb55b40ae3">SFResult::hasError</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the result is an error result. Otherwise, false </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00066">66</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00095">95</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -494,8 +523,10 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#aa9ae07976ae222975bd75339788f530e">SFResult::message</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the message </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00065">65</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00093">93</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -519,8 +550,11 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Get the raw payload of the result as <code>QVariant</code>. If auto-conversion is needed, use the template version <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a95557100273382194758540198f94315">SFResult::payload&lt;T&gt;()</a></code> </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#aa43403a8aa2e0bb9c6f7d01bc1aadab8">SFResult::payload</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the raw payload of the result as <code>QVariant</code>. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00067">67</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00099">99</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -546,8 +580,13 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Get the payload as specified type T </p>
+<dl class="section return"><dt>Returns</dt><dd>an object with the specified type T. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>When the payload cannot be converted to the specified type: <br/>
+return NULL if T is a pointer type, <br/>
+return an object using default constructor if T is a class type. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00072">72</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00117">117</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -582,8 +621,50 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Add an additional object and associate it with a key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>the key associated with the object </td></tr>
+    <tr><td class="paramname">tag</td><td>the object </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00069">69</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00111">111</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae22999843613074d25d77685d8796574"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sf::SFResult::setPayload </td>
+          <td>(</td>
+          <td class="paramtype">const QVariant &amp;&#160;</td>
+          <td class="paramname"><em>payload</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the raw payload </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#aa43403a8aa2e0bb9c6f7d01bc1aadab8">SFResult::payload</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">payload</td><td>the payload encapsulated in QVariant </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00103">103</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -607,8 +688,10 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a592a478754302c4608894fb7f7d19bef">SFResult::status</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the status code </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00063">63</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00089">89</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -632,8 +715,10 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#ae3ff28cdbdceab41e4d19524949cc13e">SFResult::tags</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the hash map of all additional objects. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00068">68</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00106">106</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -668,6 +753,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Serializing function that can be registered with QScriptEngine </p>
 
 </div>
 </div>
@@ -690,7 +776,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00045">45</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00058">58</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -712,7 +798,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00048">48</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00060">60</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -734,118 +820,7 @@ template&lt;class T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00047">47</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a605b96e1935ec20dcb823ae2595d72a0"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int sf::SFResult::mCode</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00088">88</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aefdcddac943b1b1c661bca868fb6f036"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QString sf::SFResult::mMessage</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00089">89</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="afe96ecb4b94c7ba4aafacb309678fbfe"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QVariant sf::SFResult::mPayload</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00091">91</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a639559210b7fd2092c3adf8263eb323a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a69cf304fc6a86eeb76a8184cff0c8cf5">TaskResult</a> sf::SFResult::mStatus</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00087">87</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a063180d36b340db42812de27115fcf6a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QVariantHash sf::SFResult::mTags</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00090">90</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00059">59</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -867,8 +842,10 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The code of the result. Common code values are defined in <code><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html" title="Pre-defined SDK error codes. ">SFResultCode</a></code> </p>
+<dl class="section note"><dt>Note</dt><dd>This property serves the purpose of categorizing the result. A non-zero code doesn't imply error. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00041">41</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00054">54</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -889,8 +866,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Indicating whether the task finished with error </p>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00040">40</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00053">53</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -911,8 +889,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A human friendly message string for <em>code</em>, localized or not localized. </p>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00042">42</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00055">55</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -933,8 +912,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The payload/content of the result. May contains any kind of data. Use <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a95557100273382194758540198f94315">SFResult::payload&lt;T&gt;()</a></code> if you want auto-convert it </p>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00043">43</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00056">56</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -955,8 +935,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The status code of the corresponding task. See <code>TaskResult</code> </p>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00040">40</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00052">52</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -977,8 +958,9 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A hash map that holds additional objects </p>
 
-<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00044">44</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d0/d17/_s_f_result_8h_source.html#l00057">57</a> of file <a class="el" href="../../d0/d17/_s_f_result_8h_source.html">SFResult.h</a>.</p>
 
 </div>
 </div>
@@ -988,7 +970,7 @@ template&lt;class T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d4/dd0/namespacesf.html">sf</a></li><li class="navelem"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a></li>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:09 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

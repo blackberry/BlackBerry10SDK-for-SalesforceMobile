@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('d9/d10/classsf_1_1_s_f_rest_a_p_i.html
 <p>The <a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">SFRestAPI</a> is the main class to send REST requests to Force.com REST API.  
  <a href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#details">More...</a></p>
 
-<p><code>#include &quot;<a class="el" href="../../d1/da6/_s_f_rest_a_p_i_8h_source.html">SFRestAPI.h</a>&quot;</code></p>
+<p><code>#include &lt;<a class="el" href="../../d1/da6/_s_f_rest_a_p_i_8h_source.html">rest/SFRestAPI.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for sf::SFRestAPI:</div>
 <div class="dyncontent">
@@ -164,7 +164,6 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">SFRestAPI</a> is the main class to send REST requests to Force.com REST API. </p>
-<p>TODO update according to deployment</p>
 <p>The class is singleton and the global instance can be accessed by <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#add50daec5b4a0b0f00ad269d93921041">SFRestAPI::instance()</a></code> </p>
 <h2>Initialization </h2>
 <p>Before using the class, some minimum configuration is required:</p>
@@ -205,7 +204,7 @@ Properties</h2></td></tr>
 <div class="line">fields[<span class="stringliteral">&quot;BillingCity&quot;</span>] = <span class="stringliteral">&quot;Toronto&quot;</span>;</div>
 <div class="line">SFRestRequest * request = <a class="code" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#add50daec5b4a0b0f00ad269d93921041">SFRestAPI::instance</a>()-&gt;<a class="code" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a44951228e6c6de937bf900b8fc63e624">requestForUpdateObject</a>(<span class="stringliteral">&quot;Account&quot;</span>, <span class="stringliteral">&quot;001E000000kJbPTIA0&quot;</span>, fields);</div>
 <div class="line"><a class="code" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#add50daec5b4a0b0f00ad269d93921041">SFRestAPI::instance</a>()-&gt;<a class="code" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a86670774e98a2e5e40df95022f014b4e">sendRestRequest</a>(request, <span class="keyword">this</span>, SLOT(onUpdateResultReady(<a class="code" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a>*)));</div>
-</div><!-- fragment --><dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/d20/classsf_1_1_s_f_authentication_manager.html" title="A singleton class that manages the oAuth 2.0 user agent/refresh flow. ">SFAuthenticationManager</a>, <a class="el" href="../../d2/d6b/classsf_1_1_s_f_abstract_application_u_i.html" title="Abstract base class for the main application UI class. ">SFAbstractApplicationUI</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a>, <a class="el" href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html">SFRestResourceTask</a></dd></dl>
+</div><!-- fragment --><dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/d20/classsf_1_1_s_f_authentication_manager.html" title="A singleton class that manages the oAuth 2.0 user agent/refresh flow. ">SFAuthenticationManager</a>, <a class="el" href="../../d2/d6b/classsf_1_1_s_f_abstract_application_u_i.html" title="Abstract base class for the main application UI class. ">SFAbstractApplicationUI</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a>, <a class="el" href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html" title="The SFRestResourceTask is designed to execute REST transactions and handle the server response...">SFRestResourceTask</a></dd></dl>
 <p>See the <a href="http://www.salesforce.com/us/developer/docs/api_rest/index.htm">Force.com REST API Developer's Guide</a> for more information regarding the Force.com REST API.</p>
 <dl class="section author"><dt>Author</dt><dd>Livan Yi Du </dd></dl>
 
@@ -312,6 +311,21 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a custom <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code>. This function ignores values in <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#ae82bd44c65ea293aa8607b6606ac99f7">SFRestAPI::endPoint</a></code> and <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a5ac238c0bbff47812e6a949850576bfa">SFRestAPI::apiVersion</a></code>. </p>
+<dl class="section note"><dt>Note</dt><dd>Because QScriptEngine is not aware of enums, it cannot correctly interpret the signature. Therefore this function should be only used in C++. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Relative path to your application's instance URL, or absolute path of your HTTP URL. If you use absolute path, you need to include the scheme. </td></tr>
+    <tr><td class="paramname">method</td><td>HTTP verb, GET, POST, HEAD, DELETE, etc. Please see <code><a class="el" href="../../d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fb">HTTPMethod::Type</a></code> for more details. </td></tr>
+    <tr><td class="paramname">params</td><td>The key-value pairs you want included in your REST request. You don't need to escape HTTP reserved characters. </td></tr>
+    <tr><td class="paramname">contentType</td><td>Indicate how to encode key-value pairs stored in <em>params</em>. If your HTTP verb are GET, HEAD or DELETE This the contentType is should be <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505ade4eeb62c50e0025a1031c5c86b21d2d">SFRestRequest::HTTPContentTypeUrlEncoded</a></code>. Please see <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505">SFRestRequest::HTTPContentType</a></code> for more details. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505a57477cd4f57be54505bc539340da3d84">SFRestRequest::HTTPContentTypeMultiPart</a> is not supported in SDK version <em>1.0</em>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#ad4a94296073990b3f1d02a4045ad83ee">SFRestAPI::customRequest(const QString&amp;,const QScriptValue&amp;,const QVariantMap &amp;,const QScriptValue&amp;)</a>, <a class="el" href="../../d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fb">HTTPMethod::Type</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505">SFRestRequest::HTTPContentType</a> </dd></dl>
 
 </div>
 </div>
@@ -350,6 +364,20 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a custom <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code>. This is the corresponding QML version of the API. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Relative path to your application's instance URL, or absolute path of your HTTP URL. If you use absolute path, you need to include the scheme. </td></tr>
+    <tr><td class="paramname">method</td><td>A <code>QScriptValue</code> containing an integer that matches the values of <code><a class="el" href="../../d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fb">HTTPMethod::Type</a></code>. </td></tr>
+    <tr><td class="paramname">params</td><td>The key-value pairs you want included in your REST request. You don't need to escape HTTP reserved characters. </td></tr>
+    <tr><td class="paramname">contentType</td><td>A <code>QScriptValue</code> containing an integer that matches the values of <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505">SFRestRequest::HTTPContentType</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505a57477cd4f57be54505bc539340da3d84">SFRestRequest::HTTPContentTypeMultiPart</a> is not supported in SDK version <em>1.0</em>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a93c9b8b0f3dd55a9cd76e589c456347f">SFRestAPI::customRequest(const QString&amp;,const HTTPMethodType&amp;,const QVariantMap &amp;,const sf::SFRestRequest::HTTPContentType &amp;)</a>, <a class="el" href="../../d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fb">HTTPMethod::Type</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505">SFRestRequest::HTTPContentType</a> </dd></dl>
 
 </div>
 </div>
@@ -432,6 +460,20 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Generate a SOQL query. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fields</td><td>- <code>QStringList</code> of fields to select. e.g. ["Id", "CustomField__c"] </td></tr>
+    <tr><td class="paramname">sObjectType</td><td>- object type to query. e.g. "Account" </td></tr>
+    <tr><td class="paramname">where</td><td>- WHERE clause. e.g. "Name='Salesforce'" </td></tr>
+    <tr><td class="paramname">groupBy</td><td>- <code>QStringList</code> of GROUP BY fields </td></tr>
+    <tr><td class="paramname">having</td><td>- HAVING clause </td></tr>
+    <tr><td class="paramname">orderBy</td><td>- <code>QStringList</code> of ORDER BY fields </td></tr>
+    <tr><td class="paramname">limit</td><td>- number for LIMIT clause. The LIMIT clause is not added if not added if give 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Generated SOQL query </dd></dl>
 
 </div>
 </div>
@@ -470,6 +512,17 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Generate a SOSL search string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchTerm</td><td>- the search term. e.g. "John*" </td></tr>
+    <tr><td class="paramname">fieldScope</td><td>- the SOSL scope, e.g. "IN ALL FIELDS". If empty, defaults to "IN NAME FIELDS" </td></tr>
+    <tr><td class="paramname">objectScope</td><td>- a <code>QVariantMap</code> where each key is an sObject name and each value is a string with the fieldlist and (optional) where, order by, and limit clause for that object. Set empty to search all searchable objects. </td></tr>
+    <tr><td class="paramname">limit</td><td>- overall search limit (max 200) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Generated SOSL search string </dd></dl>
 
 </div>
 </div>
@@ -520,6 +573,17 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which creates a new record of the given type. </p>
+<dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/dome_sobject_create.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/dome_sobject_create.htm</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objectType</td><td>String of the object type. Example: "Account" </td></tr>
+    <tr><td class="paramname">fields</td><td>A QVariantMap containing initial field names and values for the record. For example, {Name: "salesforce.com", TickerSymbol: "CRM"} </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -546,6 +610,17 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which deletes a record of the given type. </p>
+<dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/dome_delete_record.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/dome_delete_record.htm</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objectType</td><td>String of the object type. Example: "Account" </td></tr>
+    <tr><td class="paramname">objectId</td><td>The object's object ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -561,10 +636,10 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code> which lists the available objects and their metadata for your organization's data. </p>
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which lists the available objects and their metadata for your organization's data. </p>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_describeGlobal.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_describeGlobal.htm</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -581,7 +656,7 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code> which completely describes the individual metadata for the sepcified object. </p>
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which completely describes the individual metadata for the sepcified object. </p>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_describe.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_describe.htm</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -590,7 +665,7 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -607,7 +682,7 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code> which lists the summary of the individual metadata for the specified object. </p>
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which lists the summary of the individual metadata for the specified object. </p>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_basic_info.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_basic_info.htm</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -616,7 +691,7 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -633,6 +708,16 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which executes the specified SOQL query. </p>
+<dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_query.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_query.htm</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">soql</td><td>A string containing the query to execute. For example, "SELECT Id,Name from Account ORDER BY Name LIMIT 20" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -648,10 +733,10 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code> which lists available resources for the current configured API version, including resource name and URI. </p>
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which lists available resources for the current configured API version, including resource name and URI. </p>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_discoveryresource.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_discoveryresource.htm</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -684,7 +769,7 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code> which retrieves field values for a record of the given type. </p>
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which retrieves field values for a record of the given type. </p>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_retrieve.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_retrieve.htm</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -695,7 +780,7 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -712,6 +797,16 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which executes the specified SOSL search. </p>
+<dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_search.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_search.htm</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sosl</td><td>a string containing the search to execute. For example, "FIND {needle}" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -744,6 +839,18 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which updates field values on a record of the given type. </p>
+<dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/dome_update_fields.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/dome_update_fields.htm</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objectType</td><td>String of the object type. Example: "Account" </td></tr>
+    <tr><td class="paramname">objectId</td><td>The object's object ID. </td></tr>
+    <tr><td class="paramname">fields</td><td>A QVariantMap containing initial field names and values for the record. For example, {Name: "salesforce.com", TickerSymbol: "CRM"} </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -782,6 +889,19 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which creates or updates record of the given type, based on the given external ID. </p>
+<dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_upsert.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_sobject_upsert.htm</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">objectType</td><td>String of the object type. Example: "Account" </td></tr>
+    <tr><td class="paramname">extIdField</td><td>external ID field name. For example, "accountMaster__c" </td></tr>
+    <tr><td class="paramname">extIdValue</td><td>the record's external ID value </td></tr>
+    <tr><td class="paramname">fields</td><td>A QVariantMap containing initial field names and values for the record. For example, {Name: "salesforce.com", TickerSymbol: "CRM"} </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -797,10 +917,10 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code> which lists summary information about each Salesforce.com version currently available. </p>
+<p>Creates a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code> which lists summary information about each Salesforce.com version currently available. </p>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_versions.htm">http://www.salesforce.com/us/developer/docs/api_rest/Content/resources_versions.htm</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The returned object has parent set to 0. If the method is called in C++, it's your responsibility to manage the memory. If the method is called from QML, the ownership is automatically transfered to the JavaScript engine. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>pointer to created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the created <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>. </dd></dl>
 
 </div>
 </div>
@@ -817,6 +937,13 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchTerm</td><td>The search term to be sanitized. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>SOSL-safe version of search term </dd></dl>
 
 </div>
 </div>
@@ -855,21 +982,21 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Send REST request asynchronously. The result will be delivered to <em>resultReciever</em> as an instance of <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a></code>.</p>
-<p>The <em>tag</em> is an arbitrary value that will be carried on into <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a></code> and is accessible using <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a616cf1f150f23aa5a03c735205f23b6d">SFResult::tags()</a></code> with global variable <code><a class="el" href="../../d4/dd0/namespacesf.html#a9c35d5561569e4057ebbe4cc747cf36d">kSFRestRequestTag</a></code> as key;</p>
+<p>Send REST request asynchronously. The result will be delivered to <em>resultReciever</em> as an instance of <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a></code>.</p>
+<p>The <em>tag</em> is an arbitrary value that will be carried on into <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a></code> and is accessible using <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html#a616cf1f150f23aa5a03c735205f23b6d">SFResult::tags()</a></code> with global variable <code><a class="el" href="../../d4/dd0/namespacesf.html#a9c35d5561569e4057ebbe4cc747cf36d" title="The key used to retrieve tag object carried in SFResult. ">kSFRestRequestTag</a></code> as key;</p>
 <dl class="section remark"><dt>Remarks</dt><dd>This function takes ownership of the <em>request</em>. The <em>request</em> will be automatically deleted after the <em>resultRecieverSlot</em> exit. </dd>
 <dd>
 This function is designed for C++. QML should call the corresponding QML version API. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">request</td><td>A pointer to a instance of <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code>. </td></tr>
+    <tr><td class="paramname">request</td><td>A pointer to a instance of <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code>. </td></tr>
     <tr><td class="paramname">resultReciever</td><td>The result receiver QObject. </td></tr>
     <tr><td class="paramname">resultRecieverSlot</td><td>The method in receiver object. You must use <code>SLOT()</code> macro. The slot should take one parameter with type of <code>SFResult*</code>. </td></tr>
     <tr><td class="paramname">tag</td><td>An arbitrary value that you want to pass on to the receiver slot. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a>, <a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#ae4e4dfa695ba8e6f3c4fa9f7e323494b">SFRestAPI::sendRestRequest(sf::SFRestRequest*,const QScriptValue&amp;,const QScriptValue&amp;,const QVariant&amp;)</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a>, <a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#ae4e4dfa695ba8e6f3c4fa9f7e323494b">SFRestAPI::sendRestRequest(sf::SFRestRequest*,const QScriptValue&amp;,const QScriptValue&amp;,const QVariant&amp;)</a> </dd></dl>
 
 </div>
 </div>
@@ -911,14 +1038,14 @@ This function is designed for C++. QML should call the corresponding QML version
 <p>This is the QML version of the same API.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">request</td><td>A pointer to a instance of <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></code>. </td></tr>
+    <tr><td class="paramname">request</td><td>A pointer to a instance of <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a></code>. </td></tr>
     <tr><td class="paramname">resultReciever</td><td>A QScriptValue containing a pointer to the receiver object </td></tr>
     <tr><td class="paramname">resultRecieverSlot</td><td>A QScriptValue containing a script function. The function should take one parameter. </td></tr>
     <tr><td class="paramname">tag</td><td>An arbitrary value that you want to pass on to the receiver slot. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a>, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">SFResult</a>, <a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a86670774e98a2e5e40df95022f014b4e">SFRestAPI::sendRestRequest(SFRestRequest*,QObject*,const char*,const QVariant &amp;)</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a>, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a>, <a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a86670774e98a2e5e40df95022f014b4e">SFRestAPI::sendRestRequest(SFRestRequest*,QObject*,const char*,const QVariant &amp;)</a> </dd></dl>
 
 </div>
 </div>
@@ -1120,7 +1247,7 @@ This function is designed for C++. QML should call the corresponding QML version
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d4/dd0/namespacesf.html">sf</a></li><li class="navelem"><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html">SFRestAPI</a></li>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:09 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -24,9 +24,7 @@ var dir_5541bcfb375d108beb0317d276784328 =
       [ "SFNetworkAccessTask", "d2/dc0/classsf_1_1_s_f_network_access_task.html", "d2/dc0/classsf_1_1_s_f_network_access_task" ]
     ] ],
     [ "SFResult.h", "d0/d17/_s_f_result_8h.html", [
-      [ "SFResult", "d9/dd1/classsf_1_1_s_f_result.html", "d9/dd1/classsf_1_1_s_f_result" ],
-      [ "QVariantConverter", "d8/d5b/classsf_1_1_s_f_result_1_1_q_variant_converter.html", null ],
-      [ "QVariantConverter< T * >", "db/ded/classsf_1_1_s_f_result_1_1_q_variant_converter_3_01_t_01_5_01_4.html", null ]
+      [ "SFResult", "d9/dd1/classsf_1_1_s_f_result.html", "d9/dd1/classsf_1_1_s_f_result" ]
     ] ],
     [ "SFSecurityLockout.h", "d6/d0c/_s_f_security_lockout_8h.html", [
       [ "SFSecurityLockout", "dc/d29/classsf_1_1_s_f_security_lockout.html", "dc/d29/classsf_1_1_s_f_security_lockout" ]

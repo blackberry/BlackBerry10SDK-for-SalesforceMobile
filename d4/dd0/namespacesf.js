@@ -18,5 +18,11 @@ var namespacesf =
     [ "SFOAuthInfo", "d8/db0/classsf_1_1_s_f_o_auth_info.html", "d8/db0/classsf_1_1_s_f_o_auth_info" ],
     [ "SFRestAPI", "d9/d10/classsf_1_1_s_f_rest_a_p_i.html", "d9/d10/classsf_1_1_s_f_rest_a_p_i" ],
     [ "SFRestRequest", "d8/d40/classsf_1_1_s_f_rest_request.html", "d8/d40/classsf_1_1_s_f_rest_request" ],
-    [ "SFRestResourceTask", "d8/da5/classsf_1_1_s_f_rest_resource_task.html", "d8/da5/classsf_1_1_s_f_rest_resource_task" ]
+    [ "SFRestResourceTask", "d8/da5/classsf_1_1_s_f_rest_resource_task.html", "d8/da5/classsf_1_1_s_f_rest_resource_task" ],
+    [ "SFAuthPlugin", "d3/d9f/classsf_1_1_s_f_auth_plugin.html", "d3/d9f/classsf_1_1_s_f_auth_plugin" ],
+    [ "SFHybridApplicationUI", "df/de8/classsf_1_1_s_f_hybrid_application_u_i.html", "df/de8/classsf_1_1_s_f_hybrid_application_u_i" ],
+    [ "SFInvokedUrlCommand", "d4/dcc/classsf_1_1_s_f_invoked_url_command.html", "d4/dcc/classsf_1_1_s_f_invoked_url_command" ],
+    [ "SFPlugin", "d7/d4c/classsf_1_1_s_f_plugin.html", "d7/d4c/classsf_1_1_s_f_plugin" ],
+    [ "SFPluginResult", "de/d65/classsf_1_1_s_f_plugin_result.html", "de/d65/classsf_1_1_s_f_plugin_result" ],
+    [ "SFRestPlugin", "d7/dde/classsf_1_1_s_f_rest_plugin.html", "d7/dde/classsf_1_1_s_f_rest_plugin" ]
 ];

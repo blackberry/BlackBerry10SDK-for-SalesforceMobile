@@ -80,7 +80,10 @@ $(document).ready(function(){initNavTree('d8/d40/classsf_1_1_s_f_rest_request.ht
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>&gt;</code></p>
+<p>The <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a> holds a request that comply with Force.com REST API standard and can be sent using <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">SFRestAPI</a></code>.  
+ <a href="../../d8/d40/classsf_1_1_s_f_rest_request.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">rest/SFRestRequest.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for sf::SFRestRequest:</div>
 <div class="dyncontent">
@@ -181,8 +184,13 @@ Friends</h2></td></tr>
 <tr class="separator:a2d2dd869c6a11cafd1a167fb273d3a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00035">35</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<div class="textblock"><p>The <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a> holds a request that comply with Force.com REST API standard and can be sent using <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">SFRestAPI</a></code>. </p>
+<p>The class is responsible to hold necessary information and generate a <code>QNetworkRequest</code> that is acceptable by Force.com REST API. If request parameters are added, you need to choose the encoding method by setting property <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a11cb3fae803cf280d27be88191e4fdc1">SFRestRequest::paramsContentType</a></code>. For regular usage, you don't need to construct the object by yourself. <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">SFRestAPI</a></code> provide with convenient functions for you to create various <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">SFRestRequest</a> objects. This class also support customized request body if built-in parameter encoding is not sufficient.</p>
+<p>For security reason, this class do not hold information about current Salesforce session. It retrieves access token and instance URL at runtime. This means if you logout after you create a request, the class cannot inject valid access token into generated <code>QNetworkRequest</code>.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">SFRestAPI</a>, <a class="el" href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html" title="The SFRestResourceTask is designed to execute REST transactions and handle the server response...">SFRestResourceTask</a></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Livan Yi Du </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00053">53</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="ac4cbb64af5632b22ad4079b9913d4505"></a>
 <div class="memitem">
@@ -193,16 +201,21 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The encoding type of parameters. Typically with Force.com APIs, use <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505ade4eeb62c50e0025a1031c5c86b21d2d">SFRestRequest::HTTPContentTypeUrlEncoded</a></code> for GET, HEAD and DELETE and use <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505ab5f94a3e88e8487e04eddf32dc1f2d98">SFRestRequest::HTTPContentTypeJSON</a></code> for other HTTP verbs. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ac4cbb64af5632b22ad4079b9913d4505ade4eeb62c50e0025a1031c5c86b21d2d"></a>HTTPContentTypeUrlEncoded</em>&nbsp;</td><td class="fielddoc">
+<p>parameters are encoded into the URL as key-value pair. e.g. "?firstname=John&amp;lastname=Smith" </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac4cbb64af5632b22ad4079b9913d4505ab5f94a3e88e8487e04eddf32dc1f2d98"></a>HTTPContentTypeJSON</em>&nbsp;</td><td class="fielddoc">
+<p>parameters are encoded into request body using JSON format. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac4cbb64af5632b22ad4079b9913d4505a57477cd4f57be54505bc539340da3d84"></a>HTTPContentTypeMultiPart</em>&nbsp;</td><td class="fielddoc">
+<p>use HTTP "multipart/form-data" encoding. </p>
+<dl class="section warning"><dt>Warning</dt><dd>currently not implemented. </dd></dl>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00048">48</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00078">78</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -262,6 +275,18 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Explicit constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>parent QObject. </td></tr>
+    <tr><td class="paramname">path</td><td>relative or absolute path of the requested resource. See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a9a9f62ca8cff9274154a446919861e00">SFRestRequest::path</a></code> for more details. </td></tr>
+    <tr><td class="paramname">method</td><td>HTTP verb of the request. See <code><a class="el" href="../../d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fb">HTTPMethod::Type</a></code> for possible values. </td></tr>
+    <tr><td class="paramname">apiVersion</td><td>Force.com REST API version string. See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a55128b1714e51ba0a98530a681bf75cb">SFRestRequest::apiVersion</a></code> for more details. </td></tr>
+    <tr><td class="paramname">endPoint</td><td>Force.com REST API end point. See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a5a5369728a534ec73d2b992e471b61b5">SFRestRequest::endPoint</a></code> for more details. </td></tr>
+    <tr><td class="paramname">userAgent</td><td>User-Agent field in request's header. If not set, the SDK will use auto-generated string. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -285,6 +310,7 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Default destructor </p>
 
 </div>
 </div>
@@ -309,8 +335,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a55128b1714e51ba0a98530a681bf75cb">SFRestRequest::apiVersion</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00070">70</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00122">122</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -334,8 +361,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a5a5369728a534ec73d2b992e471b61b5">SFRestRequest::endPoint</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00068">68</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00118">118</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -360,6 +388,14 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A helper function that extract the Force.com's access token from given <code>QNetworkRequest</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>the QNetworkRequest </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the access token used in the given request. </dd></dl>
 
 </div>
 </div>
@@ -383,8 +419,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a3865cb3827c0ff66de1346dc000a94b9">SFRestRequest::method</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00074">74</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00130">130</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -401,6 +438,15 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Get the value of the parameter associated with given key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>the key of the parameter to get </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the parameter value encapsulated in <code>QVariant</code>. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a231826e1d0fa76de14919894da2d085f">SFRestRequest::requestParams</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a78c152429ed9a37b3b8d1906281fca28">setParam()</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a8b4d055c17a70befa5af933f16b85d73">removeParam()</a> </dd></dl>
 
 </div>
 </div>
@@ -424,8 +470,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a11cb3fae803cf280d27be88191e4fdc1">SFRestRequest::paramsContentType</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00080">80</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00142">142</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -449,8 +496,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a9a9f62ca8cff9274154a446919861e00">SFRestRequest::path</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00072">72</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00126">126</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -483,6 +531,16 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>This method prepares all necessary objects that can be used by <code>QNetworkAccessManager</code> to send the request. It populate the <code>QNetworkRequest</code> object using Force.com session's instance URL and injects necessary headers for authentication and data encoding. It also populates a <code>QByteArray</code> as request's content body. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOutRequest</td><td>the pointer to the <code>QNetworkRequest</code> to be populated. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOutData</td><td>the pointer to the <code>QByteArray</code> to be filled </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pOutErrorMsg</td><td>the pointer to the string buffer for any potential error message. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>standard <code><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html" title="Pre-defined SDK error codes. ">SFResultCode</a></code> indicating the result of this operation. See <code><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html#aa87a49b96d32fe7f034d71eed6e2eea3">SFResultCode::Type</a></code> for possible values. </dd></dl>
 
 </div>
 </div>
@@ -499,6 +557,14 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Remove the key-value pair specified by given key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>the key of the parameter to remove </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a231826e1d0fa76de14919894da2d085f">SFRestRequest::requestParams</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a6d780847ba885054452ee619ad73a417">param()</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a78c152429ed9a37b3b8d1906281fca28">setParam()</a> </dd></dl>
 
 </div>
 </div>
@@ -522,8 +588,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a231826e1d0fa76de14919894da2d085f">SFRestRequest::requestParams</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00078">78</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00138">138</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -547,8 +614,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#aa02a1efd48a1e288dedfa3a7ca8c639b">SFRestRequest::requestRawData</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00082">82</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00146">146</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -572,8 +640,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a3985a2f9f8e272699ffe93dac7c7558d">SFRestRequest::requestRawHeaders</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00084">84</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00150">150</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -598,8 +667,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a55128b1714e51ba0a98530a681bf75cb">SFRestRequest::apiVersion</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00071">71</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00124">124</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -624,8 +694,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a5a5369728a534ec73d2b992e471b61b5">SFRestRequest::endPoint</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00069">69</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00120">120</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -650,8 +721,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a3865cb3827c0ff66de1346dc000a94b9">SFRestRequest::method</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00075">75</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00132">132</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -678,6 +750,15 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Set the value of the parameter associated with given key </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>the key of the parameter to set </td></tr>
+    <tr><td class="paramname">value</td><td>the <code>QVariant</code> value to set to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a231826e1d0fa76de14919894da2d085f">SFRestRequest::requestParams</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a6d780847ba885054452ee619ad73a417">param()</a>, <a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a8b4d055c17a70befa5af933f16b85d73">removeParam()</a> </dd></dl>
 
 </div>
 </div>
@@ -702,8 +783,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a11cb3fae803cf280d27be88191e4fdc1">SFRestRequest::paramsContentType</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00081">81</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00144">144</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -728,8 +810,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a9a9f62ca8cff9274154a446919861e00">SFRestRequest::path</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00073">73</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00128">128</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -754,8 +837,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a231826e1d0fa76de14919894da2d085f">SFRestRequest::requestParams</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00079">79</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00140">140</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -780,8 +864,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#aa02a1efd48a1e288dedfa3a7ca8c639b">SFRestRequest::requestRawData</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00083">83</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00148">148</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -806,8 +891,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a3985a2f9f8e272699ffe93dac7c7558d">SFRestRequest::requestRawHeaders</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00085">85</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00152">152</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -832,8 +918,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a171747cf63a1e9d8b69e00eaeac6e5ac">SFRestRequest::userAgent</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00077">77</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00136">136</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -857,8 +944,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>See <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a171747cf63a1e9d8b69e00eaeac6e5ac">SFRestRequest::userAgent</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00076">76</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00134">134</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -881,7 +969,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00062">62</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00100">100</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -903,8 +991,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The Force.com REST API version of this request. e.g. "/29.0" </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00039">39</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00057">57</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -925,8 +1014,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The end point of this request, relative to the session's instance URL. <b>Default:</b> "/services/data" </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00038">38</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00056">56</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -947,8 +1037,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The HTTP verb of this request. For possible values, see <code><a class="el" href="../../d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fb">HTTPMethod::Type</a></code> </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00041">41</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00063">63</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -970,7 +1061,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00044">44</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00072">72</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -991,8 +1082,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The relative/absolute path of requested resource. If the value is relative path, the path will be appended after Force.com session's instance URL, <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a5a5369728a534ec73d2b992e471b61b5">SFRestRequest::endPoint</a></code> and <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a55128b1714e51ba0a98530a681bf75cb">SFRestRequest::apiVersion</a></code>. If absolute path is given, <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a5a5369728a534ec73d2b992e471b61b5">SFRestRequest::endPoint</a></code> and <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#a55128b1714e51ba0a98530a681bf75cb">SFRestRequest::apiVersion</a></code> are ignored </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00040">40</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00062">62</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -1013,8 +1105,10 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A collection of key-value pairs contains parameters that you want to send in this request. The contained values is converted into <code>QString</code> when the request is used. Any value that cannot be converted to QString will be ignored. The encoding type of parameters. </p>
+<dl class="section note"><dt>Note</dt><dd>This property is ignored and <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505ade4eeb62c50e0025a1031c5c86b21d2d">SFRestRequest::HTTPContentTypeUrlEncoded</a></code> is used if HTTP verb is set to GET, HEAD, DELETE. For supported format, see <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#ac4cbb64af5632b22ad4079b9913d4505">SFRestRequest::HTTPContentType</a></code> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00043">43</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00068">68</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -1035,8 +1129,10 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The raw data of the request body. </p>
+<dl class="section note"><dt>Note</dt><dd>Assigning this property automatically clear the parameters assigned via <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html#af845dbe8e7640486c7c9b3875acd710d">setRequestParams()</a></code> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00045">45</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00073">73</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -1057,8 +1153,10 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Key-value pairs that will be added to the request header. </p>
+<dl class="section note"><dt>Note</dt><dd>entries added will overwrite default values. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00046">46</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00074">74</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -1079,8 +1177,9 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The user agent of this request. The default value is set by the SDK </p>
 
-<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00042">42</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html#l00064">64</a> of file <a class="el" href="../../d8/d16/_s_f_rest_request_8h_source.html">SFRestRequest.h</a>.</p>
 
 </div>
 </div>
@@ -1090,7 +1189,7 @@ Friends</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d4/dd0/namespacesf.html">sf</a></li><li class="navelem"><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">SFRestRequest</a></li>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:09 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -82,15 +82,18 @@ $(document).ready(function(){initNavTree('d0/def/classsf_1_1_s_f_generic_task.ht
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>&gt;</code></p>
+<p>An abstract class that defines a concurrent Task-Oriented logic block.  
+ <a href="../../d0/def/classsf_1_1_s_f_generic_task.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">core/SFGenericTask.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for sf::SFGenericTask:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="../../d0/def/classsf_1_1_s_f_generic_task.png" usemap="#sf::SFGenericTask_map" alt=""/>
   <map id="sf::SFGenericTask_map" name="sf::SFGenericTask_map">
-<area href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html" alt="sf::SFNetworkAccessTask" shape="rect" coords="84,112,242,136"/>
-<area href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html" alt="sf::SFRestResourceTask" shape="rect" coords="84,168,242,192"/>
+<area href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html" title="A class for performing basic HTTP/HTTPS transactions. " alt="sf::SFNetworkAccessTask" shape="rect" coords="84,112,242,136"/>
+<area href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html" title="The SFRestResourceTask is designed to execute REST transactions and handle the server response..." alt="sf::SFRestResourceTask" shape="rect" coords="84,168,242,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -117,16 +120,16 @@ Public Slots</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signals</h2></td></tr>
-<tr class="memitem:ab4745d81afd89756f5878109e10cbc68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ab4745d81afd89756f5878109e10cbc68">taskPreExecution</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *)</td></tr>
-<tr class="separator:ab4745d81afd89756f5878109e10cbc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77bdb3e77050f992b47454fe84cb1372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a77bdb3e77050f992b47454fe84cb1372">taskFinished</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *)</td></tr>
-<tr class="separator:a77bdb3e77050f992b47454fe84cb1372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70600aff305994595572ccb51a8a89d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a70600aff305994595572ccb51a8a89d9">taskResultReady</a> (<a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a> *)</td></tr>
-<tr class="separator:a70600aff305994595572ccb51a8a89d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87d2f7874a6df3d41a73232e61703b39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a87d2f7874a6df3d41a73232e61703b39">taskShouldRetry</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a> *)</td></tr>
-<tr class="separator:a87d2f7874a6df3d41a73232e61703b39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae815a06115897497a759c0ffbc28bd54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ae815a06115897497a759c0ffbc28bd54">taskDidAutoRetry</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *)</td></tr>
-<tr class="separator:ae815a06115897497a759c0ffbc28bd54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d232568c204047b00a26a0bbf38b79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#af5d232568c204047b00a26a0bbf38b79">taskPreExecution</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *task)</td></tr>
+<tr class="separator:af5d232568c204047b00a26a0bbf38b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19b23687a5291186bee702f929742256"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a19b23687a5291186bee702f929742256">taskFinished</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *task)</td></tr>
+<tr class="separator:a19b23687a5291186bee702f929742256"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e86e7cfa6bea65262cb04e01ce0f57c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a1e86e7cfa6bea65262cb04e01ce0f57c">taskResultReady</a> (<a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a> *<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a801586715a6b4eec8808419891215f1b">result</a>)</td></tr>
+<tr class="separator:a1e86e7cfa6bea65262cb04e01ce0f57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa156ccc1828700788e4719724efbd987"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#aa156ccc1828700788e4719724efbd987">taskShouldRetry</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *task, <a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a> *<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a801586715a6b4eec8808419891215f1b">result</a>)</td></tr>
+<tr class="separator:aa156ccc1828700788e4719724efbd987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5696874a31fbb409889ac073caa98ec2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a5696874a31fbb409889ac073caa98ec2">taskDidAutoRetry</a> (<a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *task)</td></tr>
+<tr class="separator:a5696874a31fbb409889ac073caa98ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -211,8 +214,16 @@ Properties</h2></td></tr>
 <tr class="separator:a3e1dc132145cfc44f98f17a3d8f82576"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00037">37</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<div class="textblock"><p>An abstract class that defines a concurrent Task-Oriented logic block. </p>
+<p>The purpose of this class is to establish a task-oriented logic block which can be easily executed concurrently. The class inherits from <code>QRunnable</code> which can be executed in separate thread. It also implemented <code>QObject</code> features in order to take the advantage of event loop and signal-slot architecture.</p>
+<p>The class defined numbers of properties and signals for reporting progress and controlling work flow. It also provides various of virtual functions for subclass to override. In addition, the class implemented numbers of convenient functions to create/manage objects that is commonly used in multi-threading environment.</p>
+<p>To create a simple concurrent task, all you need to do is to create a subclass of <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html" title="An abstract class that defines a concurrent Task-Oriented logic block. ">SFGenericTask</a></code> and implement the <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#afcc11e69b75d8734ca9838f820e09b0c">execute()</a></code>. Within your <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#afcc11e69b75d8734ca9838f820e09b0c">execute()</a></code> function, make sure you populate the <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ab46f75ff118a468aca19b6f5f29c4d13">SFGenericTask::mResult</a></code> object and return proper status code.</p>
+<p>When you want to execute your concurrent task, create an instance of your subclass and call <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a6b8ab174296090a2c10231c82b43de8d">startTaskAsync()</a></code>. The base class implementation makes sure that the logic in <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#afcc11e69b75d8734ca9838f820e09b0c">execute()</a></code> is executed in separate thread and the result object you created in that function is moved to correct thread when it's delivered.</p>
+<p>It is up to developers on how to use this class. <code><a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html" title="A class for performing basic HTTP/HTTPS transactions. ">SFNetworkAccessTask</a></code> is a concrete implementation of this class. It demonstrates that you could create a much more complex operation out of <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html" title="An abstract class that defines a concurrent Task-Oriented logic block. ">SFGenericTask</a></code> by overriding functions.</p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a>, <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html" title="A class for performing basic HTTP/HTTPS transactions. ">SFNetworkAccessTask</a>, <a class="el" href="../../d8/da5/classsf_1_1_s_f_rest_resource_task.html" title="The SFRestResourceTask is designed to execute REST transactions and handle the server response...">SFRestResourceTask</a></dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Livan Yi Du </dd></dl>
+
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00064">64</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155"></a>
 <div class="memitem">
@@ -223,22 +234,29 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Possible status </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155a3f0fda32518e769c5254ba3bac2b6f11"></a>TaskStatusNotStarted</em>&nbsp;</td><td class="fielddoc">
+<p>The task is not started yet </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155a0b03ea8fdb3d307329bf2d99e56e6b6f"></a>TaskStatusRunning</em>&nbsp;</td><td class="fielddoc">
+<p>The task is executing </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155a4f36b4c1fb9b5df8b7df2deab6aaf9e7"></a>TaskStatusFinished</em>&nbsp;</td><td class="fielddoc">
+<p>The task is finished without error </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155a765e45792615b3ae9536ee47d8dbbc02"></a>TaskStatusError</em>&nbsp;</td><td class="fielddoc">
+<p>The task is finished with error </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155a299f363d5fbd3ea333f28f0cf45ad866"></a>TaskStatusCancelled</em>&nbsp;</td><td class="fielddoc">
+<p>The task is canceled </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ac2f6b1a866bea9806c2c7ae231e5e155aa0575cf110b74e0387c5d1c1dc4a6c35"></a>TaskStatusWillRetry</em>&nbsp;</td><td class="fielddoc">
+<p>The task will be re-started </p>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00053">53</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00095">95</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -256,6 +274,12 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cancellable</td><td>whether the task can be canceled </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -279,6 +303,7 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Default destructor </p>
 
 </div>
 </div>
@@ -303,6 +328,7 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Request to cancel the task. If <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a8afabfcec8a36c5cc73a4684f60d56e3">SFGenericTask::cancellable</a></code> is set to false, calling this function have no effect </p>
 
 </div>
 </div>
@@ -326,6 +352,7 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Called after the <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#afcc11e69b75d8734ca9838f820e09b0c">execute()</a></code>. The base implementation is responsible to clean up the memory, re-try and emit signals. Subclass should always call base. </p>
 
 <p>Reimplemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#a32db4e5bd8776843b65fe6330bdfe592">sf::SFNetworkAccessTask</a>.</p>
 
@@ -351,6 +378,8 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Create or re-use a <code>QEventLoop</code>. </p>
+<dl class="section return"><dt>Returns</dt><dd>For each task, it guarantees to return the same event loop object. </dd></dl>
 
 </div>
 </div>
@@ -374,8 +403,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Pure member function. The subclass should override this function. Guaranteed called in execution thread and is try-catch protected </p>
+<dl class="section return"><dt>Returns</dt><dd>the status of the task after the execution. Please see <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ac2f6b1a866bea9806c2c7ae231e5e155">SFGenericTask::TaskStatus</a></code> for details. </dd></dl>
 
-<p>Implemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#aaa568a418c89339c9ae35e41e83c9887">sf::SFNetworkAccessTask</a>.</p>
+<p>Implemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#a38f2a5552de4289071562761361f71b2">sf::SFNetworkAccessTask</a>.</p>
 
 </div>
 </div>
@@ -399,8 +430,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Whether auto-retry is enabled. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a7c9b8132a71166d70ec5f497e90a2b7c">setAutoRetry()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a3e1dc132145cfc44f98f17a3d8f82576">SFGenericTask::autoRetry</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00069">69</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00120">120</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -424,8 +457,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Whether this task can be canceled. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a6b678573ffe890d074cbc7d6b11da81a">setCancellable()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a8afabfcec8a36c5cc73a4684f60d56e3">SFGenericTask::cancellable</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00067">67</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00116">116</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -449,6 +484,8 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>whether the task is requested to cancel. Subclass should constantly check this flag if it support canceling. This is a thread-safe function. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a9a0aca9416164de9562a73f2fd671aa7">setCancelled()</a> </dd></dl>
 
 </div>
 </div>
@@ -472,6 +509,8 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Create or re-use a <code>QMutex</code>. </p>
+<dl class="section return"><dt>Returns</dt><dd>For each task, it guarantees to return the same mutex object. </dd></dl>
 
 </div>
 </div>
@@ -495,6 +534,7 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Called in execution thread before the <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#afcc11e69b75d8734ca9838f820e09b0c">execute()</a></code>. </p>
 
 <p>Reimplemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#a44131471175c037f08cf80be9b4f1de6">sf::SFNetworkAccessTask</a>.</p>
 
@@ -521,6 +561,14 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>This is a convenient function to push the object to task object's thread and set the task object as the parent. After calling this function. it's safe to remove references to the given object without potential memory leak. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is usually called in execution thread, and the function assume the given object was created in the current executing thread. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">object</td><td>the object you want to get rid of. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -555,6 +603,14 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Called before the task is added to thread pool. The base implementation responsible to connect result handling slot and set necessary properties for proper memory management. Subclass should always call base implementation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">receiver</td><td>The QObject that will handle the result </td></tr>
+    <tr><td class="paramname">slot</td><td>The Qt slot that respond to <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a1e86e7cfa6bea65262cb04e01ce0f57c">taskResultReady(sf::SFResult*)</a></code>. The string should be generated using macro <code>SLOT()</code> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -589,8 +645,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Add an <code>QVariant</code> to the task and associate it with a key. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a1c20b1a741a3c2483e6a4a1f5cdbb139">tags()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a6e815e9fa4ccd5cefc1145d571b2afb3">SFGenericTask::tags</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00073">73</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00128">128</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -614,8 +672,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the result object of the task </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00065">65</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00112">112</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -639,6 +698,8 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Called when retry is necessary. This function is responsible to reset the task for re-start. </p>
+<dl class="section return"><dt>Returns</dt><dd>whether the task is re-started. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#a030e4a7829b720e1cd2b8f22c4d4b1ab">sf::SFNetworkAccessTask</a>.</p>
 
@@ -664,8 +725,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>how many re-try attempts are allowed. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a2a6baeacab718c3f4ec2685dae0ca115">setRetryCount()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00071">71</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00124">124</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -681,6 +744,7 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Entry point of concurrent execution. Subclass should not call this function directly. </p>
 
 </div>
 </div>
@@ -705,8 +769,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Set whether auto-retry is enabled. If enabled, the task would re-start itself and decrement <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a83b0c009f9d1c92974e1adbd20835e6a">SFGenericTask::retryCount()</a></code> by 1, whenever error occurred. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a68d06e96c611a369a62968da0b9f4259">isAutoRetry()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a3e1dc132145cfc44f98f17a3d8f82576">SFGenericTask::autoRetry</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00070">70</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00122">122</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -723,6 +789,8 @@ Properties</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Set whether this task can be canceled. This flag should be set before the task is started. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a0b7ba971935217698de1527d2f476ae0">isCancellable()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a8afabfcec8a36c5cc73a4684f60d56e3">SFGenericTask::cancellable</a> </dd></dl>
 
 </div>
 </div>
@@ -747,6 +815,8 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Set a flag that indicating the task is requested to cancel. This is a thread-safe function. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a6a939e56eb95ac9a4cc79a6da522d6ec">isCancelled()</a> </dd></dl>
 
 </div>
 </div>
@@ -771,8 +841,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Set how many re-try attempts are allowed. Setting this property after the task started result in undefined behavior. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a83b0c009f9d1c92974e1adbd20835e6a">retryCount()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00072">72</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00126">126</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -807,8 +879,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Start the task asynchronously and connect a result handler to it </p>
 
-<p>Reimplemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#a0a826c8511c394a3f9317b7f5b224548">sf::SFNetworkAccessTask</a>.</p>
+<p>Reimplemented in <a class="el" href="../../d2/dc0/classsf_1_1_s_f_network_access_task.html#abb64b6f61006e3afe2c701b3708954db">sf::SFNetworkAccessTask</a>.</p>
 
 </div>
 </div>
@@ -832,8 +905,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>status of the task </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00064">64</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00110">110</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -857,12 +931,14 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the hash map of all additional objects associated with this task. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#aa7f7821bcffe00e8eaf7a3b8864ec939">putTag()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00066">66</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00114">114</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae815a06115897497a759c0ffbc28bd54"></a>
+<a class="anchor" id="a5696874a31fbb409889ac073caa98ec2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -873,7 +949,7 @@ Properties</h2></td></tr>
           <td class="memname">void sf::SFGenericTask::taskDidAutoRetry </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>task</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -883,10 +959,17 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Emitted when auto retry happened </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>the task that re-started itself </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="a77bdb3e77050f992b47454fe84cb1372"></a>
+<a class="anchor" id="a19b23687a5291186bee702f929742256"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -897,7 +980,7 @@ Properties</h2></td></tr>
           <td class="memname">void sf::SFGenericTask::taskFinished </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>task</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -907,10 +990,18 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Emitted after the task is finished. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>the task that is finished. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The implementation only guarantee that the task object is valid at the time when slots are invoked. <code>deleteLater()</code> is called after the signal is emitted. So attempting to dereference the pointer at later time may cause memory access error. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ab4745d81afd89756f5878109e10cbc68"></a>
+<a class="anchor" id="af5d232568c204047b00a26a0bbf38b79"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -921,7 +1012,7 @@ Properties</h2></td></tr>
           <td class="memname">void sf::SFGenericTask::taskPreExecution </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>task</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -931,10 +1022,17 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Emitted before the <code><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#afcc11e69b75d8734ca9838f820e09b0c">execute()</a></code> is invoked. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>the task that emitted the signal. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="a70600aff305994595572ccb51a8a89d9"></a>
+<a class="anchor" id="a1e86e7cfa6bea65262cb04e01ce0f57c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -945,7 +1043,7 @@ Properties</h2></td></tr>
           <td class="memname">void sf::SFGenericTask::taskResultReady </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname"><em>result</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -955,10 +1053,18 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Emitted when result is ready </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>the result object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>the object is only valid within the scope of connected slot. It will be deleted when all connected slots are finished. So you have to collect all data before the <em>result</em> object get deallocated. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a87d2f7874a6df3d41a73232e61703b39"></a>
+<a class="anchor" id="aa156ccc1828700788e4719724efbd987"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -969,13 +1075,13 @@ Properties</h2></td></tr>
           <td class="memname">void sf::SFGenericTask::taskShouldRetry </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">sf::SFGenericTask</a> *&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramname"><em>task</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a> *&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -989,6 +1095,14 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Emitted when manual retry is required. It's connected slot's responsibility to re-start the task or delete the task. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>the task that want to be re-started </td></tr>
+    <tr><td class="paramname">result</td><td>the object that contains the reason of re-trying. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1010,8 +1124,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>flag of whether the task should automatically re-try </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00085">85</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00142">142</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1032,8 +1147,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>flag of whether the task can be canceled </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00084">84</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00141">141</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1054,8 +1170,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The thread that execute the task. </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00083">83</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00140">140</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1076,8 +1193,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The result object </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00081">81</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00138">138</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1098,8 +1216,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>allowed number of re-try attempts </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00086">86</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00143">143</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1120,8 +1239,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current task status </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00080">80</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00137">137</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1142,8 +1262,9 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A hash map holds all objects that related to the task. This collection will be transfered to <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a></code> at the end of the task. </p>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00082">82</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00139">139</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1165,8 +1286,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Whether the auto-retry is enabled. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a7c9b8132a71166d70ec5f497e90a2b7c">setAutoRetry()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a68d06e96c611a369a62968da0b9f4259">isAutoRetry()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00043">43</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00071">71</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1187,8 +1310,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Whether this task can be cancelled. Default is <em>false</em>. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a0b7ba971935217698de1527d2f476ae0">isCancellable()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a6b678573ffe890d074cbc7d6b11da81a">setCancellable()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00042">42</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00070">70</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1209,8 +1334,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The result object of this task </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ab8cec9abd9a8bde07ebfa61877599a73">result()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ab46f75ff118a468aca19b6f5f29c4d13">SFGenericTask::mResult</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00040">40</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00068">68</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1231,8 +1358,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>The current status of the task. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a8b3a3c0aee9bdd14f197fbff988c5cc8">SFGenericTask::mStatus</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#ac2f6b1a866bea9806c2c7ae231e5e155">SFGenericTask::TaskStatus</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00040">40</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00067">67</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1253,8 +1382,10 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>A hash map of any additional objects associated with the task. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#a1c20b1a741a3c2483e6a4a1f5cdbb139">tags()</a>, <a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html#aa7f7821bcffe00e8eaf7a3b8864ec939">putTag()</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00041">41</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
+<p>Definition at line <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html#l00069">69</a> of file <a class="el" href="../../de/dbf/_s_f_generic_task_8h_source.html">SFGenericTask.h</a>.</p>
 
 </div>
 </div>
@@ -1264,7 +1395,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d4/dd0/namespacesf.html">sf</a></li><li class="navelem"><a class="el" href="../../d0/def/classsf_1_1_s_f_generic_task.html">SFGenericTask</a></li>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:09 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

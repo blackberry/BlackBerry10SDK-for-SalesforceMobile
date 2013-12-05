@@ -117,7 +117,7 @@ Recommended Procedure</h1>
 </ol>
 </li>
 <li>All configuration has been done, you now have the Salesforce SDK linked to your project. But to start using the SDK, you still need to change couple lines of code.<ol type="1">
-<li>Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit <code><a class="el" href="../../d2/d6b/classsf_1_1_s_f_abstract_application_u_i.html" title="Abstract base class for the main application UI class. ">sf::SFAbstractApplicationUI</a>:</code> <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="../../d3/d81/_s_f_abstract_application_u_i_8h.html">core/SFAbstractApplicationUI.h</a>&gt;</span></div>
+<li>Open your <em>applicationui.hpp</em>, and make your ApplicationUI subclass of <code><a class="el" href="../../d2/d6b/classsf_1_1_s_f_abstract_application_u_i.html" title="Abstract base class for the main application UI class. ">sf::SFAbstractApplicationUI</a>:</code> <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="../../d3/d81/_s_f_abstract_application_u_i_8h.html">core/SFAbstractApplicationUI.h</a>&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">namespace </span>sf {</div>
 <div class="line">    <span class="keyword">class </span>SFGenericTask;</div>
@@ -144,10 +144,57 @@ Recommended Procedure</h1>
 </div><!-- fragment --></li>
 </ol>
 </li>
+<li>Alternatively, if you want to build a cascade html5 hybrid application, you need to make your ApplicationUI class a subclass of SFHybridApplicationUI instead and change your main.qml slightly. See the SalesforceSDKHybridDemo project for a complete example.<ol type="1">
+<li>Open your <em>applicationui.hpp</em>, and make your ApplicationUI subclass of <code><a class="el" href="../../df/de8/classsf_1_1_s_f_hybrid_application_u_i.html" title="Abstract base class for the main application UI class in a cascade html5 hybrid application. ">sf::SFHybridApplicationUI</a>:</code> </li>
+<li>Define three const variables in your <em>applicationui.cpp</em>: <div class="fragment"><div class="line">QString <span class="keyword">const</span> sf::SFRemoteAccessConsumerKey = <span class="stringliteral">&quot;Your Force.com&#39;s oAuth client id&quot;</span>;</div>
+<div class="line">QString <span class="keyword">const</span> sf::SFOAuthRedirectURI = <span class="stringliteral">&quot;Your Force.com&#39;s oAuth redirect URI&quot;</span>;</div>
+<div class="line">QString <span class="keyword">const</span> sf::SFDefaultRestApiVersion = <span class="stringliteral">&quot;/v29.0&quot;</span>; <span class="comment">//REST API version</span></div>
+</div><!-- fragment --></li>
+<li>Call base class's constructor, and call the setUpWebView and registerDefaultPlugin method at the end of your constructor <div class="fragment"><div class="line">ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFHybridApplicationUI(app)</div>
+<div class="line"> {</div>
+<div class="line">    <span class="comment">// prepare the localization</span></div>
+<div class="line">    m_pTranslator = <span class="keyword">new</span> QTranslator(<span class="keyword">this</span>);</div>
+<div class="line">    m_pLocaleHandler = <span class="keyword">new</span> LocaleHandler(<span class="keyword">this</span>);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">bool</span> res = QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), <span class="keyword">this</span>, SLOT(onSystemLanguageChanged()));</div>
+<div class="line">    <span class="comment">// This is only available in Debug builds</span></div>
+<div class="line">    Q_ASSERT(res);</div>
+<div class="line">    <span class="comment">// Since the variable is not used in the app, this is added to avoid a</span></div>
+<div class="line">    <span class="comment">// compiler warning</span></div>
+<div class="line">    Q_UNUSED(res);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// initial load</span></div>
+<div class="line">    onSystemLanguageChanged();</div>
+<div class="line"></div>
+<div class="line">    QmlDocument *qml = QmlDocument::create(<span class="stringliteral">&quot;asset:///main.qml&quot;</span>).parent(<span class="keyword">this</span>);</div>
+<div class="line">    AbstractPane *root = qml-&gt;createRootObject&lt;AbstractPane&gt;();</div>
+<div class="line">    app-&gt;setScene(root);</div>
+<div class="line"></div>
+<div class="line">    this-&gt;setupWebView(root);</div>
+<div class="line">    this-&gt;registerDefaultPlugins();</div>
+<div class="line"> }</div>
+</div><!-- fragment --><ol type="a">
+<li>In main.qml add SFHybridWebView as the main view <div class="fragment"><div class="line"><span class="keyword">import</span> bb.cascades 1.2</div>
+<div class="line">import <span class="stringliteral">&quot;./salesforce&quot;</span></div>
+<div class="line"></div>
+<div class="line">Page {</div>
+<div class="line">   <span class="keywordtype">id</span>: page</div>
+<div class="line">   objectName: <span class="stringliteral">&quot;page&quot;</span>;</div>
+<div class="line">   SFHybridWebView{}</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+</ol>
+</li>
+<li>In your assets folder, create a www folder, and add index.html there. This would be the starting point of your hybrid application.Your folder structure should look like this: assets/www/index.html.</li>
+</ol>
+</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Since the cascade <code>WebView</code> does not offer a way to override the cross-site-scripting constraint, unless the server you are dealing with follows the CORS standard and returns "Allow-CORS" http response header, you cannot use XMLHttpRequest to communicate with the server from javascript. We have provided the <code>SFRestPlugin</code> as a bridge to overcome this difficulty. It exposes all the Salesforce Rest API calls for you to use in javascript. If you still wish to use XMLHttpRequest directly in your javascript, you can either modify your server side to return the "Allow-CORS" header, or create a custom plugin that channels the XMLHttpRequest call from javascript to native as described here <a href="http://supportforums.blackberry.com/t5/Native-Development/How-to-whitelist-sites-for-XHR-in-WebView/m-p/2476919/highlight/true#M27148">http://supportforums.blackberry.com/t5/Native-Development/How-to-whitelist-sites-for-XHR-in-WebView/m-p/2476919/highlight/true#M27148</a></dd></dl>
+<ul>
 <li>Now you can build and run your application. If your <code><a class="el" href="../../d4/dd0/namespacesf.html#ab0825c181a6f3c43963fb11f25cb781f">sf::SFRemoteAccessConsumerKey</a></code> and <code><a class="el" href="../../d4/dd0/namespacesf.html#a3631d6518680633189c7960c7d548006">sf::SFOAuthRedirectURI</a></code> is set correctly, you should see Salesforce's oAuth login page automatically loaded at application start up.</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>The steps above are tested with Momentics IDE 2.1.201310251603 on MacOS 10.9. If you use Windows, the procedures may differ. </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd>SFAbstractApplicationUI</dd></dl>
+<dl class="section see"><dt>See Also</dt><dd>SFAbstractApplicationUI, SFHybridApplicationUI</dd></dl>
 <h1><a class="anchor" id="section_approach_2"></a>
 Convenient Template Project</h1>
 <p>We also included an empty template project <b>SalesforceAppTemplate</b> under the same repository. This project have everything configured for you. All you need to do is:</p>
@@ -165,7 +212,7 @@ Tim Shi </dd></dl>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:08 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

@@ -76,7 +76,10 @@ $(document).ready(function(){initNavTree('d9/dff/classsf_1_1_s_f_result_code.htm
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="../../d8/d7c/_s_f_global_8h_source.html">SFGlobal.h</a>&gt;</code></p>
+<p>Pre-defined SDK error codes.  
+ <a href="../../d9/dff/classsf_1_1_s_f_result_code.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d7c/_s_f_global_8h_source.html">core/SFGlobal.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for sf::SFResultCode:</div>
 <div class="dyncontent">
@@ -116,8 +119,10 @@ Public Types</h2></td></tr>
 <tr class="separator:aa87a49b96d32fe7f034d71eed6e2eea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html#l00085">85</a> of file <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html">SFGlobal.h</a>.</p>
+<div class="textblock"><p>Pre-defined SDK error codes. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">SFResult</a>, <a href="http://www.salesforce.com/us/developer/docs/api_rest/Content/errorcodes.htm">Salesforce REST API status code</a> </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html#l00092">92</a> of file <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html">SFGlobal.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3"></a>
 <div class="memitem">
@@ -130,44 +135,61 @@ Public Types</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3ac1b3c58b39ede6cda855b7b779e09c71"></a>SFErrorNoError</em>&nbsp;</td><td class="fielddoc">
+<p>Success, no error. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a2cbfb26f6a10dc6534e1b742197dc20e"></a>SFErrorGeneric</em>&nbsp;</td><td class="fielddoc">
+<p>Generic/Unknown error. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3ac9449599343b33e36001bddccd80da3b"></a>SFErrorCancelled</em>&nbsp;</td><td class="fielddoc">
+<p>The task is canceled. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a01aa4b6e7f1510086fe8a49eb8024fda"></a>SFErrorNetwork</em>&nbsp;</td><td class="fielddoc">
+<p>Generic network error. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3aeb1c14d9c22a04ce1a6ee56d18667040"></a>SFErrorInvalidAccessToken</em>&nbsp;</td><td class="fielddoc">
+<p>The Force.com access token is not available. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a8f96d403342fb6c4ce44b1129f76ec5b"></a>SFMinimumRestStatus</em>&nbsp;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a1b96168f500aa688bb1bba9839582785"></a>SFRestStatusSuccess</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 200. Success. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a8e2a94b2ab28c567d8a79d630f395b2d"></a>SFRestStatusSuccessCreated</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 201. Created. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3adca6d1a5d3f04e1ef7ef2d49c0f7aa5c"></a>SFRestStatusSuccessNoContent</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 204. Success, and response body is empty. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3af6bb59137c85a1bd26dfa5583ba4a53b"></a>SFRestStatusMultiRecords</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 300. Found multiple records match the given criteria. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a8d64c4f6c7fb0d85834790f0fc5fa3aa"></a>SFRestStatusNoChanges</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 304. No changes since the given date and time. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a8880f897ac2b038879ec6cfdcccf37f6"></a>SFRestStatusBadData</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 400. Bad request. The request cannot be understood. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a5663d23b1327fb2190ac134f94a80bd1"></a>SFRestStatusInvalidSession</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 401. The session has been expired. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a226a605e076c5b1e10ae2432e419cc29"></a>SFRestStatusRefused</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 403. The request has been refused, possibly due to insufficient permission. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a97d01316f2e178cb7f4f0d3123e68a24"></a>SFRestStatusNotFound</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 404. The requested resource is not found. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a907ff8781ce6e2522f2cec1de18ccfe0"></a>SFRestStatusMethodNotAllowed</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 405. The given action/verb is not allowed for the resource. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a0e659287287f2f42d64897643d373767"></a>SFRestStatusFormatNotSupported</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 415. The requested data format is not supported. </p>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aa87a49b96d32fe7f034d71eed6e2eea3a77c365c0b4eb987709e2615af0ebe4ac"></a>SFRestStatusServerError</em>&nbsp;</td><td class="fielddoc">
+<p>HTTP 500. Error at server side. </p>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html#l00089">89</a> of file <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html">SFGlobal.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html#l00096">96</a> of file <a class="el" href="../../d8/d7c/_s_f_global_8h_source.html">SFGlobal.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +199,7 @@ Public Types</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d4/dd0/namespacesf.html">sf</a></li><li class="navelem"><a class="el" href="../../d9/dff/classsf_1_1_s_f_result_code.html">SFResultCode</a></li>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:09 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

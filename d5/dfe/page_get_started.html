@@ -73,6 +73,7 @@ Setup Your Project</h1>
 <li>SalesforceSDK</li>
 <li>SalesforceAppTemplate</li>
 <li>SalesforceSDKDemo</li>
+<li>SalesforceSDKHybridDemo</li>
 </ul>
 <h2><a class="anchor" id="section_import_sdk"></a>
 Import SDK Project</h2>
@@ -88,7 +89,7 @@ Import Template Project</h2>
 <li>Select "Import Existing Projects" option</li>
 <li>Finish</li>
 </ol>
-<dl class="section note"><dt>Note</dt><dd>If you want to create a new project from scratch or use your existing project, and link the Salesforce Mobile SDK to it, we have a step-by-step introduction. Please see <a class="el" href="../../d2/dc8/page_install.html">Use the SDK in Existing Project</a></dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If you want to create a new project from scratch or use your existing project, and link the Salesforce Mobile SDK to it, we have a step-by-step introduction. Please see <a class="el" href="../../d2/dc8/page_install.html">Use the SDK in Existing Project</a>. This template project is a template for cascade native application. Please also refer to <a class="el" href="../../d2/dc8/page_install.html">Use the SDK in Existing Project</a> for how to set up a cascade html5 hybrid application using this SDK.</dd></dl>
 <p><br/>
 </p>
 <h2><a class="anchor" id="section_config_environment"></a>
@@ -152,7 +153,7 @@ Authentication</h2>
 </div><!-- fragment --><h2><a class="anchor" id="section_rest"></a>
 Sending REST Requests</h2>
 <p>You may have noticed by now, our template application uses <code><a class="el" href="../../d2/d6b/classsf_1_1_s_f_abstract_application_u_i.html" title="Abstract base class for the main application UI class. ">sf::SFAbstractApplicationUI</a></code> as the base class of your main business logic class. This base class is responsible for configuring the SDK's related classes. You don't need to do anything at startup (except for the global variable containing the REST API version , see <a class="el" href="../../d5/dfe/page_get_started.html#section_inspect_application">Configure the Application</a>) if you are using standard Force.com's REST API.</p>
-<p><code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code>, <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">sf::SFRestRequest</a></code> and <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a></code> are the classes you need to deal with when using Force.com's REST API or APEX REST API. The <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code> is the main class for all APIs. You can get the global instance by using <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#add50daec5b4a0b0f00ad269d93921041">sf::SFRestAPI::instance()</a></code>. You don't need to explicitly initiate authentication flows in prior to use the REST APIs. The SDK automatically attempt to login or refresh access token if user logged out or session is expired. It also re-send all failed requests after the refreshing attempt succeeded.</p>
+<p><code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code>, <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">sf::SFRestRequest</a></code> and <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">sf::SFResult</a></code> are the classes you need to deal with when using Force.com's REST API or APEX REST API. The <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code> is the main class for all APIs. You can get the global instance by using <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#add50daec5b4a0b0f00ad269d93921041">sf::SFRestAPI::instance()</a></code>. You don't need to explicitly initiate authentication flows in prior to use the REST APIs. The SDK automatically attempt to login or refresh access token if user logged out or session is expired. It also re-send all failed requests after the refreshing attempt succeeded.</p>
 <p>The SDK REST classes are designed to be accessible from both C++ and QML. Some APIs contains different function signatures for C++ and QML.</p>
 <h3><a class="anchor" id="cplusplus_usage"></a>
 Send REST Request from C++</h3>
@@ -167,7 +168,7 @@ Send REST Request from C++</h3>
 <div class="line">   <span class="comment">//Your own code</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><p><br/>
-To send a REST request, you use <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code> to create a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">sf::SFRestRequest</a></code> instance and use <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a86670774e98a2e5e40df95022f014b4e">sf::SFRestAPI::sendRestRequest(SFRestRequest*,QObject*,const char*,const QVariant &amp;)</a></code> to send: </p>
+To send a REST request, you use <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code> to create a <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">sf::SFRestRequest</a></code> instance and use <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a86670774e98a2e5e40df95022f014b4e">sf::SFRestAPI::sendRestRequest(SFRestRequest*,QObject*,const char*,const QVariant &amp;)</a></code> to send: </p>
 <div class="fragment"><div class="line"><span class="comment">//in ApplicationUI.cpp</span></div>
 <div class="line">QStringList fields = QStringList() &lt;&lt; <span class="stringliteral">&quot;Id&quot;</span> &lt;&lt; <span class="stringliteral">&quot;Name&quot;</span>;</div>
 <div class="line">QString query = SFRestAPI::instance()-&gt;generateSOQLQuery(fields, <span class="stringliteral">&quot;Account&quot;</span>, <span class="stringliteral">&quot;&quot;</span>, QStringList(), <span class="stringliteral">&quot;&quot;</span>, QStringList(), 5);</div>
@@ -219,7 +220,7 @@ Send REST Request from QML</h3>
 <h3><a class="anchor" id="apex_support"></a>
 Force.com's APEX REST APIs</h3>
 <p>If you have customized REST APIs written in APEX, the standard requests might not be suitable for you. You can use <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html#a93c9b8b0f3dd55a9cd76e589c456347f">sf::SFRestAPI::customRequest()</a></code> to create your own customized request.</p>
-<p><b>For move advanced usage of REST classes, See</b> <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code>, <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html">sf::SFRestRequest</a></code>, <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html">sf::SFResult</a></code> </p>
+<p><b>For move advanced usage of REST classes, See</b> <code><a class="el" href="../../d9/d10/classsf_1_1_s_f_rest_a_p_i.html" title="The SFRestAPI is the main class to send REST requests to Force.com REST API. ">sf::SFRestAPI</a></code>, <code><a class="el" href="../../d8/d40/classsf_1_1_s_f_rest_request.html" title="The SFRestRequest holds a request that comply with Force.com REST API standard and can be sent using ...">sf::SFRestRequest</a></code>, <code><a class="el" href="../../d9/dd1/classsf_1_1_s_f_result.html" title="Generic wrapper class that carry result of any task performed by the SDK. ">sf::SFResult</a></code> </p>
 <h2><a class="anchor" id="section_settings"></a>
 Launch Setting Screen</h2>
 <p>The SDK provides a default setting screen. The setting screen allows the user to switch between production and sandbox environments. To use this feature, your application needs to present the setting screen and handle the SFLoginHostChanged signal.</p>
@@ -303,10 +304,10 @@ Revoking Tokens</h2>
 More Samples</h1>
 <h2><a class="anchor" id="section_demo"></a>
 Demo Application</h2>
-<p>Please check out the project <b>SalesforceSDKDemo</b> under same repository for complete code sample.</p>
+<p>Please check out the project <b>SalesforceSDKDemo</b> and <b>SalesforceSDKHybridDemo</b> under same repository for complete code sample of native and hybrid application using this SDK. Please make sure your environment variable is configured as described in the beginning of this article before trying these samples.</p>
 <h2><a class="anchor" id="section_explorer"></a>
 Salesforce REST Explorer on Blackberry 10</h2>
-<p>TODO link to REST Explorer example</p>
+<p>Please check out <a href="https://github.com/KiiMobileTech/SalesforceRestExplorer">https://github.com/KiiMobileTech/SalesforceRestExplorer</a> for the REST Explorer sample project.</p>
 <dl class="section author"><dt>Author</dt><dd>Livan Yi Du </dd>
 <dd>
 Tim Shi </dd></dl>
@@ -315,7 +316,7 @@ Tim Shi </dd></dl>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Nov 16 2013 10:42:15 for Blackberry10SDKforSalesforceMobile by
+    <li class="footer">Generated on Thu Dec 5 2013 15:42:08 for Blackberry10SDKforSalesforceMobile by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.5 </li>
   </ul>

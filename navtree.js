@@ -31,7 +31,7 @@ var NAVTREE =
       [ "Recommended Procedure", "d2/dc8/page_install.html#section_approach_1", null ],
       [ "Convenient Template Project", "d2/dc8/page_install.html#section_approach_2", null ]
     ] ],
-    [ "README", "d7/d8f/md_docs__r_e_a_d_m_e.html", null ],
+    [ "BlackBerry10SDK-for-SalesforceMobile", "d7/d8f/md_docs__r_e_a_d_m_e.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -70,8 +70,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/de7/classsf_1_1_s_f_o_auth_credentials.html",
-"db/dd7/classsf_1_1_s_f_identity_data.html#a5b116f6b23b0459aa58828a3fa18ac3b"
+"d6/dbf/classsf_1_1_h_t_t_p_method.html#a9edc991078cf683f9bb677f1d99526fbad87f3a385835cf8656a3e0eaee3d80df",
+"db/dc9/_s_f_idle_screen_tracker_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
