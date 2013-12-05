@@ -42,18 +42,10 @@ SFRestPlugin::SFRestPlugin(WebView* webView):SFPlugin(webView) {
 }
 
 SFRestPlugin::~SFRestPlugin() {
-	// TODO Auto-generated destructor stub
 }
 
-/*
- * The arguments should be
- * path
- * method
- * params
- * httpContentType
- */
 void SFRestPlugin::sendCustomRequest(const SFInvokedUrlCommand& command){
-	qDebug()<<"sendRestRequest "<<command.getArguments();
+	sfDebug()<<"sendRestRequest "<<command.getArguments();
 	QString path = command.getArguments().value(kPluginRestPath).toString();
 	QVariantMap params = command.getArguments().value(kPluginRestParams).toMap();
 	bool hasMethod;
@@ -92,12 +84,12 @@ void SFRestPlugin::sendRequestForDescribeObject(const SFInvokedUrlCommand& comma
 	SFRestAPI::instance()->sendRestRequest(request, this, SLOT(onReceiveResult(sf::SFResult*)), command.getCallbackId());
 }
 void SFRestPlugin::sendRequestForRetrieveObject(const SFInvokedUrlCommand& command){
-	qDebug()<<"sendRestRequest "<<command.getArguments();
+	sfDebug()<<"sendRestRequest "<<command.getArguments();
 
 	QString objectType = command.getArguments().value(kArgObjectType).toString();
 	QString objectId = command.getArguments().value(kArgObjectId).toString();
 	QList<QVariant> variantList = command.getArguments().value(kArgFields).toList();
-	qDebug()<<"variant list" << variantList;
+	sfDebug()<<"variant list" << variantList;
 	QList<QString> objectList;
 	QListIterator<QVariant> i(variantList);
 	while (i.hasNext()) {
@@ -144,16 +136,16 @@ void SFRestPlugin::sendRequestForSearch(const SFInvokedUrlCommand& command){
 	SFRestAPI::instance()->sendRestRequest(request, this, SLOT(onReceiveResult(sf::SFResult*)), command.getCallbackId());
 }
 void SFRestPlugin::onReceiveResult(sf::SFResult* result){
-	qDebug()<<"received result " << result->getTag<QString>(kSFRestRequestTag);
+	sfDebug()<<"received result " << result->getTag<QString>(kSFRestRequestTag);
 	QString callbackId = result->getTag<QString>(kSFRestRequestTag);
 	if (!result->hasError()){
 		QVariant payload = result->payload<QVariant>();
-		qDebug()<<"sending payload back" << payload;
+		sfDebug()<<"sending payload back" << payload;
 		SFPluginResult pluginResult = SFPluginResult(SFCommandStatus_OK, payload, false);
 		this->sendPluginResult(pluginResult, callbackId);
 	}else{
 		QVariant payload = result->payload<QVariant>();
-		qDebug()<<"error " << payload;
+		sfDebug()<<"error " << payload;
 		SFPluginResult pluginResult = SFPluginResult(SFCommandStatus_ERROR, payload, false);
 		this->sendPluginResult(pluginResult, callbackId);
 	}

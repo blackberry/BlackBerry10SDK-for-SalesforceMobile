@@ -27,6 +27,7 @@
 #include <SFOAuthInfo.h>
 #include <QVariantMap>
 #include <SFOAuthCredentials.h>
+#include <SFGlobal.h>
 
 namespace sf {
 
@@ -54,13 +55,13 @@ SFAuthPlugin::~SFAuthPlugin() {
 }
 
 void SFAuthPlugin::login(const SFInvokedUrlCommand& command){
-	qDebug()<<"login called with command callbackId" << command.getCallbackId();
+	sfDebug()<<"login called with command callbackId" << command.getCallbackId();
 	callbackMap.insert(command.getMethodName(), command.getCallbackId());
 	SFAuthenticationManager::instance()->login();
 }
 
 void SFAuthPlugin::logout(const SFInvokedUrlCommand& command){
-	qDebug()<<"logout called with command callbackId" << command.getCallbackId();
+	sfDebug()<<"logout called with command callbackId" << command.getCallbackId();
 	callbackMap.insert(command.getMethodName(), command.getCallbackId());
 	SFAuthenticationManager::instance()->logout();
 }
@@ -129,11 +130,11 @@ void SFAuthPlugin::onSFOAuthFlowCanceled(SFOAuthInfo* info){
 }
 
 void SFAuthPlugin::onSFUserLoggedOut(){
-	qDebug()<<"on logged out";
+	sfDebug()<<"on logged out";
 	QString callbackId = callbackMap.value("logout"); //matching method name
 	QVariantMap message;
 	SFPluginResult result = SFPluginResult(SFCommandStatus_OK, message, false);
-	qDebug()<<"send logged out result";
+	sfDebug()<<"send logged out result";
 	if (!callbackId.isEmpty() && !callbackId.isNull()){
 		this->sendPluginResult(result,callbackId);
 		callbackMap.remove("logout");

@@ -21,6 +21,7 @@
 
 #include "SFPlugin.h"
 #include <bb/data/JsonDataAccess>
+#include <SFGlobal.h>
 
 namespace sf {
 using namespace bb::cascades;
@@ -48,12 +49,10 @@ QString SFPlugin::variantToJSON(const QVariant& variant){
 
 void SFPlugin::sendPluginResult(const SFPluginResult& result, const QString& callbackId){
 	QString message = variantToJSON(result.getMessage());
-	//qDebug()<<"result status is "<< result.getStatus();
-	//qDebug()<<"result keep callback is "<< result.isKeepCallback();
 	QString keepCallBack = result.isKeepCallback()?"true":"false";
 	message = message.isNull()?"":message;
 	QString js = QString("sf.executeCallback(\"%1\",%2,%3,%4)").arg(callbackId,QString::number(result.getStatus()),message,keepCallBack);
-	qDebug()<<"javascript to be evaled is:  " << js;
+	sfDebug()<<"javascript to be evaled is:  " << js;
 	this->evalJavascript(js);
 }
 
