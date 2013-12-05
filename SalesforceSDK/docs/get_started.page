@@ -12,6 +12,7 @@
  * 		- SalesforceSDK
  * 		- SalesforceAppTemplate
  * 		- SalesforceSDKDemo
+ * 		- SalesforceSDKHybrid
  *
  * @subsection section_import_sdk Import SDK Project
  * 1. Right click on the SalesforceSDK project in the working directory and select <b>Import Projects...</b>
@@ -24,7 +25,8 @@
  * 3. Finish
  * .
  * @note If you want to create a new project from scratch or use your existing project, and link the Salesforce Mobile SDK to it,
- * we have a step-by-step introduction. Please see @ref page_install
+ * we have a step-by-step introduction. Please see @ref page_install. This template project is a template for cascade native application.
+ * Please also refer to @ref page_install for how to set up a cascade html5 hybrid application using this SDK.
  *
  * \n
  * @subsection section_config_environment Configure Environment Variables

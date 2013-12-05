@@ -78,7 +78,7 @@
  * @endcode
  *
  *	- All configuration has been done, you now have the Salesforce SDK linked to your project. But to start using the SDK, you still need to change couple lines of code.
- * 		1. Open your <em>applicationui.hpp</em>, makes your ApplicationUI to inherit @c sf::SFAbstractApplicationUI:
+ * 		1. Open your <em>applicationui.hpp</em>, and make your ApplicationUI subclass of @c sf::SFAbstractApplicationUI:
  * @code {.hpp}
  * #include <core/SFAbstractApplicationUI.h>
  *
@@ -109,13 +109,60 @@
  *
  * }
  * @endcode
+ *  - Alternatively, if you want to build a cascade html5 hybrid application, you need to make your ApplicationUI class a subclass of SFHybridApplicationUI instead and change your main.qml slightly. See the SalesforceSDKHybridDemo project for a complete example.
+ *  	1. Open your <em>applicationui.hpp</em>, and make your ApplicationUI subclass of @c sf::SFHybridApplicationUI:
+ *  	2. Define three const variables in your <em>applicationui.cpp</em>:
+ * @code {.cpp}
+ * QString const sf::SFRemoteAccessConsumerKey = "Your Force.com's oAuth client id";
+ * QString const sf::SFOAuthRedirectURI = "Your Force.com's oAuth redirect URI";
+ * QString const sf::SFDefaultRestApiVersion = "/v29.0"; //REST API version
+ * @endcode
+ *  	3. Call base class's constructor, and call the setUpWebView and registerDefaultPlugin method at the end of your constructor
+ * @code {.cpp}
+ * ApplicationUI::ApplicationUI(bb::cascades::Application *app) : sf::SFHybridApplicationUI(app)
+ *	{
+ *		// prepare the localization
+ *		m_pTranslator = new QTranslator(this);
+ *		m_pLocaleHandler = new LocaleHandler(this);
+ *
+ *		bool res = QObject::connect(m_pLocaleHandler, SIGNAL(systemLanguageChanged()), this, SLOT(onSystemLanguageChanged()));
+ *		// This is only available in Debug builds
+ *		Q_ASSERT(res);
+ *		// Since the variable is not used in the app, this is added to avoid a
+ *		// compiler warning
+ *		Q_UNUSED(res);
+ *
+ *		// initial load
+ *		onSystemLanguageChanged();
+ *
+ *		QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+ *		AbstractPane *root = qml->createRootObject<AbstractPane>();
+ *		app->setScene(root);
+ *
+ *		this->setupWebView(root);
+ *		this->registerDefaultPlugins();
+ *	}
+ * @endcode
+ * 		4. In main.qml add SFHybridWebView as the main view
+ * 	@code {.qml}
+ *	import bb.cascades 1.2
+ *	import "./salesforce"
+ *
+ *	Page {
+ *		id: page
+ *		objectName: "page";
+ *		SFHybridWebView{}
+ *	}
+ *	@endcode
+ *
+ *		5. In your assets folder, create a www folder, and add index.html there. This would be the starting point of your hybrid application.Your folder structure should look like this: assets/www/index.html.
  *
  *	- Now you can build and run your application. If your @c sf::SFRemoteAccessConsumerKey and @c sf::SFOAuthRedirectURI is set correctly,
  *	you should see Salesforce's oAuth login page automatically loaded at application start up.
  *
  *
  *	@note The steps above are tested with Momentics IDE 2.1.201310251603 on MacOS 10.9. If you use Windows, the procedures may differ.
- *	@sa SFAbstractApplicationUI
+ *	@sa SFAbstractApplicationUI, SFHybridApplicationUI
  *
  * \section section_approach_2 Convenient Template Project
  * We also included an empty template project <b>SalesforceAppTemplate</b> under the same repository.
