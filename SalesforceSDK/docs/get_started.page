@@ -297,10 +297,11 @@
  *
  * @section section_more_info More Samples
  * @subsection section_demo Demo Application
- * Please check out the project <b>SalesforceSDKDemo</b> under same repository for complete code sample.
+ * Please check out the project <b>SalesforceSDKDemo</b> and <b>SalesforceSDKHybridDemo</b> under same repository for complete code sample of native and hybrid application using this SDK.
+ * Please make sure your environment variable is configured as described in the beginning of this article before trying these samples.
  *
  * @subsection section_explorer Salesforce REST Explorer on Blackberry 10
- * TODO link to REST Explorer example
+ * Please check out https://github.com/KiiMobileTech/SalesforceRestExplorer for the REST Explorer sample project.
  *
  * @author Livan Yi Du
  * @author Tim Shi
