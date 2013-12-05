@@ -74,6 +74,16 @@ extern QString const SFDefaultRestApiVersion;
  * 	}
  * @endcode
  *
+ * @note
+ * Since the cascade @c WebView does not offer a way to override the cross-site-scripting constraint,
+ * unless the server you are dealing with follows the CORS standard and returns "Allow-CORS" http response header,
+ * you cannot use XMLHttpRequest to communicate with the server from javascript. We have provided the SFRestPlugin
+ * as a bridge to overcome this difficulty. It exposes all the Salesforce Rest API calls for you to use in javascript.
+ * If you still wish to use XMLHttpRequest directly in your javascript, you can either modify your server side to return
+ * the "Allow-CORS" header, or create a custom plugin that channels the XMLHttpRequest call from javascript to native as described here
+ * http://supportforums.blackberry.com/t5/Native-Development/How-to-whitelist-sites-for-XHR-in-WebView/m-p/2476919/highlight/true#M27148
+ *
+ *
  * \sa SFAuthPlugin, SFRestPlugin, SFPlugin, SFHybridWebView.qml, sf.js
  *
  * \author Tim Shi
