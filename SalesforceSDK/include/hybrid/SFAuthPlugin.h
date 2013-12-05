@@ -50,11 +50,11 @@ using namespace bb::cascades;
  *
  * The default callbacks for login state changes are:
  *
- * onSFOAuthFlowSuccess(message)
- * onSFOAuthFlowFailure(message)
- * onSFOAuthFlowCancel(message)
- * onSFUserLoggedOut()
- * onSFLoginHostChanged()
+ * <br>onSFOAuthFlowSuccess(message)
+ * <br>onSFOAuthFlowFailure(message)
+ * <br>onSFOAuthFlowCancel(message)
+ * <br>onSFUserLoggedOut
+ * <br>onSFLoginHostChanged
  *
  * Usage
  * -----

@@ -12,7 +12,7 @@
  * 		- SalesforceSDK
  * 		- SalesforceAppTemplate
  * 		- SalesforceSDKDemo
- * 		- SalesforceSDKHybrid
+ * 		- SalesforceSDKHybridDemo
  *
  * @subsection section_import_sdk Import SDK Project
  * 1. Right click on the SalesforceSDK project in the working directory and select <b>Import Projects...</b>
